@@ -12,6 +12,9 @@ export const PROVIDERS = {
   DUMMY: {
     label: "Dummy",
   },
+  AUTHORIZENET: {
+    label: "AuthorizeNet",
+  },
   STRIPE: {
     label: "Stripe",
   },
