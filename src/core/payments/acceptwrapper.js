@@ -43,8 +43,8 @@ function parseErrors(response) {
 
 function refinedData(data) {
     const authData = {
-        clientKey: '5YwxrRgLSR6HP9gKa5YQv8G3V66yNa47bGk5GV2VGenCA58p3ZkSt3TR5D7ragAw',
-        apiLoginID: '86cRtH79',
+        clientKey: '3K7Qc7zk3vJtrT4N5vUf299Z8j6DD2qESeqPxSZkM24UrDhg3qrV5Xh3fh49GBus',
+        apiLoginID: '979FeLuLX',
     };
 
     const newData = {};
