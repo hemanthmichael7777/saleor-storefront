@@ -4,6 +4,7 @@ export * from "./IAddressWithAddressType";
 export * from "./IFilterAttributes";
 export * from "./IFilters";
 export * from "./ISelectOptions";
+export * from "./ITileOptions";
 export * from "./IProductVariantsAttributes";
 export * from "./IImage";
 export * from "./ITaxedMoney";

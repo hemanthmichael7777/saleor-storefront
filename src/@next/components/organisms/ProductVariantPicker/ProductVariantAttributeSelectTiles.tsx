@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
 import { VariantTiles } from "@components/molecules";
 import { useSelectableProductVariantsAttributeValues } from "@hooks";
-import { ProductDetails_product_variants } from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
+import { ProductDetails_product_variants } from "../../../../views/Product/gqlTypes/ProductDetails";
 import {
   IProductVariantsAttribute,
   IProductVariantsAttributesSelectedValues,
@@ -56,11 +56,24 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
       const isOptionDisabled =
         selectableAttribute && !selectableAttribute.values.includes(value);
 
+      var img = null;
+      
+      if(productVariantsAttribute.attribute.slug === 'color') {
+        if(productVariantsAttribute.attribute.metadata.length > 0) {
+          for(let i=0; i<productVariantsAttribute.attribute.metadata.length; i++){
+            if(productVariantsAttribute.attribute.metadata[i].key === value.value) {
+              img = productVariantsAttribute.attribute.metadata[i].value;
+            }
+          }
+        }
+      }
+
       return {
         disabled: isOptionDisabled,
         id: value.id,
         label: value.name!,
         value: value.value!,
+        image: img
       };
     });
 

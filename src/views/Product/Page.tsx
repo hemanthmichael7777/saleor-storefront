@@ -36,6 +36,8 @@ const Page: React.FC<
     onAttributeChangeHandler: (slug: string | null, value: string) => void;
   }
 > = ({ add, product, items, queryAttributes, onAttributeChangeHandler }) => {
+  //if(product.variants[0].attributes[0].attribute.metadata.length > 0)
+  //alert(product.variants[0].attributes[0].attribute.metadata[0].key);
   const overlayContext = React.useContext(OverlayContext);
 
   const productGallery: React.RefObject<HTMLDivElement> = React.useRef();

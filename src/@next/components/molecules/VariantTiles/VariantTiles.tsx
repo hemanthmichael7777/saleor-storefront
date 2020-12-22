@@ -28,15 +28,23 @@ export const VariantTiles: React.FC<IProps> = ({
       value => value === option.value
     );
 
+    var c = <S.VariantTileContent selected={isSelected}>
+      {option.label}
+    </S.VariantTileContent>;
+
+    if(option.image){
+      c = <S.VariantTileContentImage selected={isSelected}>
+        <img src={option.image} style={{width: "50px"}}></img>
+      </S.VariantTileContentImage>;
+    }
+
     return (
       <VariantTile
         selected={isSelected}
         disabled={isDisabled}
         onClick={() => onSelect(option.value)}
       >
-        <S.VariantTileContent selected={isSelected}>
-          {option.label}
-        </S.VariantTileContent>
+        {c}
       </VariantTile>
     );
   });

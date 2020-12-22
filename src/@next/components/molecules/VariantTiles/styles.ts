@@ -68,6 +68,7 @@ export const VariantTileContent = styled.div<ContentProps>`
 export const VariantTileContentImage = styled.div<ContentProps>`
   color: ${props => getFontColor(props)};
   background-color: ${props => getBgColor(props)};
-  padding: 10px 14px;
+  padding: 4px 4px;
+  padding-bottom: 0px;
   border: 1px solid #D3D3D3;
 `;
