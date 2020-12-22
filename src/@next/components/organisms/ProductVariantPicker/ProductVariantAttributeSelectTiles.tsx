@@ -56,7 +56,7 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
       const isOptionDisabled =
         selectableAttribute && !selectableAttribute.values.includes(value);
 
-      var img = null;
+      var img = "";
       
       if(productVariantsAttribute.attribute.slug === 'color') {
         if(productVariantsAttribute.attribute.metadata.length > 0) {
@@ -68,13 +68,15 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
         }
       }
 
-      return {
+      var r = {
         disabled: isOptionDisabled,
         id: value.id,
         label: value.name!,
         value: value.value!,
         image: img
       };
+
+      return r;
     });
 
   const selectLabel = productVariantsAttribute.attribute.name || "";

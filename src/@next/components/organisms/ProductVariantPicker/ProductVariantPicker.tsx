@@ -73,6 +73,9 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
 
           return (
             <div>
+              <S.VariantTilesHeader>
+                {productVariantsAttribute.attribute.name}
+              </S.VariantTilesHeader>
               <ProductVariantAttributeSelectTiles
                 key={productVariantsAttributeId}
                 selectSidebar={selectSidebar}

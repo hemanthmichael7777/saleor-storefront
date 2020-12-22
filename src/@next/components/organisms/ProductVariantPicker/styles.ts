@@ -8,3 +8,7 @@ export const SelectIndicator = styled.div`
   margin: 0 1rem 0 0;
   cursor: pointer;
 `;
+
+export const VariantTilesHeader = styled.div`
+  margin-left: 10px;
+`;
