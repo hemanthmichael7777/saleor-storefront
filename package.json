@@ -19,6 +19,7 @@
     "apollo": "^2.21.3",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-cache-persist": "^0.1.1",
+    "apollo-cli": "^0.4.0",
     "apollo-client": "^2.5.1",
     "apollo-link": "^1.2.12",
     "apollo-link-batch-http": "^1.2.3",
@@ -195,7 +196,7 @@
   },
   "scripts": {
     "test": "jest --runInBand --config .jest/config.json",
-    "start": "cross-env NODE_ENV=develop webpack-dev-server --history-api-fallback --watch --port 3000 --mode development --hotOnly",
+    "start": "cross-env NODE_ENV=develop webpack-dev-server --history-api-fallback --watch --port 3000 --mode development --hotOnly --https",
     "start:worker": "npm run start -- --service-worker",
     "build": "webpack -p",
     "watch": "webpack -d --watch",

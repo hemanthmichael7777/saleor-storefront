@@ -15,6 +15,7 @@ export const AddressGrid: React.FC<IProps> = ({
   const addNewTile = (
     <AddNewTile key="newTile" type="address" onClick={addNewAddress} />
   );
+  console.log(addresses);
 
   const addressTiles = addresses.reduce(
     (elements, address) => {

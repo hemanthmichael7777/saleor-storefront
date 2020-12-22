@@ -613,6 +613,11 @@ export interface ProductDetails_product_variants_pricing {
   price: ProductDetails_product_variants_pricing_price | null;
 }
 
+export interface ProductDetails_product_variants_attributes_attribute_metadata {
+  key: string;
+  value: string;
+}
+
 export interface ProductDetails_product_variants_attributes_attribute {
   __typename: "Attribute";
   /**
@@ -627,6 +632,8 @@ export interface ProductDetails_product_variants_attributes_attribute {
    * Internal representation of an attribute name.
    */
   slug: string | null;
+
+  metadata: ProductDetails_product_variants_attributes_attribute_metadata[];
 }
 
 export interface ProductDetails_product_variants_attributes_values {

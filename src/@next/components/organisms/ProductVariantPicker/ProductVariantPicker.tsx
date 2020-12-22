@@ -4,9 +4,9 @@ import {
   useProductVariantsAttributes,
   useProductVariantsAttributesValuesSelection,
 } from "@hooks";
-import { ProductDetails_product_variants } from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
+import { ProductDetails_product_variants } from "../../../../views/Product/gqlTypes/ProductDetails";
 import { IProductVariantsAttributesSelectedValues } from "@types";
-import { ProductVariantAttributeSelect } from "./ProductVariantAttributeSelect";
+import { ProductVariantAttributeSelectTiles } from "./ProductVariantAttributeSelectTiles";
 import * as S from "./styles";
 
 export interface IProductVariantPickerProps {
@@ -72,24 +72,27 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
           const { slug } = productVariantsAttribute.attribute;
 
           return (
-            <ProductVariantAttributeSelect
-              key={productVariantsAttributeId}
-              selectSidebar={selectSidebar}
-              selectSidebarTarget={selectSidebarTarget}
-              productVariants={productVariants}
-              productVariantsAttributeId={productVariantsAttributeId}
-              productVariantsAttribute={productVariantsAttribute}
-              defaultValue={queryAttributes[productVariantsAttributeId]}
-              productVariantsAttributesSelectedValues={
-                productVariantsAttributesSelectedValues
-              }
-              onChangeSelection={optionValue =>
-                onAttributeChange(productVariantsAttributeId, optionValue, slug)
-              }
-              onClearSelection={() =>
-                onAttributeChange(productVariantsAttributeId, null, slug)
-              }
-            />
+            <div>
+              <ProductVariantAttributeSelectTiles
+                key={productVariantsAttributeId}
+                selectSidebar={selectSidebar}
+                selectSidebarTarget={selectSidebarTarget}
+                productVariants={productVariants}
+                productVariantsAttributeId={productVariantsAttributeId}
+                productVariantsAttribute={productVariantsAttribute}
+                defaultValue={queryAttributes[productVariantsAttributeId]}
+                productVariantsAttributesSelectedValues={
+                  productVariantsAttributesSelectedValues
+                }
+                onChangeSelection={optionValue =>
+                  onAttributeChange(productVariantsAttributeId, optionValue, slug)
+                }
+                onClearSelection={() =>
+                  onAttributeChange(productVariantsAttributeId, null, slug)
+                }
+              />
+              
+            </div>
           );
         }
       )}
