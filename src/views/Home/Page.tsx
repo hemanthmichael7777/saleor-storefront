@@ -34,6 +34,30 @@ const Page: React.FC<{
       <script className="structured-data-list" type="application/ld+json">
         {structuredData(shop)}
       </script>
+
+      {/* <div
+        className="home-page__navbar"
+      >
+        {categoriesExist() && (
+          <div
+            className="home-page__navbar__list"
+          >
+            {categories.edges.map(({ node: category }) => (
+              <div key={category.id}>
+                <Link
+                  to={generateCategoryUrl(category.id, category.name)}
+                  key={category.id}
+                >
+                  <h5>{category.name}</h5>
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
+
+      </div> */}
+
+
       <div
         className="home-page__hero"
         style={
@@ -42,41 +66,8 @@ const Page: React.FC<{
             : null
         }
       >
-        <div className="home-page__hero-text">
-          <div>
-            <span className="home-page__hero__title">
-              <h1>
-                <FormattedMessage defaultMessage="Final reduction" />
-              </h1>
-            </span>
-          </div>
-          <div>
-            <span className="home-page__hero__title">
-              <h1>
-                <FormattedMessage defaultMessage="Up to 70% off sale" />
-              </h1>
-            </span>
-          </div>
-        </div>
-        <div className="home-page__hero-action">
-          {loading && !categories ? (
-            <Loader />
-          ) : (
-            categoriesExist() && (
-              <Link
-                to={generateCategoryUrl(
-                  categories.edges[0].node.id,
-                  categories.edges[0].node.name
-                )}
-              >
-                <Button testingContext="homepageHeroActionButton">
-                  <FormattedMessage defaultMessage="Shop sale" />
-                </Button>
-              </Link>
-            )
-          )}
-        </div>
       </div>
+
       <ProductsFeatured
         title={intl.formatMessage({ defaultMessage: "Featured" })}
       />
@@ -101,11 +92,10 @@ const Page: React.FC<{
                         }
                       )}
                       style={{
-                        backgroundImage: `url(${
-                          category.backgroundImage
-                            ? category.backgroundImage.url
-                            : noPhotoImg
-                        })`,
+                        backgroundImage: `url(${category.backgroundImage
+                          ? category.backgroundImage.url
+                          : noPhotoImg
+                          })`,
                       }}
                     />
                     <h3>{category.name}</h3>

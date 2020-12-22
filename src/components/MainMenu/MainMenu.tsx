@@ -115,6 +115,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                       </li>
                     )}
                   />
+
                   <Media
                     query={{ minWidth: mediumScreen }}
                     render={() =>
@@ -142,6 +143,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                       })
                     }
                   />
+                  
                   <Online>
                     <Media
                       query={{ maxWidth: smallScreen }}
