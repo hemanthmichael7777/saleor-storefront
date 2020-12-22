@@ -13,7 +13,6 @@
   flex-direction: row;
   height: 3.55rem;
   position: relative;
-
   &__left {
     flex-basis: calc(50% - 2rem);
 
@@ -46,10 +45,12 @@
     align-self: center;
 
     svg {
-      width: 4rem;
+      width: 8rem;
+      margin-top: 8px;
 
       @media (min-width: $small-screen) {
-        width: 6rem;
+        width: 10rem;
+        margin-top: 8px;
       }
     }
   }
@@ -186,6 +187,7 @@
 
     @media (min-width: $medium-screen) {
       border-left: 1px solid $gray-light;
+      margin-right: 20px;
     }
 
     svg * {
