@@ -98,6 +98,10 @@ export const productVariantFragment = gql`
         id
         name
         slug
+        metadata {
+          key
+          value
+        }
       }
       values {
         id
