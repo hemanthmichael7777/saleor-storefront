@@ -5,9 +5,12 @@ import { commonMessages } from "@temp/intl";
 import { ICheckoutModelLine } from "@saleor/sdk/lib/helpers";
 import {
   ProductDetails_product_pricing,
-  ProductDetails_product_variants,
   ProductDetails_product_variants_pricing,
+  ProductDetails_product_images,
 } from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
+
+
+import { ProductDetails_product_variants } from "../../../../views/Product/gqlTypes/ProductDetails";
 
 import { IProductVariantsAttributesSelectedValues } from "@types";
 import QuantityInput from "../../molecules/QuantityInput";
@@ -35,6 +38,7 @@ export interface IAddToCartSection {
   setVariantId(variantId: string): void;
   onAddToCart(variantId: string, quantity?: number): void;
   onAttributeChangeHandler(slug: string | null, value: string): void;
+  images: ProductDetails_product_images[];
 }
 
 const AddToCartSection: React.FC<IAddToCartSection> = ({
@@ -49,6 +53,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
   onAttributeChangeHandler,
   setVariantId,
   variantId,
+  images,
 }) => {
   const intl = useIntl();
 
@@ -159,6 +164,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           selectSidebar
           queryAttributes={queryAttributes}
           onAttributeChangeHandler={onAttributeChangeHandler}
+          images={images}
         />
       </S.VariantPicker>
       <S.QuantityInput>

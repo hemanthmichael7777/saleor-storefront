@@ -7,6 +7,9 @@ import {
 import { ProductDetails_product_variants } from "../../../../views/Product/gqlTypes/ProductDetails";
 import { IProductVariantsAttributesSelectedValues } from "@types";
 import { ProductVariantAttributeSelectTiles } from "./ProductVariantAttributeSelectTiles";
+import {
+  ProductDetails_product_images,
+} from "../../../../views/Product/gqlTypes/ProductDetails";
 import * as S from "./styles";
 
 export interface IProductVariantPickerProps {
@@ -19,6 +22,7 @@ export interface IProductVariantPickerProps {
   selectSidebarTarget?: HTMLElement | null;
   queryAttributes: Record<string, string>;
   onAttributeChangeHandler: (slug: string | null, value: string) => void;
+  images: ProductDetails_product_images[];
 }
 
 const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
@@ -28,6 +32,7 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
   onChange,
   selectSidebar = false,
   selectSidebarTarget,
+  images,
 }) => {
   const productVariantsAttributes = useProductVariantsAttributes(
     productVariants
@@ -93,6 +98,7 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
                 onClearSelection={() =>
                   onAttributeChange(productVariantsAttributeId, null, slug)
                 }
+                images={images}
               />
               
             </div>

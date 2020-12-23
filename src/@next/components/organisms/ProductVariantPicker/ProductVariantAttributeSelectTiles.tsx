@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
 import { VariantTiles } from "@components/molecules";
 import { useSelectableProductVariantsAttributeValues } from "@hooks";
-import { ProductDetails_product_variants } from "../../../../views/Product/gqlTypes/ProductDetails";
+import { ProductDetails_product_variants, ProductDetails_product_images } from "../../../../views/Product/gqlTypes/ProductDetails";
 import {
   IProductVariantsAttribute,
   IProductVariantsAttributesSelectedValues,
@@ -21,6 +21,7 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
   onChangeSelection: (value: any, name?: any) => void;
   onClearSelection: () => void;
   defaultValue?: string;
+  images: ProductDetails_product_images[];
 }> = ({
   productVariantsAttributeId,
   productVariants,
@@ -29,6 +30,7 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
   onChangeSelection,
   onClearSelection,
   defaultValue,
+  images,
 }) => {
 
   const selectedAttribute =
@@ -59,11 +61,12 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
       var img = "";
       
       if(productVariantsAttribute.attribute.slug === 'color') {
-        if(productVariantsAttribute.attribute.metadata.length > 0) {
-          for(let i=0; i<productVariantsAttribute.attribute.metadata.length; i++){
-            if(productVariantsAttribute.attribute.metadata[i].key === value.value) {
-              img = productVariantsAttribute.attribute.metadata[i].value;
-            }
+        for(let i=0; i<images.length; i++){
+          var im = images[i].url;
+          var n = im.lastIndexOf('_');
+          var image_color = im.substring(n + 1).split('.')[0];
+          if(image_color === value.name){
+            img = im;
           }
         }
       }

@@ -77,6 +77,7 @@ const Page: React.FC<
       onAttributeChangeHandler={onAttributeChangeHandler}
       isAvailableForPurchase={product.isAvailableForPurchase}
       availableForPurchase={product.availableForPurchase}
+      images={product.images}
     />
   );
 

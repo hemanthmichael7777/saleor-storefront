@@ -29,6 +29,10 @@ const getEdgeColor = (
 export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   color: ${props => getEdgeColor(props)};
+  width: 400px;
+  max-width: 400px;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 `;
 
 export const VariantTileHeader = styled.div`
