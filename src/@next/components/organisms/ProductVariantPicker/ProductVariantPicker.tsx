@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import queryString from "query-string";
 
 import {
   useProductVariantsAttributes,
   useProductVariantsAttributesValuesSelection,
 } from "@hooks";
 import { ProductDetails_product_variants } from "../../../../views/Product/gqlTypes/ProductDetails";
-import { IProductVariantsAttribute, IProductVariantsAttributesSelectedValues } from "@types";
+import { IProductVariantsAttributesSelectedValues } from "@types";
 import { ProductVariantAttributeSelectTiles } from "./ProductVariantAttributeSelectTiles";
 import {
   ProductDetails_product_images,
@@ -42,6 +44,10 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
     productVariantsAttributesSelectedValues,
     selectProductVariantsAttributesValue,
   ] = useProductVariantsAttributesValuesSelection(productVariantsAttributes);
+
+  const history = useHistory();
+  const { search } = history.location;
+  const searchQueryAttributes = queryString.parse(search);
 
   useEffect(() => {
     const selectedVariant = productVariants.find(productVariant => {
@@ -111,11 +117,14 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
           const productVariantsAttribute =
             productVariantsAttributes[productVariantsAttributeId];
           const { slug } = productVariantsAttribute.attribute;
+          const aName = productVariantsAttribute.attribute.name;
+
+          const vTileHeaderText = slug === "color" && searchQueryAttributes.color ? aName + " - " + searchQueryAttributes.color : aName;
 
           return (
             <div>
               <S.VariantTilesHeader>
-                {productVariantsAttribute.attribute.name}
+                {vTileHeaderText}
               </S.VariantTilesHeader>
               <ProductVariantAttributeSelectTiles
                 key={productVariantsAttributeId}
