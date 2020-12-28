@@ -6,11 +6,13 @@ import { ICheckoutModelLine } from "@saleor/sdk/lib/helpers";
 import {
   ProductDetails_product_pricing,
   ProductDetails_product_variants_pricing,
-  ProductDetails_product_images,
 } from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
 
 
-import { ProductDetails_product_variants } from "../../../../views/Product/gqlTypes/ProductDetails";
+import { 
+  ProductDetails_product_variants, 
+  ProductDetails_product_images } from 
+"../../../../views/Product/gqlTypes/ProductDetails";
 
 import { IProductVariantsAttributesSelectedValues } from "@types";
 import QuantityInput from "../../molecules/QuantityInput";

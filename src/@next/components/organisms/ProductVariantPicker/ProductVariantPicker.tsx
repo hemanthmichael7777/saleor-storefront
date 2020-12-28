@@ -5,7 +5,7 @@ import {
   useProductVariantsAttributesValuesSelection,
 } from "@hooks";
 import { ProductDetails_product_variants } from "../../../../views/Product/gqlTypes/ProductDetails";
-import { IProductVariantsAttributesSelectedValues } from "@types";
+import { IProductVariantsAttribute, IProductVariantsAttributesSelectedValues } from "@types";
 import { ProductVariantAttributeSelectTiles } from "./ProductVariantAttributeSelectTiles";
 import {
   ProductDetails_product_images,
@@ -37,6 +37,7 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
   const productVariantsAttributes = useProductVariantsAttributes(
     productVariants
   );
+  console.log(productVariantsAttributes);
   const [
     productVariantsAttributesSelectedValues,
     selectProductVariantsAttributesValue,
@@ -68,9 +69,44 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
     onAttributeChangeHandler(slug, value);
   };
 
+  // pull the attributes in order specified by metadata
+  function extractOrderedKeys(){
+    var arr = Object.keys(productVariantsAttributes);
+    return arr.sort(function (a, b) {
+      var valueA = productVariantsAttributes[a].attribute.metadata.filter((q) => {
+        return q.key === "productPageDisplayOrder";
+      });
+      var valueB = productVariantsAttributes[b].attribute.metadata.filter((r) => {
+        return r.key === "productPageDisplayOrder";
+      });
+
+      // the metadata key doesn't exist somewhere
+      if((valueA.length > 0) && (valueB.length < 1)) {
+        return 1;
+      } else if((valueB.length > 0) && (valueA.length < 1)) {
+        return -1;
+      } else if((valueB.length == 0) && (valueA.length == 0)) {
+        return 0;
+      }
+
+      var intA = parseInt(valueA[0].value);
+      var intB = parseInt(valueB[0].value);
+      if (intA < intB) {
+          return -1;
+      } else if (intA > intB) {
+          return 1;
+      } else {
+          return 0;
+      }
+    });
+  }
+
+  var orderedKeys = extractOrderedKeys();
+
+
   return (
     <S.Wrapper>
-      {Object.keys(productVariantsAttributes).map(
+      {orderedKeys.map(
         productVariantsAttributeId => {
           const productVariantsAttribute =
             productVariantsAttributes[productVariantsAttributeId];

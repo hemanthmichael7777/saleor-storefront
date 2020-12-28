@@ -1,6 +1,8 @@
 import classNames from "classnames";
 import React from "react";
 import Media from "react-media";
+import { useHistory } from "react-router-dom";
+import queryString from "query-string";
 import { ProductDescription } from "@components/molecules";
 import { ProductGallery } from "@components/organisms";
 import AddToCartSection from "@components/organisms/AddToCartSection";
@@ -36,14 +38,20 @@ const Page: React.FC<
     onAttributeChangeHandler: (slug: string | null, value: string) => void;
   }
 > = ({ add, product, items, queryAttributes, onAttributeChangeHandler }) => {
-  //if(product.variants[0].attributes[0].attribute.metadata.length > 0)
-  //alert(product.variants[0].attributes[0].attribute.metadata[0].key);
   const overlayContext = React.useContext(OverlayContext);
 
   const productGallery: React.RefObject<HTMLDivElement> = React.useRef();
 
   const [variantId, setVariantId] = React.useState("");
 
+  
+  const history = useHistory();
+  const { search } = history.location;
+  const searchQueryAttributes = queryString.parse(search);
+
+  // modified from original saleor code
+  // base everything on the product images
+  // and filter them by color
   const getImages = () => {
     if (product.variants && variantId) {
       const variant = product.variants.find(
@@ -54,8 +62,15 @@ const Page: React.FC<
         return variant.images;
       }
     }
-
-    return product.images;
+    
+    if(searchQueryAttributes.color){
+      return product.images.filter((img) => {
+        var url = img.url;
+        return url.indexOf(searchQueryAttributes.color.toString()) > -1;
+      });
+    } else {
+      return product.images;
+    }
   };
 
   const handleAddToCart = (variantId, quantity) => {
