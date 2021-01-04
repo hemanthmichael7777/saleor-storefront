@@ -4,15 +4,26 @@
   z-index: 3;
 }
 
+.top {
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.bottom {
+  height: 50%;
+  display: grid;
+  align-content: center;
+}
+
 .main-menu {
   align-items: center;
   align-items: stretch;
   background-color: $white;
   border-bottom: 1px solid $gray-light;
-  display: flex;
-  flex-direction: row;
-  height: 3.55rem;
+  height: 7.75rem;
   position: relative;
+
   &__left {
     flex-basis: calc(50% - 2rem);
 
@@ -42,7 +53,6 @@
   }
 
   &__center {
-    align-self: center;
 
     svg {
       width: 8rem;
