@@ -311,7 +311,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
               const items = maybe(() => data.shop.navigation.main.items, []);
 
               return (
-                <ul style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
+                <ul style={{ display: "flex", flexDirection: "row", justifyContent: "center", marginTop: 15 }}>
                   <Media
                     query={{ minWidth: mediumScreen }}
                     render={() =>
