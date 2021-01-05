@@ -22,6 +22,7 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
   onClearSelection: () => void;
   defaultValue?: string;
   images: ProductDetails_product_images[];
+  outOfStockVariant: (selectableAttrribute: IProductVariantsAttribute) => boolean;
 }> = ({
   productVariantsAttributeId,
   productVariants,
@@ -31,6 +32,7 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
   onClearSelection,
   defaultValue,
   images,
+  outOfStockVariant,
 }) => {
 
   const selectedAttribute =
@@ -42,6 +44,7 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
     productVariants,
     productVariantsAttributesSelectedValues
   );
+  console.log(productVariantsAttributesSelectedValues);
 
   const selectedValue = selectedAttribute && {
     disabled: false,
@@ -56,7 +59,7 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
       const selectableAttribute =
         selectableProductVariantsAttributeValues[productVariantsAttributeId];
       const isOptionDisabled =
-        selectableAttribute && !selectableAttribute.values.includes(value);
+        (selectableAttribute && !selectableAttribute.values.includes(value)) || outOfStockVariant(selectableAttribute);
 
       var img = "";
       
@@ -90,7 +93,10 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
     .filter(optionValue => optionValue.disabled)
     .map(optionValue => optionValue.value);
 
+  
+
   const onSelectValueHandler = (optionValue: string, callback?: () => void) => {
+    console.log(optionValue);
     if (
       disabledValuesList.every(disabledValue => disabledValue !== optionValue)
     ) {

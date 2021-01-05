@@ -27,13 +27,15 @@ export const VariantTiles: React.FC<IProps> = ({
     const isDisabled = disabledOptions.some(
       value => value === option.value
     );
+    
+    console.log(isDisabled);
 
-    var c = <S.VariantTileContent selected={isSelected}>
+    var c = <S.VariantTileContent selected={isSelected} disabled={isDisabled}>
       {option.label}
     </S.VariantTileContent>;
 
     if(option.image !== ""){
-      c = <S.VariantTileContentImage selected={isSelected}>
+      c = <S.VariantTileContentImage selected={isSelected} disabled={isDisabled}>
         <img src={option.image} style={{width: "50px"}}></img>
       </S.VariantTileContentImage>;
     }
@@ -43,6 +45,7 @@ export const VariantTiles: React.FC<IProps> = ({
         selected={isSelected}
         disabled={isDisabled}
         onClick={() => onSelect(option.value)}
+        key={"key-" + option.value}
       >
         {c}
       </VariantTile>
@@ -51,9 +54,6 @@ export const VariantTiles: React.FC<IProps> = ({
 
   return (
     <S.Wrapper active={true} disabled={false}>
-      {/*<S.VariantTileHeader>
-          {label}
-      </S.VariantTileHeader>*/}
       {vTiles}
     </S.Wrapper>
   );

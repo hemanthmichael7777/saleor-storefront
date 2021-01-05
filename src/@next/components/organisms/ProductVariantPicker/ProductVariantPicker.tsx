@@ -7,7 +7,10 @@ import {
   useProductVariantsAttributesValuesSelection,
 } from "@hooks";
 import { ProductDetails_product_variants } from "../../../../views/Product/gqlTypes/ProductDetails";
-import { IProductVariantsAttributesSelectedValues } from "@types";
+import { 
+  IProductVariantsAttribute,
+  IProductVariantsAttributesSelectedValues 
+} from "@types";
 import { ProductVariantAttributeSelectTiles } from "./ProductVariantAttributeSelectTiles";
 import {
   ProductDetails_product_images,
@@ -39,7 +42,6 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
   const productVariantsAttributes = useProductVariantsAttributes(
     productVariants
   );
-  console.log(productVariantsAttributes);
   const [
     productVariantsAttributesSelectedValues,
     selectProductVariantsAttributesValue,
@@ -109,6 +111,11 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
 
   var orderedKeys = extractOrderedKeys();
 
+  function checkOutOfStockVariant (variantAttribute: IProductVariantsAttribute) {
+
+    return false;
+  };
+
 
   return (
     <S.Wrapper>
@@ -122,7 +129,7 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
           const vTileHeaderText = slug === "color" && searchQueryAttributes.color ? aName + " - " + searchQueryAttributes.color : aName;
 
           return (
-            <div>
+            <div key={"div-" + productVariantsAttributeId}>
               <S.VariantTilesHeader>
                 {vTileHeaderText}
               </S.VariantTilesHeader>
@@ -144,6 +151,7 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
                   onAttributeChange(productVariantsAttributeId, null, slug)
                 }
                 images={images}
+                outOfStockVariant={variantAttribute => checkOutOfStockVariant(variantAttribute)}
               />
               
             </div>

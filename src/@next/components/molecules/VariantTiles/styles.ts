@@ -12,6 +12,7 @@ type WrapperProps = {
 
 type ContentProps = {
   selected: boolean;
+  disabled: boolean;
 };
 
 const getEdgeColor = (
@@ -61,11 +62,33 @@ const getFontColor = (
   return 'black';
 };
 
+const getOpacity = (
+  { disabled }: ContentProps
+) => {
+  if (disabled) {
+    return '0.4';
+  }
+
+  return '1';
+};
+
+const getCursor = (
+  { disabled }: ContentProps
+) => {
+  if (disabled) {
+    return 'default';
+  }
+
+  return 'pointer';
+};
+
 export const VariantTileContent = styled.div<ContentProps>`
   color: ${props => getFontColor(props)};
   background-color: ${props => getBgColor(props)};
   padding: 10px 14px;
   border: 1px solid #D3D3D3;
+  opacity: ${props => getOpacity(props)};
+  cursor: ${props => getCursor(props)};
 `;
 
 
@@ -75,4 +98,6 @@ export const VariantTileContentImage = styled.div<ContentProps>`
   padding: 4px 4px;
   padding-bottom: 0px;
   border: 1px solid #D3D3D3;
+  opacity: ${props => getOpacity(props)};
+  cursor: ${props => getCursor(props)};
 `;
