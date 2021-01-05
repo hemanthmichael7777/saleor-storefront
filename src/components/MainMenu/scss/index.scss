@@ -4,15 +4,26 @@
   z-index: 3;
 }
 
+.top {
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.bottom {
+  height: 50%;
+  display: grid;
+  align-content: center;
+}
+
 .main-menu {
   align-items: center;
   align-items: stretch;
   background-color: $white;
   border-bottom: 1px solid $gray-light;
-  display: flex;
-  flex-direction: row;
-  height: 3.55rem;
+  height: 7.75rem;
   position: relative;
+
   &__left {
     flex-basis: calc(50% - 2rem);
 
@@ -42,7 +53,6 @@
   }
 
   &__center {
-    align-self: center;
 
     svg {
       width: 8rem;
@@ -59,15 +69,17 @@
     font-weight: $bold-font-weight;
     height: 100%;
     text-transform: uppercase;
+    line-height: 45px;
+    cursor: pointer;
 
     a {
       text-decoration: none;
       color: $base-font-color;
       position: relative;
-      transition: 0.3s;
+      transition: 0.0s;
 
       &:hover {
-        color: $turquoise;
+        color: $gray-dark;
       }
     }
   }
@@ -109,7 +121,7 @@
     cursor: pointer;
 
     svg * {
-      transition: 0.3s;
+      transition: 0.0s;
     }
 
     &:hover {
@@ -139,7 +151,7 @@
       font-size: $small-font-size;
       text-align: center;
       line-height: 1rem;
-      transition: 0.3s;
+      transition: 0.0s;
     }
   }
 
@@ -183,7 +195,7 @@
     padding: $spacer;
     cursor: pointer;
     line-height: 24px;
-    transition: 0.3s;
+    transition: 0.0s;
 
     @media (min-width: $medium-screen) {
       border-left: 1px solid $gray-light;
@@ -191,7 +203,7 @@
     }
 
     svg * {
-      transition: 0.3s;
+      transition: 0.0s;
     }
 
     &:hover {
@@ -238,6 +250,7 @@
       position: absolute;
       top: 100%;
       width: 100%;
+      height: 400px;
       z-index: 3;
 
       &--visible {
