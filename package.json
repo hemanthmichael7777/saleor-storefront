@@ -8,6 +8,9 @@
   "browserslist": "last 2 versions",
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@lhci/cli": "^0.4.1",
     "@saleor/sdk": "^0.1.5",
     "@sentry/apm": "^5.15.5",
@@ -51,6 +54,7 @@
     "react-gtm-module": "^2.0.8",
     "react-helmet": "^5.2.0",
     "react-hot-loader": "^4.9.0",
+    "react-icons": "^4.1.0",
     "react-intersection-observer": "^8.25.2",
     "react-intl": "^4.6.9",
     "react-media": "^1.8.0",

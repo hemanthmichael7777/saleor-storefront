@@ -4,7 +4,7 @@ $black: #000;
 $blue-dark: #190c4e;
 $blue: #21125e;
 $gray-dark: #7d7d7d;
-$gray-light: #f6f6f6;
+$gray-light: #f9f9f9;
 $gray: #c4c4c4;
 $green: #3ed256;
 $rose: #fe6e76;
@@ -18,9 +18,12 @@ $autofillColorSelected: rgb(232, 240, 254);
 $darkGreen: #06847b;
 
 // typography
-$base-font-family: "Inter", sans-serif;
-$base-font-size: 1rem; // 16px
-$small-font-size: 0.875rem; // 14px
+//$base-font-family: "Inter", sans-serif;
+$base-font-family: 'Roboto-Light', Arial, sans-serif;
+//$base-font-size: 1rem; // 16px
+$base-font-size: 0.875rem;
+//$small-font-size: 0.875rem; // 14px
+$small-font-size: 0.775rem;
 $base-line-height: 1.25rem; // 20px
 $h1-font-size: 4rem; // 64px
 $h1-line-height: 1;
