@@ -7,6 +7,10 @@ import Media from "react-media";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+
+
 import { DemoBanner } from "@components/atoms";
 import classNames from "classnames";
 import {
@@ -311,30 +315,37 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
               const items = maybe(() => data.shop.navigation.main.items, []);
 
               return (
-                <ul style={{ display: "flex", flexDirection: "row", justifyContent: "center", marginTop: 15 }}>
+                <ul style={{ display: "flex", flexDirection: "row", justifyContent: "center", marginTop: 18 }}>
                   <Media
                     query={{ minWidth: mediumScreen }}
                     render={() =>
                       items.map(item => {
                         const hasSubNavigation = !!item?.children?.length;
                         return (
-                          <li
-                            data-test="mainMenuItem"
-                            className="main-menu__item"
-                            key={item.id}
-                          >
-                            <NavDropdown
-                              overlay={overlayContext}
-                              showDropdown={
-                                activeDropdown === item.id && hasSubNavigation
-                              }
-                              onShowDropdown={() =>
-                                showDropdownHandler(item.id, hasSubNavigation)
-                              }
-                              onHideDropdown={hideDropdownHandler}
-                              {...item}
-                            />
-                          </li>
+                          <div style={{display: "flex", flexDirection: "row", alignItems: "baseline", paddingRight: 12}}>
+                            <li
+                              data-test="mainMenuItem"
+                              className="main-menu__item"
+                              key={item.id}
+                            >
+                              
+                              <NavDropdown
+                                overlay={overlayContext}
+                                showDropdown={
+                                  activeDropdown === item.id && hasSubNavigation
+                                }
+                                onShowDropdown={() =>
+                                  showDropdownHandler(item.id, hasSubNavigation)
+                                }
+                                onHideDropdown={hideDropdownHandler}
+                                {...item}
+                              />
+
+                              <div className="main-menu__arrow-icon">
+                                <FontAwesomeIcon  icon={faCaretDown} />
+                              </div>
+                            </li> 
+                          </div>
                         );
                       })
                     }

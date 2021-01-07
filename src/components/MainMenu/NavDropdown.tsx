@@ -43,13 +43,11 @@ class NavDropdown extends React.PureComponent<
             "main-menu__nav-dropdown__body--visible": showDropdown,
           })}
         >
-          
-          <ul style={{display: "flex", flexWrap: "wrap", flex: "1 1 200px"}}>
+          <ul className="main-menu__item-container">
             {children.map((subItem, i) => (
               <NavItem key={i} hideOverlay={onHideDropdown} {...subItem} />
             ))}
-          </ul>
-          
+          </ul> 
         </li>
       </ul>
     );
