@@ -27,8 +27,6 @@ export const VariantTiles: React.FC<IProps> = ({
     const isDisabled = disabledOptions.some(
       value => value === option.value
     );
-    
-    console.log(isDisabled);
 
     var c = <S.VariantTileContent selected={isSelected} disabled={isDisabled}>
       {option.label}

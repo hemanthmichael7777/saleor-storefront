@@ -28,3 +28,8 @@ export interface IProductVariantsAttributesOptionValue extends ISelectOption {
   label: string;
   value: string;
 }
+
+
+export interface IProductVariantsMap {
+  [key: string]: any;
+}

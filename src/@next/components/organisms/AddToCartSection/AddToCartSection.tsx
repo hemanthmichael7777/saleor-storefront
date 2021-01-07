@@ -14,7 +14,11 @@ import {
   ProductDetails_product_images } from 
 "../../../../views/Product/gqlTypes/ProductDetails";
 
-import { IProductVariantsAttributesSelectedValues } from "@types";
+import { 
+  IProductVariantsAttributesSelectedValues, 
+  IProductVariantsMap 
+} from "@types";
+
 import QuantityInput from "../../molecules/QuantityInput";
 import AddToCartButton from "../../molecules/AddToCartButton";
 import ProductVariantPicker from "../ProductVariantPicker";
@@ -30,6 +34,7 @@ const LOW_STOCK_QUANTITY: number = 5;
 export interface IAddToCartSection {
   productId: string;
   productVariants: ProductDetails_product_variants[];
+  productVariantsMap: IProductVariantsMap;
   name: string;
   productPricing: ProductDetails_product_pricing;
   items: ICheckoutModelLine[];
@@ -50,6 +55,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
   name,
   productPricing,
   productVariants,
+  productVariantsMap,
   queryAttributes,
   onAddToCart,
   onAttributeChangeHandler,
@@ -167,6 +173,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           queryAttributes={queryAttributes}
           onAttributeChangeHandler={onAttributeChangeHandler}
           images={images}
+          productVariantsMap={productVariantsMap}
         />
       </S.VariantPicker>
       <S.QuantityInput>

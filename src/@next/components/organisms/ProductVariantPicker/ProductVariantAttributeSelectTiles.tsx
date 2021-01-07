@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useIntl } from "react-intl";
 import { VariantTiles } from "@components/molecules";
 import { useSelectableProductVariantsAttributeValues } from "@hooks";
-import { ProductDetails_product_variants, ProductDetails_product_images } from "../../../../views/Product/gqlTypes/ProductDetails";
+import { ProductDetails_product_variants, ProductDetails_product_images, ProductDetails_product_variants_attributes_values } from "../../../../views/Product/gqlTypes/ProductDetails";
 import {
   IProductVariantsAttribute,
   IProductVariantsAttributesSelectedValues,
@@ -22,7 +22,10 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
   onClearSelection: () => void;
   defaultValue?: string;
   images: ProductDetails_product_images[];
-  outOfStockVariant: (selectableAttrribute: IProductVariantsAttribute) => boolean;
+  outOfStockVariant: (
+    selectableAttrribute: IProductVariantsAttributesSelectedValues, 
+    currentAttribute: ProductDetails_product_variants_attributes_values
+  ) => boolean;
 }> = ({
   productVariantsAttributeId,
   productVariants,
@@ -44,7 +47,6 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
     productVariants,
     productVariantsAttributesSelectedValues
   );
-  console.log(productVariantsAttributesSelectedValues);
 
   const selectedValue = selectedAttribute && {
     disabled: false,
@@ -59,7 +61,7 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
       const selectableAttribute =
         selectableProductVariantsAttributeValues[productVariantsAttributeId];
       const isOptionDisabled =
-        (selectableAttribute && !selectableAttribute.values.includes(value)) || outOfStockVariant(selectableAttribute);
+        (selectableAttribute && !selectableAttribute.values.includes(value)) || outOfStockVariant(productVariantsAttributesSelectedValues, value);
 
       var img = "";
       
@@ -96,7 +98,6 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
   
 
   const onSelectValueHandler = (optionValue: string, callback?: () => void) => {
-    console.log(optionValue);
     if (
       disabledValuesList.every(disabledValue => disabledValue !== optionValue)
     ) {
