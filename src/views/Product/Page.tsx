@@ -78,12 +78,18 @@ const Page: React.FC<
     overlayContext.show(OverlayType.cart, OverlayTheme.right);
   };
 
+  var productVariantsMap = product.variants.reduce(function(map, obj) {
+    map[obj.sku] = obj.quantityAvailable;
+    return map;
+  }, {});
+
   const addToCartSection = (
     <AddToCartSection
       items={items}
       productId={product.id}
       name={product.name}
       productVariants={product.variants}
+      productVariantsMap={productVariantsMap}
       productPricing={product.pricing}
       queryAttributes={queryAttributes}
       setVariantId={setVariantId}

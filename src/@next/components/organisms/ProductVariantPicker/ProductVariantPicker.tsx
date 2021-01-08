@@ -6,8 +6,22 @@ import {
   useProductVariantsAttributes,
   useProductVariantsAttributesValuesSelection,
 } from "@hooks";
-import { ProductDetails_product_variants } from "../../../../views/Product/gqlTypes/ProductDetails";
-import { IProductVariantsAttributesSelectedValues } from "@types";
+import { 
+  ProductDetails_product_variants, 
+  ProductDetails_product_variants_attributes_values,
+  ProductDetails_product_variants_attributes
+} from "../../../../views/Product/gqlTypes/ProductDetails";
+
+import {
+  IProductVariantsAttribute,
+  IProductVariantsAttributesSelectedValues,
+  IProductVariantsAttributeValueMap,
+} from "@types";
+
+import { 
+  IProductVariantsMap 
+} from "@types";
+
 import { ProductVariantAttributeSelectTiles } from "./ProductVariantAttributeSelectTiles";
 import {
   ProductDetails_product_images,
@@ -16,6 +30,7 @@ import * as S from "./styles";
 
 export interface IProductVariantPickerProps {
   productVariants?: ProductDetails_product_variants[];
+  productVariantsMap: IProductVariantsMap;
   onChange?: (
     selectedAttributesValues?: IProductVariantsAttributesSelectedValues,
     selectedVariant?: ProductDetails_product_variants | undefined
@@ -29,6 +44,7 @@ export interface IProductVariantPickerProps {
 
 const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
   productVariants = [],
+  productVariantsMap = {},
   queryAttributes = {},
   onAttributeChangeHandler,
   onChange,
@@ -39,7 +55,6 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
   const productVariantsAttributes = useProductVariantsAttributes(
     productVariants
   );
-  console.log(productVariantsAttributes);
   const [
     productVariantsAttributesSelectedValues,
     selectProductVariantsAttributesValue,
@@ -48,6 +63,8 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
   const history = useHistory();
   const { search } = history.location;
   const searchQueryAttributes = queryString.parse(search);
+
+  
 
   useEffect(() => {
     const selectedVariant = productVariants.find(productVariant => {
@@ -107,7 +124,194 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
     });
   }
 
+
   var orderedKeys = extractOrderedKeys();
+
+  function hasQuantity(keyIn: string, variantMap: any){
+    var keyList = Object.getOwnPropertyNames(variantMap);
+    for(let i=0; i<keyList.length; i++){
+      var sku = keyList[i];
+      if(sku.indexOf(keyIn) > -1) {
+        if (variantMap[sku] > 0) return true;
+      }
+    }
+    return false;
+  }
+
+  function convertToActualKey(key: string, aMapList: any){
+    var actualKey = key;
+    for(let i=0; i<aMapList.length; i++){
+      actualKey = actualKey.replace("{" + aMapList[i] + "}", "");
+    }
+    actualKey = actualKey.replace("{Style}", "");
+    return actualKey;
+  }
+
+  // make a key containing the currently being checked attribute
+  // and check the variant map with that
+  function hasQuantityBySelectedKey(
+    currentAttribute: ProductDetails_product_variants_attributes_values,
+    currentAttributeType: string,
+    selectedKey: string, 
+    variantMap: any,
+    selectedVariantAttributes: IProductVariantsAttributesSelectedValues,
+    attributesMap: any
+  ){
+    var selectedKeyAndCurrentAttr = selectedKey;
+
+    // current attribute has value of same type already in key
+    if(selectedVariantAttributes[attributesMap[currentAttributeType]]){
+      // replace placeholder and value up to next {
+      var pHoldIndex = selectedKey.indexOf("{" + currentAttributeType + "}");
+      var replaceUpTo = selectedKey.length;
+      for (var i = pHoldIndex; i < selectedKey.length; i++) {
+        var c = selectedKey.charAt(i);
+        
+        if(i != pHoldIndex && (c === '_' || c === '{')) {
+          replaceUpTo = i;
+          break;
+        }
+      }
+      var firstHalf = selectedKey.substring(0, pHoldIndex);
+      var secondHalf = selectedKey.substring(replaceUpTo);
+      selectedKeyAndCurrentAttr = 
+        firstHalf + "{" + currentAttributeType + "}" + currentAttribute.value + secondHalf;
+    } else{
+      selectedKeyAndCurrentAttr = selectedKeyAndCurrentAttr.replace(
+        "{" + currentAttributeType + "}",
+        "{" + currentAttributeType + "}" + currentAttribute.value
+      )
+    }
+    if(currentAttribute.value === 'DD/E'){
+      console.log("ska");
+      console.log(currentAttribute);
+      console.log(selectedKeyAndCurrentAttr);
+      console.log("ska");
+    }
+
+    var missingAttrs = [];
+    var aMapList = Object.keys(attributesMap);
+    
+    for(let i=0; i<aMapList.length; i++){
+      var aId = attributesMap[aMapList[i]];
+      if(!selectedVariantAttributes[aId] && (aMapList[i] !== currentAttributeType)) 
+        missingAttrs.push(aMapList[i]);
+    }
+
+    if(missingAttrs.length == 0){
+      var actualKey = convertToActualKey(selectedKeyAndCurrentAttr, aMapList);
+      return variantMap[actualKey] > 0;
+    }
+
+    for(let i=0; i<missingAttrs.length; i++){
+      // for each missing attribute start inserting attribute values 
+      // if you find stock return true
+      var missingAttr = missingAttrs[i];
+      
+        for (const [key2, value2] of Object.entries(value.values)) {
+          var selectedKeyAndCurrentAttrTemp = selectedKeyAndCurrentAttr.replace(
+            "{" + missingAttr + "}",
+            "{" + missingAttr + "}" + value2.value
+          )
+          if(currentAttribute.value === 'DD/E'){
+            console.log(selectedKeyAndCurrentAttrTemp);
+          }
+          
+          // if(key qualifies){
+          //   if(stock > 0) return true;
+          // }
+        }
+      
+    }
+
+    return true;
+  }
+
+  // build a sku number based on the selected attributes and  a
+  // sku string which defines where the attributes are in the sku number
+  function buildSelectedKey(
+    productNumber: string,
+    selectedVariantAttributes: IProductVariantsAttributesSelectedValues,
+    attributesMap: any
+  ){
+    var skuOrderString = "{Style}_{Color}_{Chest}{Cup}";
+    var attributesKeyList = Object.getOwnPropertyNames(attributesMap);
+    for(let i=0; i<attributesKeyList.length; i++){
+      var attr = attributesKeyList[i];
+      var attrType = attributesMap[attr];
+      if(skuOrderString.indexOf(attrType) > -1){
+        if(selectedVariantAttributes[attr]){
+          skuOrderString = skuOrderString.replace(
+            "{" + attrType + "}", 
+            "{" + attrType + "}" + selectedVariantAttributes[attr]!.value || " "
+          );
+        }
+      }
+    }
+    skuOrderString = skuOrderString.replace(
+      "{Style}", 
+      "{Style}" + productNumber
+    );
+    
+    return skuOrderString;
+  }
+
+  // make it work for bottoms and shapers to
+  function checkOutOfStockVariant (
+    selectedVariantAttributes: IProductVariantsAttributesSelectedValues,
+    currentAttribute: ProductDetails_product_variants_attributes_values
+  ) {
+
+    var productNumber = Object.keys(productVariantsMap)[0].split("_")[0];
+
+    // map of attribute ids for "chest, cup, color"
+    var attributesMap = productVariants[0].attributes.reduce(function(map: any, obj) {
+      var n = obj.attribute.id || "fakekey"
+      map[n] = obj.attribute.name;
+      return map;
+    }, {});
+
+    var attributesMapRev = productVariants[0].attributes.reduce(function(map: any, obj) {
+      var n = obj.attribute.name || "fakekey"
+      map[n] = obj.attribute.id;
+      return map;
+    }, {});
+    
+    // map of which attribute "chest, cup, color" each attribute value id represents
+    var attributesValuesMap: {[key: string]: string | null} = {};
+    for (const [key, value] of Object.entries(productVariantsAttributes)) {
+      for(let i=0; i<value.values.length; i++){
+        attributesValuesMap[value.values[i].id] = value.attribute.name;
+      }
+    }
+
+    var selectedKey = buildSelectedKey(
+      productNumber, 
+      selectedVariantAttributes, 
+      attributesMap
+    );
+
+    if(Object.keys(selectedVariantAttributes).length === 0){
+      if(currentAttribute.value) {
+        return !hasQuantity(currentAttribute.value, productVariantsMap);
+      }
+    }
+
+    if(currentAttribute.value) {
+      var currentAttributeType = attributesValuesMap[currentAttribute.id];
+      return !hasQuantityBySelectedKey(
+        currentAttribute, 
+        currentAttributeType || "",
+        selectedKey, 
+        productVariantsMap,
+        selectedVariantAttributes,
+        attributesMapRev,
+
+      );
+    }
+
+    return false;
+  };
 
 
   return (
@@ -122,7 +326,7 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
           const vTileHeaderText = slug === "color" && searchQueryAttributes.color ? aName + " - " + searchQueryAttributes.color : aName;
 
           return (
-            <div>
+            <div key={"div-" + productVariantsAttributeId}>
               <S.VariantTilesHeader>
                 {vTileHeaderText}
               </S.VariantTilesHeader>
@@ -144,6 +348,10 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
                   onAttributeChange(productVariantsAttributeId, null, slug)
                 }
                 images={images}
+                outOfStockVariant={
+                  (variantAttributesSelected, currentVariantAttribute) => 
+                    checkOutOfStockVariant(variantAttributesSelected, currentVariantAttribute)
+                }
               />
               
             </div>
