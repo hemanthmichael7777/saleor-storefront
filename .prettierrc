@@ -1,4 +1,12 @@
 {
   "arrowParens": "avoid",
-  "trailingComma": "es5"
+  "trailingComma": "es5",
+  "endOfLine": "auto",
+  "crlf": "auto"
 }
+
+"prettier/prettier": ["error", {
+     ..
+    "endOfLine":"auto"
+     ..
+  }],

@@ -68,8 +68,8 @@ export const theme = {
 };
 
 // typography
-export const baseFontFamily = "'Inter', sans-serif";
-export const baseFontSize = "1rem"; // 16px
+export const baseFontFamily = "'Roboto-Light', Arial, sans-serif";
+export const baseFontSize = "0.875rem"; // 16px
 export const baseLineHeight = "1.25rem"; // 20px
 export const boldFontWeight = 600;
 export const extraBoldFontWeight = 800;
@@ -79,7 +79,7 @@ export const h1LineHeight = 1;
 export const h3FontSize = "1.5rem"; // 24px
 export const h4FontSize = "1.125rem"; // 18px
 export const labelFontSize = "0.75rem"; // 12px
-export const smallFontSize = "0.875rem"; // 14px
+export const smallFontSize = "0.775rem"; // 14px
 export const ultraBigFont = "6rem"; // 96px
 
 // spacing

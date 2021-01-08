@@ -61,6 +61,8 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
 
   useEffect(() => {
     if (activeDropdown) {
+      // let n: number;
+      // n = window.setTimeout(function () { overlayContext.show(OverlayType.mainMenuNav, OverlayTheme.modal);}, 200)
       overlayContext.show(OverlayType.mainMenuNav, OverlayTheme.modal);
     } else {
       overlayContext.hide();
@@ -68,12 +70,16 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   }, [activeDropdown]);
 
   const showDropdownHandler = (itemId: string, hasSubNavigation: boolean) => {
-    if (hasSubNavigation) {
+    // let n: number;
+    // n = window.setTimeout(function () { if (hasSubNavigation) { setActiveDropdown(itemId);} }, 200)
+    if (hasSubNavigation) { 
       setActiveDropdown(itemId);
     }
   };
 
   const hideDropdownHandler = () => {
+    // let n: number;
+    // n = window.setTimeout(function () { if (activeDropdown) {setActiveDropdown(undefined);} }, 200)
     if (activeDropdown) {
       setActiveDropdown(undefined);
     }
@@ -87,7 +93,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
     >
       {demoMode && <DemoBanner />}
       <nav className="main-menu" id="header">
-        <div className="top">
+        <div className="main-menu__top">
           <div className="main-menu__left">
             <TypedMainMenuQuery renderOnError displayLoader={false}>
               {({ data }) => {
@@ -288,6 +294,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                   />
                 </li>
               </Offline>
+
               <li
                 data-test="menuSearchOverlayLink"
                 className="main-menu__search"
@@ -309,20 +316,20 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
           </div>
         </div>
 
-        <div className="bottom">
+        <div className="main-menu__bottom">
           <TypedMainMenuQuery renderOnError displayLoader={false}>
             {({ data }) => {
               const items = maybe(() => data.shop.navigation.main.items, []);
 
               return (
-                <ul style={{ display: "flex", flexDirection: "row", justifyContent: "center", marginTop: 18 }}>
+                <ul className="main-menu__ulitem-container">
                   <Media
                     query={{ minWidth: mediumScreen }}
                     render={() =>
                       items.map(item => {
                         const hasSubNavigation = !!item?.children?.length;
                         return (
-                          <div style={{display: "flex", flexDirection: "row", alignItems: "baseline", paddingRight: 12}}>
+                          <div className="main-menu__menudiv">
                             <li
                               data-test="mainMenuItem"
                               className="main-menu__item"
@@ -330,6 +337,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                             >
                               
                               <NavDropdown
+                              
                                 overlay={overlayContext}
                                 showDropdown={
                                   activeDropdown === item.id && hasSubNavigation
