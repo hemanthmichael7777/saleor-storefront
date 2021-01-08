@@ -148,6 +148,8 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
     return false;
   }
 
+  // make a key containing the currently being checked attribute
+  // and check the variant map with that
   function hasQuantityBySelectedKey(
     currentAttribute: ProductDetails_product_variants_attributes_values,
     currentAttributeType: string,
@@ -156,34 +158,23 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
     selectedVariantAttributes: IProductVariantsAttributesSelectedValues,
     attributesMap: any
   ){
-    // console.log("---------------------");
-    // console.log(currentAttribute);
-    // console.log(currentAttributeType);
-    // console.log(selectedKey);
-    // console.log(variantMap);
-    // console.log("---------------------");
-    
-    var keyList = Object.getOwnPropertyNames(variantMap);
     var selectedKeyAndCurrentAttr = selectedKey;
 
-    // put current attribute where it belongs, 2 cases replace {} or { up to {
-
-    // current attribute has value of same type
-    console.log(attributesMap);
+    // current attribute has value of same type already in key
     if(selectedVariantAttributes[attributesMap[currentAttributeType]]){
       // replace placeholder and value up to next {
       var pHoldIndex = selectedKey.indexOf("{" + currentAttributeType + "}");
-      var replaceUpTo = 0;
+      var replaceUpTo = selectedKey.length;
       for (var i = pHoldIndex; i < selectedKey.length; i++) {
         var c = selectedKey.charAt(i);
-        if(c === '_' || c === '{') {
+        
+        if(i != pHoldIndex && (c === '_' || c === '{')) {
           replaceUpTo = i;
           break;
         }
       }
       var firstHalf = selectedKey.substring(0, pHoldIndex);
       var secondHalf = selectedKey.substring(replaceUpTo);
-      console.log(secondHalf);
       selectedKeyAndCurrentAttr = 
         firstHalf + "{" + currentAttributeType + "}" + currentAttribute.value + secondHalf;
     } else{
@@ -192,22 +183,38 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
         "{" + currentAttributeType + "}" + currentAttribute.value
       )
     }
+    if(currentAttribute.value === 'DD/E'){
+      console.log("ska");
+      console.log(currentAttribute);
+      console.log(selectedKeyAndCurrentAttr);
+      console.log("ska");
+    }
 
-    console.log("ska");
-    console.log(currentAttribute);
-    console.log(selectedKeyAndCurrentAttr);
-    console.log("ska");
+    var missingAttrs = [];
+    var aMapList = Object.keys(attributesMap);
+    
+    for(let i=0; i<aMapList.length; i++){
+      var aId = attributesMap[aMapList[i]];
+      if(!selectedVariantAttributes[aId] && (aMapList[i] !== currentAttributeType)) 
+        missingAttrs.push(aMapList[i]);
+    }
 
-    // take one of skus based on sku order build list of missing vals from keystring
-    // in a loop check those vals inserted into the combined key, if stock return true
+    if(missingAttrs.length == 0){
+      var actualKey = selectedKeyAndCurrentAttr
+        .replace(/\{.*\}/g, "")
+        .replace("{", "")
+        .replace("}", "");
+        console.log(selectedKeyAndCurrentAttr.replace(/\{.*\}/g, ""));
+      //return variantMap[actualKey] > 0;
+    }
 
-    // var keyWithCurrent = selectedKey.replace("{" + )
-    // for(let i=0; i<keyList.length; i++){
-    //   var sku = keyList[i];
-    //   if(selected key plus currentattribute has quant){
-    //     return true
-    //   }
-    // }
+    if(currentAttribute.value === 'DD/E'){
+      console.log(missingAttrs);
+    }
+
+    for(let i=0; i<missingAttrs.length; i++){
+
+    }
 
     return true;
   }
