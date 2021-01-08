@@ -127,16 +127,6 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
 
   var orderedKeys = extractOrderedKeys();
 
-  function reduceVariantsMap(keyIn: string, variantMap: any){
-    var keyList = Object.getOwnPropertyNames(variantMap);
-    var reducedVariantMap: {[key: string]: string | null} = {};
-    for(let i=0; i<keyList.length; i++){
-      var sku = keyList[i];
-      if(sku.indexOf(keyIn) > -1) reducedVariantMap[sku] = variantMap[sku];
-    }
-    return reducedVariantMap;
-  }
-
   function hasQuantity(keyIn: string, variantMap: any){
     var keyList = Object.getOwnPropertyNames(variantMap);
     for(let i=0; i<keyList.length; i++){
@@ -146,6 +136,15 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
       }
     }
     return false;
+  }
+
+  function convertToActualKey(key: string, aMapList: any){
+    var actualKey = key;
+    for(let i=0; i<aMapList.length; i++){
+      actualKey = actualKey.replace("{" + aMapList[i] + "}", "");
+    }
+    actualKey = actualKey.replace("{Style}", "");
+    return actualKey;
   }
 
   // make a key containing the currently being checked attribute
@@ -200,20 +199,29 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
     }
 
     if(missingAttrs.length == 0){
-      var actualKey = selectedKeyAndCurrentAttr
-        .replace(/\{.*\}/g, "")
-        .replace("{", "")
-        .replace("}", "");
-        console.log(selectedKeyAndCurrentAttr.replace(/\{.*\}/g, ""));
-      //return variantMap[actualKey] > 0;
-    }
-
-    if(currentAttribute.value === 'DD/E'){
-      console.log(missingAttrs);
+      var actualKey = convertToActualKey(selectedKeyAndCurrentAttr, aMapList);
+      return variantMap[actualKey] > 0;
     }
 
     for(let i=0; i<missingAttrs.length; i++){
-
+      // for each missing attribute start inserting attribute values 
+      // if you find stock return true
+      var missingAttr = missingAttrs[i];
+      
+        for (const [key2, value2] of Object.entries(value.values)) {
+          var selectedKeyAndCurrentAttrTemp = selectedKeyAndCurrentAttr.replace(
+            "{" + missingAttr + "}",
+            "{" + missingAttr + "}" + value2.value
+          )
+          if(currentAttribute.value === 'DD/E'){
+            console.log(selectedKeyAndCurrentAttrTemp);
+          }
+          
+          // if(key qualifies){
+          //   if(stock > 0) return true;
+          // }
+        }
+      
     }
 
     return true;
@@ -244,15 +252,6 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
       "{Style}", 
       "{Style}" + productNumber
     );
-    
-    // skuOrderString = skuOrderString
-    //   .replace(/\{.*\}/g, "")
-    //   .replace("{", "")
-    //   .replace("}", "");
-
-    // if(skuOrderString.endsWith("_")) {
-    //   skuOrderString = skuOrderString.substring(0, skuOrderString.length - 1);
-    // }
     
     return skuOrderString;
   }
@@ -292,15 +291,6 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
       attributesMap
     );
 
-    // console.log("\n\n----------------------");
-    // console.log(productNumber);
-    // console.log(productVariantsMap);
-    // console.log(selectedVariantAttributes);
-    // console.log(currentAttribute);
-    // console.log(attributesMap);
-    // console.log(attributesValuesMap);
-    // console.log("----------------------\n\n");
-
     if(Object.keys(selectedVariantAttributes).length === 0){
       if(currentAttribute.value) {
         return !hasQuantity(currentAttribute.value, productVariantsMap);
@@ -315,7 +305,8 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
         selectedKey, 
         productVariantsMap,
         selectedVariantAttributes,
-        attributesMapRev
+        attributesMapRev,
+
       );
     }
 
