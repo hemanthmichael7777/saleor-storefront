@@ -2,34 +2,25 @@
 
 .header-with-dropdown {
   z-index: 3;
-}
-
-.top {
-  height: 50%;
-  display: flex;
-  flex-direction: row;
-}
-
-.bottom {
-  height: 50%;
-  display: grid;
-  align-content: center;
-
-  @media (min-width: $small-screen) {
-    display: none;
-  }
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .main-menu {
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.5);
   align-items: center;
   align-items: stretch;
-  background-color: $white;
-  border-bottom: 1px solid $gray-light;
+  //border-bottom: 1px solid $gray-light;
   height: 7.75rem;
   position: relative;
 
   @media (max-width: $small-screen) {
     height: 4.75rem;
+  }
+
+  &__mmcontainer {
+    height: 100%;
   }
 
   &__top {
@@ -256,7 +247,7 @@
     cursor: pointer;
 
     @media (min-width: $medium-screen) {
-      border-left: 1px solid $gray-light;
+      //border-left: 1px solid $gray-light;
       margin-right: 20px;
     }
 
@@ -293,7 +284,7 @@
 
     &--active {
       &:hover {
-        background-color: $gray-light;
+        background-color: $gray;
         
       }
     }
@@ -304,10 +295,10 @@
 
     &__body {
       //border: 1px solid red;
-      background: $gray-light;
-      border-top-color: $gray-light;
-      border-top-style: solid;
-      border-top-width: 1px;
+      background: $gray;
+      //border-top-color: $gray-light;
+      //border-top-style: solid;
+      //border-top-width: 1px;
       display: none;
       left: 0;
       padding: 2rem;
@@ -336,7 +327,9 @@
         margin-bottom: 20px;
 
         &:hover {
-          background-color: white;
+          //background-color: white;
+          background-color: rgb(255, 255, 255);
+          background-color: rgba(255, 255, 255, 0.5);
         }
 
         // 2nd level name
