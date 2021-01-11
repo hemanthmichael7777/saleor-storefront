@@ -2,13 +2,13 @@
 
 .home-page {
   &__hero {
+    margin-top: -125px;
     background-color: $blue-overlay;
     background-blend-mode: multiply;
     background-size: cover;
     background-position: center;
     text-align: center;
-    padding: 17.5%;
-    // margin-top: 50px;
+    padding: 30%;
 
     &-text {
       overflow: hidden;
