@@ -27,6 +27,7 @@ import {
   ProductDetails_product_images,
 } from "../../../../views/Product/gqlTypes/ProductDetails";
 import * as S from "./styles";
+import { identity } from "lodash";
 
 export interface IProductVariantPickerProps {
   productVariants?: ProductDetails_product_variants[];
@@ -207,8 +208,8 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
       // for each missing attribute start inserting attribute values 
       // if you find stock return true
       var missingAttr = missingAttrs[i];
-      
-        for (const [key2, value2] of Object.entries(value.values)) {
+      var aVals = productVariantsAttributes[attributesMap[missingAttr]];
+        for (const [_key2, value2] of Object.entries(aVals.values)) {
           var selectedKeyAndCurrentAttrTemp = selectedKeyAndCurrentAttr.replace(
             "{" + missingAttr + "}",
             "{" + missingAttr + "}" + value2.value
@@ -217,14 +218,21 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
             console.log(selectedKeyAndCurrentAttrTemp);
           }
           
-          // if(key qualifies){
-          //   if(stock > 0) return true;
-          // }
+          for (const [key3, _value3] of Object.entries(variantMap)) {
+            if(key3.indexOf(value2.value || "") > -1){
+              if(key3.indexOf(currentAttribute.value || "") > -1){
+                if(variantMap[key3] > 0){
+                  return true;
+                }
+              }
+            }
+          }
+          
         }
       
     }
 
-    return true;
+    return false;
   }
 
   // build a sku number based on the selected attributes and  a
