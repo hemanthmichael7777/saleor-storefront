@@ -5,6 +5,25 @@
     border-top: 1px solid $gray-light;
     display: flex;
     justify-content: center;
+    margin-top: 10px;
+  }
+
+  &__logo {
+    width: 175px;
+    margin: 0 auto;
+  }
+
+  &__c {
+    width: 170px;
+    font-size: 0.675rem;
+    margin: 0 auto;
+    cursor: default;
+    text-align: center;
+  }
+
+  &__navcontainer {
+    border: 1px solid black;
+    height: 100%;
   }
 
   &__menu {
@@ -45,15 +64,23 @@
   }
 
   &-nav {
+    // border: 1px solid red;
     background-color: $gray-light;
-    padding: $spacer * 3 0 $spacer * 2;
+    // padding: $spacer * 3 0 $spacer * 2;
+    padding: 3rem 0 0rem;
 
     .container {
-      display: flex;
-      flex-wrap: wrap;
+      // display: flex;
+      // flex-wrap: wrap;
+
+      // border: 1px solid blue;
+      width: 200px;
+      text-align: center;
+      padding-top: 10px;
+      margin-top: -40px;
 
       div:not(:last-of-type) {
-        padding-right: $spacer * 3;
+        // padding-right: $spacer * 3;
       }
     }
 
@@ -62,6 +89,11 @@
         font-weight: $bold-font-weight;
         margin-bottom: $spacer;
         text-transform: uppercase;
+
+        a {
+          font-family: $base-font-family;
+          font-size: $small-font-size;
+        }
       }
 
       &-content {
@@ -72,7 +104,7 @@
 
           a {
             text-decoration: none;
-            color: $gray;
+            color: $gray;    
           }
         }
       }
