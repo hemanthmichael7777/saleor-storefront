@@ -96,7 +96,7 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
   // pull the attributes in order specified by metadata
   function extractOrderedKeys(){
     var arr = Object.keys(productVariantsAttributes);
-    return arr.sort(function (a, b) {
+    var r = arr.sort(function (a, b) {
       var valueA = productVariantsAttributes[a].attribute.metadata.filter((q) => {
         return q.key === "productPageDisplayOrder";
       });
@@ -123,6 +123,9 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
           return 0;
       }
     });
+    console.log(productVariantsAttributes);
+    console.log(r);
+    return r;
   }
 
 
