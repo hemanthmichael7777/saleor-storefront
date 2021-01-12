@@ -694,6 +694,15 @@ export interface ProductDetails_product_variants {
   attributes: ProductDetails_product_variants_attributes[];
 }
 
+export interface ProductDetails_product_productType_metadata {
+  key: string;
+  value: string;
+}
+
+export interface ProductDetails_product_productType {
+  metadata: ProductDetails_product_productType_metadata[]
+}
+
 export interface ProductDetails_product {
   __typename: "Product";
   /**
@@ -738,6 +747,8 @@ export interface ProductDetails_product {
    */
   isAvailableForPurchase: boolean | null;
   availableForPurchase: any | null;
+
+  productType: ProductDetails_product_productType;
 }
 
 export interface ProductDetails {

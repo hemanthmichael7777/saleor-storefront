@@ -88,6 +88,7 @@ const Page: React.FC<
       items={items}
       productId={product.id}
       name={product.name}
+      product={product}
       productVariants={product.variants}
       productVariantsMap={productVariantsMap}
       productPricing={product.pricing}

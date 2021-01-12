@@ -7,6 +7,7 @@ import {
   useProductVariantsAttributesValuesSelection,
 } from "@hooks";
 import { 
+  ProductDetails_product,
   ProductDetails_product_variants, 
   ProductDetails_product_variants_attributes_values,
   ProductDetails_product_variants_attributes
@@ -30,6 +31,7 @@ import * as S from "./styles";
 import { identity } from "lodash";
 
 export interface IProductVariantPickerProps {
+  product: ProductDetails_product;
   productVariants?: ProductDetails_product_variants[];
   productVariantsMap: IProductVariantsMap;
   onChange?: (
@@ -44,6 +46,7 @@ export interface IProductVariantPickerProps {
 }
 
 const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
+  product,
   productVariants = [],
   productVariantsMap = {},
   queryAttributes = {},
@@ -123,8 +126,6 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
           return 0;
       }
     });
-    console.log(productVariantsAttributes);
-    console.log(r);
     return r;
   }
 
@@ -186,12 +187,6 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
         "{" + currentAttributeType + "}" + currentAttribute.value
       )
     }
-    if(currentAttribute.value === 'DD/E'){
-      console.log("ska");
-      console.log(currentAttribute);
-      console.log(selectedKeyAndCurrentAttr);
-      console.log("ska");
-    }
 
     var missingAttrs = [];
     var aMapList = Object.keys(attributesMap);
@@ -217,9 +212,6 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
             "{" + missingAttr + "}",
             "{" + missingAttr + "}" + value2.value
           )
-          if(currentAttribute.value === 'DD/E'){
-            console.log(selectedKeyAndCurrentAttrTemp);
-          }
           
           for (const [key3, _value3] of Object.entries(variantMap)) {
             if(key3.indexOf(value2.value || "") > -1){
@@ -245,7 +237,15 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
     selectedVariantAttributes: IProductVariantsAttributesSelectedValues,
     attributesMap: any
   ){
-    var skuOrderString = "{Style}_{Color}_{Chest}{Cup}";
+    
+    var skuOrderStringList = product.productType.metadata.filter((m) => {
+      return m.key = "skuKeyString";
+    });
+    if(skuOrderStringList.length < 1){
+      alert("no skuKeyString configured on product type");
+      return "";
+    }
+    var skuOrderString = skuOrderStringList[0].value;
     var attributesKeyList = Object.getOwnPropertyNames(attributesMap);
     for(let i=0; i<attributesKeyList.length; i++){
       var attr = attributesKeyList[i];

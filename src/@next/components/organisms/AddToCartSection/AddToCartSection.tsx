@@ -10,6 +10,7 @@ import {
 
 
 import { 
+  ProductDetails_product,
   ProductDetails_product_variants, 
   ProductDetails_product_images } from 
 "../../../../views/Product/gqlTypes/ProductDetails";
@@ -32,6 +33,7 @@ import {
 const LOW_STOCK_QUANTITY: number = 5;
 
 export interface IAddToCartSection {
+  product: ProductDetails_product;
   productId: string;
   productVariants: ProductDetails_product_variants[];
   productVariantsMap: IProductVariantsMap;
@@ -49,6 +51,7 @@ export interface IAddToCartSection {
 }
 
 const AddToCartSection: React.FC<IAddToCartSection> = ({
+  product,
   availableForPurchase,
   isAvailableForPurchase,
   items,
@@ -167,6 +170,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         )}
       <S.VariantPicker>
         <ProductVariantPicker
+          product={product}
           productVariants={productVariants}
           onChange={onVariantPickerChange}
           selectSidebar

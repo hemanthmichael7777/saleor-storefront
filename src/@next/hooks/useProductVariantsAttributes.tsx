@@ -39,7 +39,6 @@ export const useProductVariantsAttributes = (
         }
       });
     });
-    //console.log(variantsAttributes);
     setProductVariantsAttributes(variantsAttributes);
   }, [productVariants]);
 
