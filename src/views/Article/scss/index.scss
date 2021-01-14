@@ -12,14 +12,28 @@
   padding: 10px;
   padding-bottom: 30px;
   overflow-y: auto;
+
+  @media (max-width: 1024px) {
+    min-width: 100%;
+    position: relative;
+    margin-top: 0px;
+    margin-right: 0px;
+    max-width: none;
+    max-height: none;
+    padding: 0px;
+    padding-bottom: 30px;
+    overflow-y: auto;
+  }
+
  }
 
 .article-page {
   &__container {
     text-align: center;
 
-    @media (max-width: $medium-screen) {
+    @media (max-width: 1024px) {
       display: block;
+      padding: 10px;
     }
   }
 
@@ -38,19 +52,19 @@
 
   &__header {
     display: flex;
-    //text-align: center;
-    //padding-top: $spacer * 4.5;
-    //padding-bottom: $spacer * 4.5;
     background-size: cover;
     background-color: $blue-overlay;
     background-blend-mode: multiply;
     margin-top: -125px;
     padding: 30%;
-    //margin-left: -20px;
+
+    @media (max-width: 1024px) {
+      // border: 1px solid red;
+      margin-top: 0;
+      padding: 0;
+    }
 
     &__title {
-      //display: none;
-
       background-color: $white;
       display: inline-block;
       transform: skew(45deg);

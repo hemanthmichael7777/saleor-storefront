@@ -29,7 +29,7 @@ export const Page: React.FC<PageProps> = ({
   <div className="article-page">
     <div
       className="article-page__header"
-      style={headerImage ? { backgroundImage: `url(${headerImage})` } : null}
+      style={headerImage && window.screen.width > 1024 ? { backgroundImage: `url(${headerImage})` } : null}
     >
       {/* <span className="article-page__header__title">
         <h1>{page.title}</h1>

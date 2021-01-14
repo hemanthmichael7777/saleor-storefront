@@ -3,9 +3,6 @@ import * as React from "react";
 import { NavLink } from "..";
 import { TypedSecondaryMenuQuery } from "./queries";
 
-import { SocialMediaIcon } from "..";
-import { SOCIAL_MEDIA } from "../../core/config";
-
 import ReactSVG from "react-svg";
 import logoImg from "../../images/logo.svg";
 
@@ -43,15 +40,6 @@ class Nav extends React.PureComponent {
         <div className="footer__c">
           © 2021 ALL RIGHTS RESERVED
         </div>
-
-        <div className="footer__favicons">
-          {SOCIAL_MEDIA.map(medium => (
-            <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
-          ))}
-        </div>
-        
-        
-
       </footer>
     );
   }

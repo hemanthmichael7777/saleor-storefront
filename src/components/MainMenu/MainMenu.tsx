@@ -329,16 +329,18 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                       render={() =>
                         items.map(item => {
                           const hasSubNavigation = !!item?.children?.length;
+
+                          var dropDownIcon = hasSubNavigation ? "true" : "none"
+                          var dropDownStyleClass = hasSubNavigation ? "main-menu__item" : "main-menu__item__no-nav"
                           return (
                             <div className="main-menu__menudiv">
                               <li
                                 data-test="mainMenuItem"
-                                className="main-menu__item"
+                                className={dropDownStyleClass}
                                 key={item.id}
                               >
 
                                 <NavDropdown
-
                                   overlay={overlayContext}
                                   showDropdown={
                                     activeDropdown === item.id && hasSubNavigation
@@ -350,8 +352,10 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                   {...item}
                                 />
 
-                                <div className="main-menu__arrow-icon">
-                                  <FontAwesomeIcon icon={faCaretDown} />
+                                <div style={{ display: dropDownIcon }}>
+                                  <div className="main-menu__arrow-icon">
+                                    <FontAwesomeIcon icon={faCaretDown} />
+                                  </div>
                                 </div>
                               </li>
                             </div>
