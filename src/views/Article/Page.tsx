@@ -26,6 +26,7 @@ export const Page: React.FC<PageProps> = ({
   navigation,
   page,
 }) => (
+  
   <div className="article-page">
     <div
       className="article-page__header"

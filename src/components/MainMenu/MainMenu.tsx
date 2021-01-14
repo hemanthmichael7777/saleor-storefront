@@ -61,8 +61,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
 
   useEffect(() => {
     if (activeDropdown) {
-      // let n: number;
-      // n = window.setTimeout(function () { overlayContext.show(OverlayType.mainMenuNav, OverlayTheme.modal);}, 200)
       overlayContext.show(OverlayType.mainMenuNav, OverlayTheme.modal);
     } else {
       overlayContext.hide();
@@ -70,16 +68,12 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   }, [activeDropdown]);
 
   const showDropdownHandler = (itemId: string, hasSubNavigation: boolean) => {
-    // let n: number;
-    // n = window.setTimeout(function () { if (hasSubNavigation) { setActiveDropdown(itemId);} }, 200)
     if (hasSubNavigation) {
       setActiveDropdown(itemId);
     }
   };
 
   const hideDropdownHandler = () => {
-    // let n: number;
-    // n = window.setTimeout(function () { if (activeDropdown) {setActiveDropdown(undefined);} }, 200)
     if (activeDropdown) {
       setActiveDropdown(undefined);
     }

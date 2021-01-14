@@ -7,6 +7,7 @@ import UserAccount, * as accountPaths from "../../userAccount/routes";
 import { OrderDetails } from "../../userAccount/views";
 import { Account, AccountConfirm } from "../../views/Account";
 import { ArticlePage } from "../../views/Article";
+import { FittingPage } from "../../views/FittingPage";
 import { CategoryPage } from "../../views/Category";
 import { CollectionPage } from "../../views/Collection";
 import { HomePage } from "../../views/Home";
@@ -25,6 +26,7 @@ export const Routes: React.FC = () => (
     <Route path={paths.cartUrl} component={CartPage} />
     <Route path={paths.checkoutLoginUrl} component={CheckoutLogin} />
     <Route path={paths.pageUrl} component={ArticlePage} />
+    <Route path={paths.fittingPageUrl} component={FittingPage} />
     <Route path={accountPaths.baseUrl} component={UserAccount} />
     <Route path={accountPaths.userOrderDetailsUrl} component={OrderDetails} />
     <Route path={paths.guestOrderDetailsUrl} component={OrderDetails} />
