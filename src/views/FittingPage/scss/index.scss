@@ -1,6 +1,7 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .fitting-guide {
+
     height: 100%;
 
     &__size-chart {
@@ -39,8 +40,15 @@
     }
 
     &__body {
+
+        @media (max-width: $small-screen) {
+            width: 100%;
+            margin: 0 auto;
+        }
+
         width: 65%;
         margin: 0 auto;
+
         >div:nth-child(even){
             background:$gray-light;
         }
@@ -57,6 +65,11 @@
 
         &__flexcontainer {
             display: flex;
+
+            @media (max-width: $small-screen) {
+                display: flex;
+                flex-direction: column;
+            }
         }
 
         &__infocontainer {
@@ -77,12 +90,23 @@
             height: 40px;
             //border: 1px solid green;
             margin-left: auto;
+
+            @media (max-width: $small-screen) {
+                width: 250px;
+                height: 40px;
+                margin: 0 auto;
+            }
         }
 
         &__info {
             width: 45%;
             margin-left: auto;
             //border: 1px solid black;
+
+            @media (max-width: $small-screen) {
+                width: 100%;
+                margin: 0 auto;
+            }
         }
 
         li {
@@ -96,7 +120,10 @@
             font-weight: $bold-font-weight;
             text-transform: uppercase;
             line-height: 40px;
-            text-align: center;
+
+            @media (max-width: $small-screen) {
+                text-align: center;
+            }
         }
 
         h2 {
@@ -112,5 +139,57 @@
         b {
            color: black;
         }
+    }
+
+    table {
+        td{
+            color: black;
+            border-color: black;
+            border-style:solid;
+            border-width:1.5px;
+            overflow:hidden;
+            padding:10px 5px;
+            word-break:normal;
+        }
+
+        th{
+            color: black;
+            border-color: black;
+            border-style:solid;
+            border-width:1.5px;
+            font-weight:bold;
+            overflow:hidden;
+            padding:10px 5px;
+            word-break:normal;
+        }
+
+
+    }
+
+    .tg {
+        border-collapse:collapse;
+        border-spacing:0;
+    }
+    .tgcompact {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        table-layout: fixed;
+
+        th {
+            font-size: 0.675rem;
+        }
+    }
+
+    .tg .tg-0lax{
+        color: black;
+        text-align:center;
+        vertical-align:center
+    }
+
+    .tgcompact .tg-1lax{
+        color: black;
+        text-align:center;
+        vertical-align:center
     }
 }

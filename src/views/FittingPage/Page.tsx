@@ -96,19 +96,40 @@ export const FittingPage: React.FC<PageProps> = ({
                             </ol>
                         </div>
                     </div>
-
-                    {/* <div className="fitting-guide__size-chart" style={{paddingTop: 30}}>
-                        <h1>
-                            Fill chart
-                        </h1>
-                    </div> */}
                 </div>
+
+                <table className="tg">
+                    <thead>
+                        <tr>
+                            <th className="tg-0lax">Difference (inches)</th>
+                            <th className="tg-0lax">1"</th>
+                            <th className="tg-0lax">2"</th>
+                            <th className="tg-0lax">3"</th>
+                            <th className="tg-0lax">4"</th>
+                            <th className="tg-0lax">5"</th>
+                            <th className="tg-0lax">6"</th>
+                            <th className="tg-0lax">7"</th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th className="tg-0lax">Cup Size</th>
+                            <th className="tg-0lax">A</th>
+                            <th className="tg-0lax">B</th>
+                            <th className="tg-0lax">C</th>
+                            <th className="tg-0lax">D</th>
+                            <th className="tg-0lax">DD</th>
+                            <th className="tg-0lax">F</th>
+                            <th className="tg-0lax">G</th>
+                        </tr>
+                    </thead>
+                </table>
 
                 <div className="fitting-guide__body__infocontainer">
                     <div className="fitting-guide__body__flexcontainer">
                         <div className="fitting-guide__body__infotitle">
                             <h1>
-                                3. Tips for Best Results
+                                Tips for Best Results
                             </h1>
                         </div>
                         <div className="fitting-guide__body__info">
@@ -149,7 +170,150 @@ export const FittingPage: React.FC<PageProps> = ({
                         </div>
                     </div>
                 </div>
-                
+
+            </div>
+
+            <div className="fitting-guide__body__container">
+                <div className="fitting-guide__body__title">
+                    <h1>
+                        Bottoms
+                    </h1>
+                </div>
+
+                <div className="fitting-guide__body__infocontainer">
+                    <div className="fitting-guide__body__flexcontainer">
+                        <div className="fitting-guide__body__infotitle">
+                            <h1>
+                                1. Waist Measurement
+                            </h1>
+                        </div>
+                        <div className="fitting-guide__body__info">
+                            <ol>
+                                <li>
+                                    <span>&#8226;</span>
+                                    <h2>
+                                        Using a soft tape measure, measure around
+                                        your waist at the narrowest part. Be sure to
+                                        keep the tape measure horizontal.
+                                    </h2>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div className="fitting-guide__body__infocontainer">
+                    <div className="fitting-guide__body__flexcontainer">
+                        <div className="fitting-guide__body__infotitle">
+                            <h1>
+                                2. Hip Measurement
+                            </h1>
+                        </div>
+                        <div className="fitting-guide__body__info">
+                            <ol>
+                                <li>
+                                    <span>&#8226;</span>
+                                    <h2>
+                                        Using the same soft tape measure, measure
+                                        your hips at the widest point. Be sure to keep
+                                        the tape measure horizontal.
+                                    </h2>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div className="fitting-guide__body__infocontainer">
+                    <div className="fitting-guide__body__flexcontainer">
+                        <div className="fitting-guide__body__infotitle">
+                            <h1>
+                                3. Calculate Your Size
+                            </h1>
+                        </div>
+                        <div className="fitting-guide__body__info">
+                            <ol>
+                                <li>
+                                    <span>&#8226;</span>
+                                    <h2>
+                                        Body measurements are provided in
+                                        inches. Consult the chart using waist and hip measurement
+                                    </h2>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <table className="tgcompact">
+                        <thead>
+                            <tr>
+                                <th className="tg-1lax">Size</th>
+                                <th className="tg-1lax">S</th>
+                                <th className="tg-1lax">M</th>
+                                <th className="tg-1lax">L</th>
+                                <th className="tg-1lax">XL</th>
+                                <th className="tg-1lax">2XL</th>
+                                <th className="tg-1lax">3XL</th>
+                                <th className="tg-1lax">4XL</th>
+                                <th className="tg-1lax">5XL</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <thead>
+                            <tr>
+                                <th className="tg-1lax">Waist</th>
+                                <th className="tg-1lax">26” - 29”</th>
+                                <th className="tg-1lax">29” - 31 1/2 ”</th>
+                                <th className="tg-1lax">31 1/2 ” - 34 1/2”</th>
+                                <th className="tg-1lax">34 1/2 ” - 38 1/2”</th>
+                                <th className="tg-1lax">38 1/2” - 42 1/2”</th>
+                                <th className="tg-1lax">42 1/2” - 46 1/2”</th>
+                                <th className="tg-1lax">46 1/2” - 50 1/2”</th>
+                                <th className="tg-1lax">50 1/2” - 54 1/2”</th>
+                            </tr>
+                            <tr>
+                                <th className="tg-1lax">Hips</th>
+                                <th className="tg-1lax">35” - 38 1/2”</th>
+                                <th className="tg-1lax">38 1/2“ - 41”</th>
+                                <th className="tg-1lax">41“ - 44”</th>
+                                <th className="tg-1lax">44“ - 47”</th>
+                                <th className="tg-1lax">47“ - 50”</th>
+                                <th className="tg-1lax">50“ - 53”</th>
+                                <th className="tg-1lax">53“ - 56”</th>
+                                <th className="tg-1lax">56“ - 59”</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div className="fitting-guide__body__infocontainer">
+                    <div className="fitting-guide__body__flexcontainer">
+                        <div className="fitting-guide__body__infotitle">
+                            <h1>
+                                Tips For Best Results
+                            </h1>
+                        </div>
+                        <div className="fitting-guide__body__info">
+                            <ol>
+                                <li>
+                                    <span>&#8226;</span>
+                                    <h2>
+                                        If your body measurement is on the borderline between two sizes, order the smaller size for a tighter fit or the
+                                        larger size for a looser fit.
+                                    </h2>
+                                </li>
+                                <li>
+                                    <span>&#8226;</span>
+                                    <h2>
+                                        If your body measurements for hips and waist result in two different suggested sizes, order the size from your
+                                        hip measurement.
+                                    </h2>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
