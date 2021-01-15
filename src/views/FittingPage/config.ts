@@ -1,0 +1,1 @@
+export const headerImg = `url(https://dayleenstore.s3.us-east-2.amazonaws.com/fitguide-backgrounds/bwcollection-fitguideheader2.jpg)`;

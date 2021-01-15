@@ -61,8 +61,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
 
   useEffect(() => {
     if (activeDropdown) {
-      // let n: number;
-      // n = window.setTimeout(function () { overlayContext.show(OverlayType.mainMenuNav, OverlayTheme.modal);}, 200)
       overlayContext.show(OverlayType.mainMenuNav, OverlayTheme.modal);
     } else {
       overlayContext.hide();
@@ -70,16 +68,12 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   }, [activeDropdown]);
 
   const showDropdownHandler = (itemId: string, hasSubNavigation: boolean) => {
-    // let n: number;
-    // n = window.setTimeout(function () { if (hasSubNavigation) { setActiveDropdown(itemId);} }, 200)
     if (hasSubNavigation) {
       setActiveDropdown(itemId);
     }
   };
 
   const hideDropdownHandler = () => {
-    // let n: number;
-    // n = window.setTimeout(function () { if (activeDropdown) {setActiveDropdown(undefined);} }, 200)
     if (activeDropdown) {
       setActiveDropdown(undefined);
     }
@@ -329,16 +323,18 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                       render={() =>
                         items.map(item => {
                           const hasSubNavigation = !!item?.children?.length;
+
+                          var dropDownIcon = hasSubNavigation ? "true" : "none"
+                          var dropDownStyleClass = hasSubNavigation ? "main-menu__item" : "main-menu__item__no-nav"
                           return (
                             <div className="main-menu__menudiv">
                               <li
                                 data-test="mainMenuItem"
-                                className="main-menu__item"
+                                className={dropDownStyleClass}
                                 key={item.id}
                               >
 
                                 <NavDropdown
-
                                   overlay={overlayContext}
                                   showDropdown={
                                     activeDropdown === item.id && hasSubNavigation
@@ -350,8 +346,10 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                   {...item}
                                 />
 
-                                <div className="main-menu__arrow-icon">
-                                  <FontAwesomeIcon icon={faCaretDown} />
+                                <div style={{ display: dropDownIcon }}>
+                                  <div className="main-menu__arrow-icon">
+                                    <FontAwesomeIcon icon={faCaretDown} />
+                                  </div>
                                 </div>
                               </li>
                             </div>

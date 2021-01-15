@@ -1,0 +1,195 @@
+@import "../../../globalStyles/scss/variables.scss";
+
+.fitting-guide {
+
+    height: 100%;
+
+    &__size-chart {
+        width: 300px;
+        height: 100px;
+        //border: 1px solid black;
+        background: $gray;
+        margin-top: -100px;
+    }
+    
+    &__header {
+        background-color: rgba(33, 18, 94, 0.15);
+        background-blend-mode: multiply;
+        background-size: cover;
+        background-position: center;
+        padding: 15%;
+    }
+
+    &__header-tag-container {
+        margin-left: auto;
+        height: 50px;
+        width: 200px;
+
+        @media (max-width: $small-screen) {
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            line-height: 3.5;
+            font-size: 1rem;
+            color: white;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    }
+
+    &__body {
+
+        @media (max-width: $small-screen) {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        width: 65%;
+        margin: 0 auto;
+
+        >div:nth-child(even){
+            background:$gray-light;
+        }
+            
+        >div:nth-child(odd){
+            background:white;
+            color: #5c5c5c;
+        }
+
+        &__container {
+            padding: 10px;
+            min-height: 300px;
+        }
+
+        &__flexcontainer {
+            display: flex;
+
+            @media (max-width: $small-screen) {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        &__infocontainer {
+            padding: 20px;
+            margin-top: 20px;
+            //border: 1px solid red;
+        }
+
+        &__title {
+            width: 200px;
+            margin: 0 auto;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        &__infotitle {
+            width: 250px;
+            height: 40px;
+            //border: 1px solid green;
+            margin-left: auto;
+
+            @media (max-width: $small-screen) {
+                width: 250px;
+                height: 40px;
+                margin: 0 auto;
+            }
+        }
+
+        &__info {
+            width: 45%;
+            margin-left: auto;
+            //border: 1px solid black;
+
+            @media (max-width: $small-screen) {
+                width: 100%;
+                margin: 0 auto;
+            }
+        }
+
+        li {
+            display: flex;
+            padding: 10px;
+        }
+        
+        h1 {
+            font-family: $base-font-family;
+            font-size: 1rem;
+            font-weight: $bold-font-weight;
+            text-transform: uppercase;
+            line-height: 40px;
+
+            @media (max-width: $small-screen) {
+                text-align: center;
+            }
+        }
+
+        h2 {
+            font-family: $base-font-family;
+            font-size: $base-font-size;
+            font-weight: $bold-font-weight;
+        }
+
+        span {
+            padding-right: 10px;
+        }
+
+        b {
+           color: black;
+        }
+    }
+
+    table {
+        td{
+            color: black;
+            border-color: black;
+            border-style:solid;
+            border-width:1.5px;
+            overflow:hidden;
+            padding:10px 5px;
+            word-break:normal;
+        }
+
+        th{
+            color: black;
+            border-color: black;
+            border-style:solid;
+            border-width:1.5px;
+            font-weight:bold;
+            overflow:hidden;
+            padding:10px 5px;
+            word-break:normal;
+        }
+
+
+    }
+
+    .tg {
+        border-collapse:collapse;
+        border-spacing:0;
+    }
+    .tgcompact {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        table-layout: fixed;
+
+        th {
+            font-size: 0.675rem;
+        }
+    }
+
+    .tg .tg-0lax{
+        color: black;
+        text-align:center;
+        vertical-align:center
+    }
+
+    .tgcompact .tg-1lax{
+        color: black;
+        text-align:center;
+        vertical-align:center
+    }
+}

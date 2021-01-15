@@ -3,9 +3,9 @@
 .footer {
   &__favicons {
     border-top: 1px solid $gray-light;
+    background: $gray-light;
     display: flex;
     justify-content: center;
-    margin-top: 10px;
   }
 
   &__logo {
@@ -19,10 +19,10 @@
     margin: 0 auto;
     cursor: default;
     text-align: center;
+    margin-top: -15px;
   }
 
   &__navcontainer {
-    border: 1px solid black;
     height: 100%;
   }
 
@@ -65,9 +65,10 @@
 
   &-nav {
     // border: 1px solid red;
-    background-color: $gray-light;
+    background-color: $gray;
     // padding: $spacer * 3 0 $spacer * 2;
     padding: 3rem 0 0rem;
+    min-height: 300px;
 
     .container {
       // display: flex;
@@ -91,8 +92,12 @@
         text-transform: uppercase;
 
         a {
+          color: black;
           font-family: $base-font-family;
           font-size: $small-font-size;
+          &:hover {
+            color: $gray-dark;
+          }
         }
       }
 
@@ -104,7 +109,7 @@
 
           a {
             text-decoration: none;
-            color: $gray;    
+            color: $gray;
           }
         }
       }

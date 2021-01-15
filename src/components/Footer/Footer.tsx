@@ -8,11 +8,11 @@ import Nav from "./Nav";
 
 const Footer: React.FC = () => (
   <div className="footer" id="footer">
-    {/* <div className="footer__favicons">
+    <div className="footer__favicons">
       {SOCIAL_MEDIA.map(medium => (
         <SocialMediaIcon medium={medium} key={medium.ariaLabel} />
       ))}
-    </div> */}
+    </div>
     <Nav />
   </div>
 );

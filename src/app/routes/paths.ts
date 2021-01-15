@@ -7,6 +7,7 @@ export const productUrl = `${baseUrl}product/${slugUrl}`;
 export const cartUrl = `${baseUrl}cart/:token?/`;
 export const checkoutLoginUrl = `${baseUrl}login/`;
 export const pageUrl = `${baseUrl}page/:slug/`;
+export const fittingPageUrl = `${baseUrl}fittingguide/`;
 export const guestOrderDetailsUrl = `/order-history/:token/`;
 export const accountUrl = `${baseUrl}account/`;
 export const accountConfirmUrl = `${baseUrl}account-confirm/`;
