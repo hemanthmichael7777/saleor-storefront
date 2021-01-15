@@ -30,10 +30,11 @@ const getEdgeColor = (
 export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   color: ${props => getEdgeColor(props)};
-  width: 400px;
-  max-width: 400px;
+  width: 100%;
+  max-width: 500px;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
+  margin-left: -10px;
 `;
 
 export const VariantTileHeader = styled.div`
@@ -85,10 +86,11 @@ const getCursor = (
 export const VariantTileContent = styled.div<ContentProps>`
   color: ${props => getFontColor(props)};
   background-color: ${props => getBgColor(props)};
-  padding: 10px 14px;
+  padding: 8px 14px;
   border: 1px solid #D3D3D3;
   opacity: ${props => getOpacity(props)};
   cursor: ${props => getCursor(props)};
+  font-size: 12px;
 `;
 
 

@@ -28,7 +28,7 @@ export const Button: React.FC<IProps> = ({
       ref={btnRef}
       {...props}
     >
-      <S.Text size={size}>{children}</S.Text>
+      <S.Text size={"sm"}>{children}</S.Text>
     </ButtonWithTheme>
   );
 };

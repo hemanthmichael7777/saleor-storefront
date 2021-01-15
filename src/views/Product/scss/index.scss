@@ -50,14 +50,14 @@
         width: auto;
 
         @media (min-width: $container-width) {
-          width: calc(#{$container-width} * 30 / 100);
+          // width: calc(#{$container-width} * 30 / 100);
         }
       }
     }
 
     &__gallery {
       flex-grow: 2;
-      width: 60%;
+      width: 44%;
       padding: 0 $spacer 0 0;
       box-sizing: border-box;
 

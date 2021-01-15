@@ -3,13 +3,14 @@ import { styled } from "@styles";
 export const Wrapper = styled.div`
   display: grid;
   grid-template-areas: "sidebar preview";
-  height: 100%;
+  height: 540px;
+  max-height: 540px;
   grid-template-columns: 76px 1fr;
-  grid-column-gap: 40px;
+  grid-column-gap: 20px;
 `;
 
 export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
-  width: 76px;
+  width: 58px;
   display: flex;
   border-width: 4px;
   border-style: solid;
@@ -24,9 +25,8 @@ export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
     width: 100%;
     object-fit: contain;
   }
-
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 1px;
+  margin-bottom: 1px;
 `;
 
 export const Button = styled.div`
@@ -43,12 +43,11 @@ export const Button = styled.div`
 
 export const TopButton = styled(Button)`
   top: 0%;
-
   transform: rotate(180deg);
 `;
 
 export const BottomButton = styled(Button)`
-  bottom: 0%;
+  bottom: 20%;
 `;
 
 export const ThumbnailsContainer = styled.div`
@@ -57,7 +56,8 @@ export const ThumbnailsContainer = styled.div`
 
 export const ThumbnailList = styled.div`
   position: relative;
-  height: 100%;
+  height: 80%;
+  max-height: 80%;
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: none;
@@ -75,9 +75,9 @@ export const ThumbnailList = styled.div`
 
 export const Preview = styled.div`
   grid-area: preview;
-  width: auto;
-  max-height: 560px;
+  width: 98%;
   overflow: hidden;
+  height: 680px;
   img {
     width: 100%;
     object-fit: contain;

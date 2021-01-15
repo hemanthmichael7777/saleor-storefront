@@ -30,6 +30,8 @@ import {
   canAddToCart,
 } from "./stockHelpers";
 
+import { RichTextContent } from "@components/atoms";
+
 const LOW_STOCK_QUANTITY: number = 5;
 
 export interface IAddToCartSection {
@@ -194,6 +196,13 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         onSubmit={() => onAddToCart(variantId, quantity)}
         disabled={disableButton}
       />
+      {(product.descriptionJson ? (
+        <S.ProductDescription>
+          <RichTextContent descriptionJson={product.descriptionJson} />
+        </S.ProductDescription>
+        ) : (
+          <p>{""}</p>
+      ))}
     </S.AddToCartSelection>
   );
 };

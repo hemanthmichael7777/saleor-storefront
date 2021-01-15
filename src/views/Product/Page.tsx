@@ -145,14 +145,7 @@ const Page: React.FC<
           </Media>
         </div>
       </div>
-      <div className="container">
-        <div className="product-page__product__description">
-          <ProductDescription
-            descriptionJson={product.descriptionJson}
-            attributes={product.attributes}
-          />
-        </div>
-      </div>
+  
       <OtherProducts products={product.category.products.edges} />
     </div>
   );

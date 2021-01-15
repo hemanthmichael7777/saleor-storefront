@@ -34,7 +34,7 @@ export const VariantTiles: React.FC<IProps> = ({
 
     if(option.image !== ""){
       c = <S.VariantTileContentImage selected={isSelected} disabled={isDisabled}>
-        <img src={option.image} style={{width: "50px"}}></img>
+        <img src={option.image} style={{width: "40px"}}></img>
       </S.VariantTileContentImage>;
     }
 
