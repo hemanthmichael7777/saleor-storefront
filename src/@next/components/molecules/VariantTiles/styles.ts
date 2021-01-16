@@ -34,11 +34,7 @@ export const Wrapper = styled.div<WrapperProps>`
   max-width: 500px;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-left: -10px;
-`;
-
-export const VariantTileHeader = styled.div`
-  color: black;
+  margin-top: 10px;
 `;
 
 const getBgColor = (

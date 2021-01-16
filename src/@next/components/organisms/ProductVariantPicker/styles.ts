@@ -12,4 +12,5 @@ export const SelectIndicator = styled.div`
 export const VariantTilesHeader = styled.div`
   margin-left: 2px;
   font-weight: bold;
+  margin-top: 10px;
 `;

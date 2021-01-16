@@ -24,7 +24,7 @@ export const UndiscountedPrice = styled.span`
 
 export const VariantPicker = styled.div`
   display: grid;
-  margin-top: 20px;
+  margin-top: 10px;
 
   .react-select-wrapper,
   .input {
@@ -40,6 +40,10 @@ export const QuantityInput = styled.div`
 
 export const ErrorMessage = styled.p`
   color: ${props => props.theme.colors.error};
+  float: right;
+  font-size: 15px;
+  margin-top: 2px;
+  margin-right: 4px;
 `;
 
 export const ProductDescription = styled.div`

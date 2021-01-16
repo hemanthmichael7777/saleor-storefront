@@ -7,11 +7,11 @@ import { media, styled } from "@styles";
 
 
 export const Wrapper = styled.div<{ selected: boolean; disabled: boolean }>`
-  padding: 10px;
+  
   text-align: center;
   max-height: 30rem;
   transition: 0.3s;
-  margin-right: -20px;
+  margin-right: 2px;
 
   ${media.largeScreen`
     padding: 10px;
