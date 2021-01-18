@@ -42,7 +42,7 @@ export const ErrorMessage = styled.p`
   color: ${props => props.theme.colors.error};
   float: right;
   font-size: 15px;
-  margin-top: 2px;
+  margin-top: -39px;
   margin-right: 4px;
 `;
 
