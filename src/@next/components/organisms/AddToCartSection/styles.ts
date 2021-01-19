@@ -14,6 +14,7 @@ export const ProductPricing = styled.h4`
   padding-bottom: ${props => props.theme.spacing.spacer};
   font-size: ${props => props.theme.typography.baseFontSize};
   border-bottom: 1px solid rgba(208,208,208, 0.4);
+  margin-top: 16px;
 `;
 
 export const UndiscountedPrice = styled.span`
@@ -49,6 +50,14 @@ export const ErrorMessage = styled.p`
 export const ProductDescription = styled.div`
   padding-top: 6px;
   margin-top: 20px;
-  font-size: 12px;
+  font-size: 12.5px;
   border-top: 1px solid rgba(208,208,208, 0.4);
 `;
+
+export const Features = styled.div`
+  padding-top: 6px;
+  margin-top: 20px;
+  font-size: 12px;
+  border-top: 1px solid rgba(208,208,208, 0.4);
+  white-space: pre-line;
+`

@@ -127,11 +127,25 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
     setVariantStock(selectedVariant?.quantityAvailable);
   };
 
+  var features = null;
+  for(let i=0; i<product.metadata.length; i++){
+    if(product.metadata[i].key === "features"){
+      features = product.metadata[i].value;
+    }
+  }
+
   return (
     <S.AddToCartSelection>
       <S.ProductNameHeader data-test="productName">
         {name}
       </S.ProductNameHeader>
+      {(product.descriptionJson ? (
+        <S.ProductDescription>
+          <RichTextContent descriptionJson={product.descriptionJson} />
+        </S.ProductDescription>
+        ) : (
+          <p>{""}</p>
+      ))}
       <S.ProductPricing>
           {getProductPrice(productPricing, variantPricing)}
       </S.ProductPricing>
@@ -198,13 +212,9 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         onSubmit={() => onAddToCart(variantId, quantity)}
         disabled={disableButton}
       />
-      {(product.descriptionJson ? (
-        <S.ProductDescription>
-          <RichTextContent descriptionJson={product.descriptionJson} />
-        </S.ProductDescription>
-        ) : (
-          <p>{""}</p>
-      ))}
+      <S.Features>
+          {features}
+      </S.Features>
     </S.AddToCartSelection>
   );
 };

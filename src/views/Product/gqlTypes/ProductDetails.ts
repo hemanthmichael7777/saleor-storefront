@@ -2,6 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { string } from "yup";
 import { CountryCode } from "./../../../../gqlTypes/globalTypes";
 
 // ====================================================
@@ -703,6 +704,11 @@ export interface ProductDetails_product_productType {
   metadata: ProductDetails_product_productType_metadata[]
 }
 
+export interface ProductDetails_product_metadata {
+  key: string;
+  value: string;
+}
+
 export interface ProductDetails_product {
   __typename: "Product";
   /**
@@ -749,6 +755,7 @@ export interface ProductDetails_product {
   availableForPurchase: any | null;
 
   productType: ProductDetails_product_productType;
+  metadata: ProductDetails_product_metadata[];
 }
 
 export interface ProductDetails {
