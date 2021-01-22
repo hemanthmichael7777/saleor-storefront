@@ -68,7 +68,7 @@ export const theme = {
 };
 
 // typography
-export const baseFontFamily = "'Roboto-Light', Arial, sans-serif";
+export const baseFontFamily = "'Bodoni Moda', serif";
 export const baseFontSize = "0.875rem"; // 16px
 export const baseLineHeight = "1.25rem"; // 20px
 export const boldFontWeight = 600;

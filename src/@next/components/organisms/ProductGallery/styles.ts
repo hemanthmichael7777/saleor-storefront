@@ -10,9 +10,9 @@ export const Wrapper = styled.div`
 `;
 
 export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
-  width: 58px;
+  width: 76px;
   display: flex;
-  border-width: 4px;
+  border-width: 5px;
   border-style: solid;
   border-color: ${props =>
     props.activeThumbnail === true
@@ -23,10 +23,11 @@ export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
   overflow: hidden;
   img {
     width: 100%;
-    object-fit: contain;
+    height: 108%;
   }
   margin-top: 1px;
   margin-bottom: 1px;
+  border-radius: 7px;
 `;
 
 export const Button = styled.div`
@@ -47,7 +48,7 @@ export const TopButton = styled(Button)`
 `;
 
 export const BottomButton = styled(Button)`
-  bottom: 20%;
+  bottom: 9%;
 `;
 
 export const ThumbnailsContainer = styled.div`
@@ -56,8 +57,8 @@ export const ThumbnailsContainer = styled.div`
 
 export const ThumbnailList = styled.div`
   position: relative;
-  height: 80%;
-  max-height: 80%;
+  height: 91%;
+  max-height: 91%;
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: none;

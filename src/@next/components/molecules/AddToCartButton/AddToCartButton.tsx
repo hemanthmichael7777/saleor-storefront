@@ -1,6 +1,6 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import { Button } from "@components/atoms";
+import { ButtonWithRadius } from "@components/atoms";
 
 export interface IAddToCartButton {
   disabled: boolean;
@@ -12,7 +12,7 @@ export const AddToCartButton: React.FC<IAddToCartButton> = ({
   disabled,
 }) => {
   return (
-    <Button
+    <ButtonWithRadius
       fullWidth
       testingContext="addProductToCartButton"
       onClick={onSubmit}
@@ -20,7 +20,7 @@ export const AddToCartButton: React.FC<IAddToCartButton> = ({
       disabled={disabled}
     >
       <FormattedMessage defaultMessage="Add to basket" />
-    </Button>
+    </ButtonWithRadius>
   );
 };
 AddToCartButton.displayName = "AddToCartButton";

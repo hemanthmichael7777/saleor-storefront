@@ -20,7 +20,7 @@ $transparent-background: rgba(255,255,255,0.5);
 
 // typography
 //$base-font-family: "Inter", sans-serif;
-$base-font-family: 'Roboto-Light', Arial, sans-serif;
+$base-font-family: 'Bodoni Moda', serif;
 $base-font-size: 0.875rem;
 $small-font-size: 0.775rem;
 $base-line-height: 1.25rem; // 20px
@@ -99,3 +99,5 @@ $modal-min-height: 455px;
   mediumScreen: $medium-screen;
   smallScreen: $small-screen;
 }
+
+$mesh-background-image: "https://dayleenstore.s3.us-east-2.amazonaws.com/homepage-backgrounds/Background-Pattern-Once.jpg";

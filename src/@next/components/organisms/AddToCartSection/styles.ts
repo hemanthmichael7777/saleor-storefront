@@ -1,11 +1,11 @@
 import { styled } from "@styles";
 
 export const AddToCartSelection = styled.div`
-  width: 100%;
+  width: 96%;
+  margin-left: 8px;
 `;
 
 export const ProductNameHeader = styled.h3`
-  text-transform: uppercase;
   font-weight: ${props => props.theme.typography.boldFontWeight};
   margin-bottom: ${props => props.theme.spacing.spacer};
 `;
@@ -13,7 +13,8 @@ export const ProductNameHeader = styled.h3`
 export const ProductPricing = styled.h4`
   padding-bottom: ${props => props.theme.spacing.spacer};
   font-size: ${props => props.theme.typography.baseFontSize};
-  border-bottom: 1px solid rgba(208,208,208, 0.4);
+  font-weight: ${props => props.theme.typography.boldFontWeight};
+  border-bottom: 1.4px solid black;
   margin-top: 16px;
 `;
 
@@ -48,10 +49,11 @@ export const ErrorMessage = styled.p`
 `;
 
 export const ProductDescription = styled.div`
-  padding-top: 6px;
-  margin-top: 20px;
+  padding-top: 2px;
+  margin-top: 16px;
   font-size: 12.5px;
-  border-top: 1px solid rgba(208,208,208, 0.4);
+  border-bottom: 1.4px solid black;
+  padding-bottom: 16px;
 `;
 
 export const Features = styled.div`
@@ -61,3 +63,24 @@ export const Features = styled.div`
   border-top: 1px solid rgba(208,208,208, 0.4);
   white-space: pre-line;
 `
+
+export const FHeader = styled.div`
+  font-weight: ${props => props.theme.typography.boldFontWeight};
+`
+
+export const FittingGuideLink = styled.div`
+  text-decoration: underline;
+  font-size: 12px;
+  margin-top: 14px;
+  a {
+    font-weight: bold;
+    color: #323436;
+    opacity: 0.7;
+  }
+`;
+
+export const QuantityInputHeader = styled.div`
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 14px;
+`;

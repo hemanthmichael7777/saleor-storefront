@@ -139,6 +139,11 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
       <S.ProductNameHeader data-test="productName">
         {name}
       </S.ProductNameHeader>
+
+      <S.ProductPricing>
+          {getProductPrice(productPricing, variantPricing)}
+      </S.ProductPricing>
+
       {(product.descriptionJson ? (
         <S.ProductDescription>
           <RichTextContent descriptionJson={product.descriptionJson} />
@@ -146,9 +151,6 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         ) : (
           <p>{""}</p>
       ))}
-      <S.ProductPricing>
-          {getProductPrice(productPricing, variantPricing)}
-      </S.ProductPricing>
       
       {isOutOfStock &&
         renderErrorMessage(
@@ -198,6 +200,12 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           productVariantsMap={productVariantsMap}
         />
       </S.VariantPicker>
+      <S.FittingGuideLink>
+        <a href="/fittingguide/" target="_blank">Fitting Guide</a>
+      </S.FittingGuideLink>
+      <S.QuantityInputHeader>
+        Quantity
+      </S.QuantityInputHeader>
       <S.QuantityInput>
         <QuantityInput
           quantity={quantity}
@@ -212,9 +220,12 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         onSubmit={() => onAddToCart(variantId, quantity)}
         disabled={disableButton}
       />
+      {/* 
       <S.Features>
-          {features}
+        <S.FHeader>Features:</S.FHeader>
+        <div>{features}</div>
       </S.Features>
+      */}
     </S.AddToCartSelection>
   );
 };

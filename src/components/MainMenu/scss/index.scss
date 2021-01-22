@@ -7,8 +7,6 @@
 }
 
 .main-menu {
-  background-color: rgb(255, 255, 255);
-  background-color: rgba(255, 255, 255, 0.5);
   align-items: center;
   align-items: stretch;
   //border-bottom: 1px solid $gray-light;
@@ -21,7 +19,15 @@
 
   &__mmcontainer {
     height: 100%;
+    background-color: rgba(#F2F0F1, 0.5);
   }
+
+  &__mmcontainersolid {
+    height: 100%;
+    background-color:#F2F0F1;
+  }
+
+  
 
   &__top {
     // border: 1px solid blue;
@@ -120,13 +126,11 @@
 
   &__item {
     height: 100%;
-    text-transform: uppercase;
     line-height: 45px;
     cursor: default;
 
     &__no-nav {
       height: 100%;
-      text-transform: uppercase;
       line-height: 45px;
 
       a {
@@ -224,7 +228,6 @@
   }
 
   &__dropdown {
-    text-transform: uppercase;
     font-weight: $bold-font-weight;
 
     li {
@@ -246,7 +249,6 @@
     padding: $spacer;
 
     span {
-      text-transform: uppercase;
       font-weight: $bold-font-weight;
       vertical-align: bottom;
     }
@@ -275,8 +277,7 @@
     }
 
     span {
-      text-transform: uppercase;
-      //font-weight: $bold-font-weight;
+      font-weight: $bold-font-weight;
       margin-right: $spacer;
     }
 
@@ -293,7 +294,6 @@
     padding-right: 35px;
     padding-left: 12.5px;
     padding-top: 0px;
-
     &--active {
       &:hover {
         background-color: $gray;
@@ -346,9 +346,9 @@
 
         // 2nd level name
         > a {
-          font-size: $small-font-size;
+          font-size: 13.5px;
           position: relative;
-          text-transform: uppercase;
+          font-weight: normal;
           padding-left: 9.5px;
           margin-top: -7.5px;
         }
@@ -370,9 +370,8 @@
           // 3rd+ level names
           a {
             font-size: $small-font-size;
-            font-weight: normal;
+            font-weight: bold;
             padding: 6px 0;
-            text-transform: capitalize;
           }
 
           li > ul {

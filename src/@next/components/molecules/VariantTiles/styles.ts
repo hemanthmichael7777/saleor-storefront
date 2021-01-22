@@ -69,6 +69,16 @@ const getOpacity = (
   return '1';
 };
 
+const getOpacityImg = (
+  { disabled }: ContentProps
+) => {
+  if (disabled) {
+    return '0.2';
+  }
+
+  return '1';
+};
+
 const getCursor = (
   { disabled }: ContentProps
 ) => {
@@ -82,20 +92,22 @@ const getCursor = (
 export const VariantTileContent = styled.div<ContentProps>`
   color: ${props => getFontColor(props)};
   background-color: ${props => getBgColor(props)};
-  padding: 8px 14px;
-  border: 1px solid #D3D3D3;
+  padding: 8px 12.8px;
+  border: 1.2px solid #323436;
   opacity: ${props => getOpacity(props)};
   cursor: ${props => getCursor(props)};
-  font-size: 12px;
+  font-size: 14px;
+  border-radius: 6px;
 `;
 
 
 export const VariantTileContentImage = styled.div<ContentProps>`
   color: ${props => getFontColor(props)};
-  background-color: ${props => getBgColor(props)};
-  padding: 4px 4px;
-  padding-bottom: 0px;
-  border: 1px solid #D3D3D3;
-  opacity: ${props => getOpacity(props)};
+  height: 50px;
+  opacity: ${props => getOpacityImg(props)};
   cursor: ${props => getCursor(props)};
+`;
+
+export const VariantTileImage = styled.img`
+  
 `;

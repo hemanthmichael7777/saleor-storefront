@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   margin: $spacer 0;
   font-family: $base-font-family;
-
+  background-color: transparent;
   li {
     &:not(:last-of-type) {
       &:after {

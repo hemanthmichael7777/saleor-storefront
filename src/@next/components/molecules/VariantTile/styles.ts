@@ -11,7 +11,7 @@ export const Wrapper = styled.div<{ selected: boolean; disabled: boolean }>`
   text-align: center;
   max-height: 30rem;
   transition: 0.3s;
-  margin-right: 2px;
+  margin-right: 1px;
 
   ${media.largeScreen`
     padding: 10px;
