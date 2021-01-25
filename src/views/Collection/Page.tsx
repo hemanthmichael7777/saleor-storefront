@@ -19,7 +19,7 @@ interface SortItem {
   value?: string;
 }
 
-interface SortOptions extends Array<SortItem> {}
+interface SortOptions extends Array<SortItem> { }
 
 interface PageProps {
   activeFilters: number;
@@ -91,10 +91,38 @@ const Page: React.FC<PageProps> = ({
       []
     );
 
+  const collectionName = collection.name;
+  const description = JSON.parse(collection.descriptionJson).blocks[0].text || null;
   return (
     <div className="collection">
       <div className="container">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
+
+        <div className="collection__headercontainer">
+          <div className="collection__flexcontainer">
+
+            <div className="collection__imagecontainer" style={{ backgroundImage: `url(` + collection.backgroundImage.url + `)` }}>
+
+            </div>
+
+            <div className="collection__descriptioncontainer">
+
+              <div className="collection__name">
+                <h1>
+                  {collectionName}
+                </h1>
+              </div>
+
+              <div className="collection__descriptionbody">
+                <h2>
+                  {description}
+                </h2>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
         <FilterSidebar
           show={showFilters}
           hide={() => setShowFilters(false)}
@@ -122,6 +150,7 @@ const Page: React.FC<PageProps> = ({
           />
         )}
       </div>
+
 
       {!hasProducts && (
         <ProductsFeatured

@@ -17,6 +17,7 @@ export const collectionProductsDataQuery = gql`
       id
       slug
       name
+      descriptionJson
       seoDescription
       seoTitle
       backgroundImage {

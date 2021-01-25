@@ -80,10 +80,6 @@
     cursor: default;
   }
 
-  &__pulldiv {
-    
-  }
-
   &__left {
     flex-basis: calc(50% - 2rem);
 
@@ -131,6 +127,10 @@
     height: 100%;
     line-height: 45px;
     cursor: default;
+
+    &:hover {
+      background-color: black;
+    }
 
     &__no-nav {
       height: 100%;
