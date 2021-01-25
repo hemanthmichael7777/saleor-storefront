@@ -48,7 +48,6 @@
   &__menudiv {
     display: flex;
     align-items: baseline;
-    padding-right: 12px;
   }
 
   &__ulitem-container {
@@ -73,6 +72,10 @@
     margin-left: -20px;
     pointer-events: none;
     cursor: default;
+  }
+
+  &__pulldiv {
+    
   }
 
   &__left {
