@@ -1,10 +1,12 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .product-page {
-  background-color: $white;
+  background-image: url($mesh-background-image);
+  background-repeat: repeat;
+  background-position: left top;
 
   .breadcrumbs {
-    background-color: $white;
+    background-color: transparent;
     padding: $spacer / 2 $spacer $spacer / 2 $spacer * 1.5;
     margin-top: $spacer * 2;
   }
@@ -50,14 +52,14 @@
         width: auto;
 
         @media (min-width: $container-width) {
-          width: calc(#{$container-width} * 30 / 100);
+          // width: calc(#{$container-width} * 30 / 100);
         }
       }
     }
 
     &__gallery {
       flex-grow: 2;
-      width: 60%;
+      width: 44%;
       padding: 0 $spacer 0 0;
       box-sizing: border-box;
 
@@ -97,7 +99,7 @@
   }
 
   &__other-products {
-    background-color: $white;
+    background-color: transparent;
     padding: $spacer * 4 0;
 
     &__title {

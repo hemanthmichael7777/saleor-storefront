@@ -3,9 +3,13 @@
 
 
 .home-page {
+  background-image: url($mesh-background-image);
+  background-repeat: repeat;
+  background-position: left top;
   
   &__hero {
     margin-top: -125px;
+    margin-bottom: 60px;
     background-color: $blue-overlay;
     background-blend-mode: multiply;
     background-size: cover;
@@ -101,23 +105,23 @@
   }
 
   &__texttop {
-    width: 1005;
-    text-align: center;
-    font-size: 36px;
-    padding-top: 60px;
-    padding-bottom: 24px;
-    &__bottom {
-      font-size: 22px;
-      margin-top: 56px;
-      padding-left: 10%;
-      padding-right: 10%;
-    }
+    font-size: 42px;
+    text-align: left;
+    line-height: 42px;
+    width: 77%;
+    margin-bottom: 20px;
+    margin-top: 20px;
   }
+
+  &__texttopbottom {
+    font-size: 19px;
+  }
+
 
   &__collections {
     margin-top: 2rem;
-    margin-bottom: 2rem;
-
+    margin-bottom: 7rem; 
+    background-color: transparent;
     &__list {
       display: grid;
       grid-template-columns: 1fr;
@@ -128,11 +132,8 @@
         grid-template-columns: 1fr 1fr;
 
         > div {
-          &:nth-child(3) {
-            grid-column: 3 / 1;
-          }
 
-          &:nth-child(n + 6) {
+          &:nth-child(n + 7) {
             display: none;
           }
         }
@@ -150,13 +151,14 @@
       }
 
       &__image {
-        width: 100%;
-        height: 30rem;
+        width: 96%;
+        height: 28rem;
         background-size: cover;
         background-position: center;
         margin-bottom: 1rem;
         position: relative;
-        overflow-y: hidden
+        overflow-y: hidden;
+        border-radius: 8.4px;
         &--no-photo {
           background-color: $turquoise-light;
           background-repeat: no-repeat;

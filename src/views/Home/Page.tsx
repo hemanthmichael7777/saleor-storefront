@@ -94,20 +94,24 @@ const Page: React.FC<{
       >
       </div>
 
-      <div className="home-page__texttop">
-        Value Proposition Headline
-        <div className="home-page__texttop__bottom">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
-          pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus. 
-          Donec scelerisque sollicitudin enim eu venenatis.
-        </div>
-      </div>
-
 
       {collectionsExist() && (
         <div className="home-page__collections">
           <div className="container">
             <div className="home-page__collections__list">
+              <div className="home-page__collections__list__image">
+                <div className="home-page__texttop">
+                  Lorem ipsum dolor sit amet, consectetur
+                </div>
+                <div className="home-page__texttopbottom">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
+                  pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus. 
+                  Donec scelerisque sollicitudin enim eu venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
+                  pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus. 
+                  Donec scelerisque sollicitudin enim eu venenatis. enim eu venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
+                  pulvinar facilisis justo mollis, auctor consequat urna. 
+                </div>
+              </div>
               {filteredCollections.map(({ node: collection }) => (
                 <div key={collection.id}>
                   <Link

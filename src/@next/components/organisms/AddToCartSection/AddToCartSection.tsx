@@ -30,6 +30,8 @@ import {
   canAddToCart,
 } from "./stockHelpers";
 
+import { RichTextContent } from "@components/atoms";
+
 const LOW_STOCK_QUANTITY: number = 5;
 
 export interface IAddToCartSection {
@@ -125,19 +127,37 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
     setVariantStock(selectedVariant?.quantityAvailable);
   };
 
+  var features = null;
+  for(let i=0; i<product.metadata.length; i++){
+    if(product.metadata[i].key === "features"){
+      features = product.metadata[i].value;
+    }
+  }
+
   return (
     <S.AddToCartSelection>
-      <S.ProductNameHeader data-test="productName">{name}</S.ProductNameHeader>
-      {isOutOfStock ? (
+      <S.ProductNameHeader data-test="productName">
+        {name}
+      </S.ProductNameHeader>
+
+      <S.ProductPricing>
+          {getProductPrice(productPricing, variantPricing)}
+      </S.ProductPricing>
+
+      {(product.descriptionJson ? (
+        <S.ProductDescription>
+          <RichTextContent descriptionJson={product.descriptionJson} />
+        </S.ProductDescription>
+        ) : (
+          <p>{""}</p>
+      ))}
+      
+      {isOutOfStock &&
         renderErrorMessage(
           intl.formatMessage(commonMessages.outOfStock),
           "outOfStock"
-        )
-      ) : (
-        <S.ProductPricing>
-          {getProductPrice(productPricing, variantPricing)}
-        </S.ProductPricing>
-      )}
+        )}
+      
       {noPurchaseAvailable &&
         renderErrorMessage(
           intl.formatMessage(commonMessages.noPurchaseAvailable),
@@ -180,6 +200,12 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
           productVariantsMap={productVariantsMap}
         />
       </S.VariantPicker>
+      <S.FittingGuideLink>
+        <a href="/fittingguide/" target="_blank">Fitting Guide</a>
+      </S.FittingGuideLink>
+      <S.QuantityInputHeader>
+        Quantity
+      </S.QuantityInputHeader>
       <S.QuantityInput>
         <QuantityInput
           quantity={quantity}
@@ -194,6 +220,12 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         onSubmit={() => onAddToCart(variantId, quantity)}
         disabled={disableButton}
       />
+      {/* 
+      <S.Features>
+        <S.FHeader>Features:</S.FHeader>
+        <div>{features}</div>
+      </S.Features>
+      */}
     </S.AddToCartSelection>
   );
 };

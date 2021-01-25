@@ -30,14 +30,11 @@ const getEdgeColor = (
 export const Wrapper = styled.div<WrapperProps>`
   display: flex;
   color: ${props => getEdgeColor(props)};
-  width: 400px;
-  max-width: 400px;
+  width: 100%;
+  max-width: 500px;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-`;
-
-export const VariantTileHeader = styled.div`
-  color: black;
+  margin-top: 10px;
 `;
 
 const getBgColor = (
@@ -72,6 +69,16 @@ const getOpacity = (
   return '1';
 };
 
+const getOpacityImg = (
+  { disabled }: ContentProps
+) => {
+  if (disabled) {
+    return '0.2';
+  }
+
+  return '1';
+};
+
 const getCursor = (
   { disabled }: ContentProps
 ) => {
@@ -85,19 +92,22 @@ const getCursor = (
 export const VariantTileContent = styled.div<ContentProps>`
   color: ${props => getFontColor(props)};
   background-color: ${props => getBgColor(props)};
-  padding: 10px 14px;
-  border: 1px solid #D3D3D3;
+  padding: 8px 12.8px;
+  border: 1.2px solid #323436;
   opacity: ${props => getOpacity(props)};
   cursor: ${props => getCursor(props)};
+  font-size: 14px;
+  border-radius: 6px;
 `;
 
 
 export const VariantTileContentImage = styled.div<ContentProps>`
   color: ${props => getFontColor(props)};
-  background-color: ${props => getBgColor(props)};
-  padding: 4px 4px;
-  padding-bottom: 0px;
-  border: 1px solid #D3D3D3;
-  opacity: ${props => getOpacity(props)};
+  height: 50px;
+  opacity: ${props => getOpacityImg(props)};
   cursor: ${props => getCursor(props)};
+`;
+
+export const VariantTileImage = styled.img`
+  
 `;

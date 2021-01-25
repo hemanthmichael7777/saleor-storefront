@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 
-import { TextField } from "@components/molecules";
+import { TextFieldStandard } from "@components/molecules";
 import { commonMessages } from "@temp/intl";
 
 export interface IQuantityInput {
@@ -58,10 +58,9 @@ export const QuantityInput: React.FC<IQuantityInput> = ({
       : undefined;
 
   return (
-    <TextField
+    <TextFieldStandard
       name="quantity"
       type="number"
-      label={intl.formatMessage(commonMessages.quantity)}
       min="1"
       value={quantity.toString()}
       disabled={disabled}

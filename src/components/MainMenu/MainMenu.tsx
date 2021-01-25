@@ -7,11 +7,9 @@ import Media from "react-media";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
-
-import { DemoBanner } from "@components/atoms";
 import classNames from "classnames";
 import {
   MenuDropdown,
@@ -79,15 +77,23 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
     }
   };
 
+  function isBaseUrl(){
+    // condition is true for the homepage
+    if (window.location.href.split("/").length == 4)
+      return true;
+  }
+
+  const mmContainerClass = isBaseUrl() ? 
+      "main-menu__mmcontainer" : "main-menu__mmcontainersolid";
+
   return (
     <header
       className={classNames({
         "header-with-dropdown": !!activeDropdown,
       })}
     >
-      {demoMode && <DemoBanner />}
       <nav className="main-menu" id="header">
-        <div className="main-menu__mmcontainer">
+        <div className={mmContainerClass}>
           <div className="main-menu__top">
             <div className="main-menu__left">
               <TypedMainMenuQuery renderOnError displayLoader={false}>

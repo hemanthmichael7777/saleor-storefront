@@ -339,7 +339,7 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
           return (
             <div key={"div-" + productVariantsAttributeId}>
               <S.VariantTilesHeader>
-                {vTileHeaderText}
+                {"Select " + vTileHeaderText}
               </S.VariantTilesHeader>
               <ProductVariantAttributeSelectTiles
                 key={productVariantsAttributeId}

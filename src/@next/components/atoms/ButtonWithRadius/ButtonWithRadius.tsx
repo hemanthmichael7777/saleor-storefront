@@ -6,7 +6,7 @@ import { IProps } from "./types";
 /**
  * The basic button
  */
-export const Button: React.FC<IProps> = ({
+export const ButtonWithRadius: React.FC<IProps> = ({
   color = "primary",
   btnRef,
   children,
