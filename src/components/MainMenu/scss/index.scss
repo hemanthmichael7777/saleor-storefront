@@ -82,9 +82,10 @@
 
   &__left {
     flex-basis: calc(50% - 2rem);
-
-    @media (min-width: $small-screen) {
-      flex-basis: calc(50% - 4rem);
+    
+    @media (max-width: $small-screen) {
+      margin-left: auto;
+      flex-basis: auto;
     }
 
     ul {
@@ -98,8 +99,9 @@
     flex-basis: calc(50% - 2rem);
 
     @media (max-width: $small-screen) {
-      flex-basis: calc(50% - 4rem);
-      margin-top: 8px;
+      margin-left: auto;
+      flex-basis: auto;
+      margin-top: 10px;
     }
 
     ul {
@@ -111,14 +113,16 @@
 
   &__center {
 
+    @media (max-width: $small-screen) {
+      margin-top: 10px;
+    }
+
     svg {
       width: 13rem;
       margin-top: 8px;
 
       @media (max-width: $small-screen) {
         width: 8rem;
-        margin-top: 17.5px;
-        margin-right: 15px;
       }
     }
   }
@@ -294,9 +298,17 @@
   }
 
   &__nav-dropdown {
+
     padding-right: 35px;
     padding-left: 12.5px;
     padding-top: 0px;
+
+    &--no-nav {
+      padding-left: 15px;
+      padding-top: 0px;
+      padding-right: 5px;
+    }
+
     &--active {
       &:hover {
         background-color: $gray;

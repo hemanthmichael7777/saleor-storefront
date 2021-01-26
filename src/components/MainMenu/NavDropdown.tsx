@@ -11,6 +11,7 @@ import "./scss/index.scss";
 
 class NavDropdown extends React.PureComponent<
   MainMenu_shop_navigation_main_items & {
+    hasSubNavigation: boolean;
     overlay: OverlayContextInterface;
     showDropdown: boolean;
     onShowDropdown: () => void;
@@ -20,15 +21,19 @@ class NavDropdown extends React.PureComponent<
   render() {
     const {
       children,
+      hasSubNavigation,
       showDropdown,
       onShowDropdown,
       onHideDropdown,
     } = this.props;
 
+    console.log(this.props.hasSubNavigation);
+
     return (
       <ul
         className={classNames({
           "main-menu__nav-dropdown": true,
+          "main-menu__nav-dropdown--no-nav": !hasSubNavigation,
           "main-menu__nav-dropdown--active": showDropdown,
         })}
         onMouseOver={onShowDropdown}

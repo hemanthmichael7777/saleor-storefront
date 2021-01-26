@@ -341,6 +341,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                               >
 
                                 <NavDropdown
+                                  hasSubNavigation={hasSubNavigation}
                                   overlay={overlayContext}
                                   showDropdown={
                                     activeDropdown === item.id && hasSubNavigation

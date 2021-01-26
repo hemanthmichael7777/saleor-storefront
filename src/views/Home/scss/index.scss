@@ -25,9 +25,8 @@
       align-items: center;
       display: flex;
       flex-direction: column;
-      height: calc(100vh - 56px);
-      justify-content: space-between;
-      padding: $spacer;
+      height: calc(100vh - 70px);
+      width: 500px;
 
       &-text {
         margin-top: $spacer * 5;
