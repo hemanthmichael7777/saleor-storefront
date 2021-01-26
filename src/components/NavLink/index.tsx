@@ -22,6 +22,7 @@ interface NavLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
 }
 export const NavLink: React.FC<NavLinkProps> = ({ item, ...props }) => {
   const { name, url, category, collection, page } = item;
+  {console.log(url)}
   const link = (url: string) => (
     <Link to={url} {...props}>
       {name}
@@ -30,7 +31,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ item, ...props }) => {
 
   if (url) {
     return (
-      <a href={url} {...props}>
+      <a href={url} {...props} target="_blank">
         {name}
       </a>
     );

@@ -27,8 +27,6 @@ class NavDropdown extends React.PureComponent<
       onHideDropdown,
     } = this.props;
 
-    console.log(this.props.hasSubNavigation);
-
     return (
       <ul
         className={classNames({
