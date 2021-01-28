@@ -14,6 +14,8 @@ import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
 import { Collection_collection } from "./gqlTypes/Collection";
 import { CollectionProducts_collection_products } from "./gqlTypes/CollectionProducts";
 
+import noPhotoImg from "../../images/no-photo.svg";
+
 interface SortItem {
   label: string;
   value?: string;
@@ -101,7 +103,12 @@ const Page: React.FC<PageProps> = ({
         <div className="collection__headercontainer">
           <div className="collection__flexcontainer">
 
-            <div className="collection__imagecontainer" style={{ backgroundImage: `url(` + collection.backgroundImage.url + `)` }}>
+            <div className="collection__imagecontainer" style={{
+                        backgroundImage: `url(${collection.backgroundImage
+                          ? collection.backgroundImage.url
+                          : noPhotoImg
+                          })`,
+                      }}>
 
             </div>
 
