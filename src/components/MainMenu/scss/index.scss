@@ -60,6 +60,7 @@
     display: flex;
     justify-content: center;
     margin-top: 18px;
+    user-select: none;
   }
 
   &__item-container {

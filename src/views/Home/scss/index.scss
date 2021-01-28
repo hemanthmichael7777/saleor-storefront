@@ -110,9 +110,13 @@
     width: 77%;
     margin-bottom: 20px;
     margin-top: 20px;
+    cursor: default;
+    user-select: none;
   }
   &__texttopbottom {
     font-size: 19px;
+    cursor: default;
+    user-select: none;
   }
 
 

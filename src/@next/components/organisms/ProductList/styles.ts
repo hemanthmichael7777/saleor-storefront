@@ -2,8 +2,9 @@ import { media, styled } from "@styles";
 
 export const List = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 2rem;
+  grid-template-columns: 0fr 0fr 0fr;
+  grid-gap: 2.5rem;
+  justify-content: center;
 
   ${media.largeScreen`
     grid-template-columns: 1fr 1fr;
