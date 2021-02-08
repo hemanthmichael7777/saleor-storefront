@@ -10,7 +10,7 @@ import { ProductList } from "../../@next/components/organisms";
 import { Breadcrumbs, ProductsFeatured } from "../../components";
 import { getDBIdFromGraphqlId, maybe } from "../../core/utils";
 
-import { FilterSidebar } from "../../@next/components/organisms/FilterSidebar";
+import { FilterFixed } from "../../@next/components/organisms/FilterFixed";
 import { Collection_collection } from "./gqlTypes/Collection";
 import { CollectionProducts_collection_products } from "./gqlTypes/CollectionProducts";
 
@@ -130,7 +130,7 @@ const Page: React.FC<PageProps> = ({
           </div>
         </div>
 
-        <FilterSidebar
+        <FilterFixed
           show={showFilters}
           hide={() => setShowFilters(false)}
           onAttributeFiltersChange={onAttributeFiltersChange}

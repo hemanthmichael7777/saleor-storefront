@@ -17,6 +17,10 @@ import { structuredData } from "../../core/SEO/Homepage/structuredData";
 
 import noPhotoImg from "../../images/no-photo.svg";
 
+import { RichTextContent } from "@components/atoms";
+import { useState } from "react";
+import { ProductsFeatured } from "@temp/components";
+
 const Page: React.FC<{
   loading: boolean;
   categories: ProductsList_categories;
@@ -37,6 +41,7 @@ const Page: React.FC<{
         }).length > 0;
       }
     });
+
 
     filteredCollections = filteredCollections.sort(function (a, b) {
       var valueA = a.node.metadata.filter((q: any) => {
@@ -67,15 +72,11 @@ const Page: React.FC<{
     });
   }
 
-  function convertDescription(j){
-    if(j && j !== ""){
-      var p = JSON.parse(j);
-      if(p.blocks.length > 0){
-        return p.blocks[0].text;
-      }
-    }
-    return "";
-  }
+  const [hoveredId, setHovered] = useState("");
+  const toggleHover = (id: any) => setHovered(id);
+  const toggleHoverOff = () => setHovered("");
+
+  
 
   return (
     <>
@@ -92,6 +93,9 @@ const Page: React.FC<{
             : null
         }
       >
+        <div className="home-page__hero__text">
+          Shop the new Dominique collection of intimate apparel designed for every YOU.
+        </div>
       </div>
 
 
@@ -101,19 +105,23 @@ const Page: React.FC<{
             <div className="home-page__collections__list">
               <div className="home-page__collections__list__image">
                 <div className="home-page__texttop">
-                  Lorem ipsum dolor sit amet, consectetur
+                  Match Your Mood
                 </div>
                 <div className="home-page__texttopbottom">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
-                  pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus. 
-                  Donec scelerisque sollicitudin enim eu venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
-                  pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus. 
-                  Donec scelerisque sollicitudin enim eu venenatis. enim eu venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, 
-                  pulvinar facilisis justo mollis, auctor consequat urna. 
+                  True beauty comes from embracing your distinct personality and celebrating what makes you
+                  YOU — and we’re here to make sure you look fabulous while doing it. We love empowering you
+                  to find that just-right undergarment to match your every mood.
+                  <br></br><br></br>
+                  Whether you’re lounging at home, dressing for a special occasion, getting in a workout or
+                  looking for a sexy style - we’ve got you covered. Even better? We’ve organized our gorgeous
+                  pieces into five separate collections, so you can easily find the perfect bra, shapewear,
+                  activewear and lingerie—all based on how you’re feeling. 
                 </div>
               </div>
               {filteredCollections.map(({ node: collection }) => (
-                <div key={collection.id}>
+                <div 
+                  key={collection.id}
+                >
                   <Link
                     to={generateCollectionUrl(collection.id, collection.name)}
                     key={collection.id}
@@ -131,11 +139,20 @@ const Page: React.FC<{
                           : noPhotoImg
                           })`,
                       }}
+                      onMouseEnter={() => {toggleHover(collection.id);}}
+                      onMouseLeave={() => {toggleHoverOff();}}
                     >
-                      <div className="home-page__collections__list__image__text">
+                      <div 
+                        className={
+                          collection.id == hoveredId ? 
+                            "home-page__collections__list__image__texthvr" 
+                            : 
+                            "home-page__collections__list__image__text"
+                        }
+                      >
                         <h3>{collection.name}</h3>
                         <div className="home-page__collections__list__image__text__hidden">
-                          {convertDescription(collection.descriptionJson)}
+                          <RichTextContent descriptionJson={collection.descriptionJson} ></RichTextContent>
                         </div>
                       </div>
                     </div>
@@ -146,6 +163,11 @@ const Page: React.FC<{
           </div>
         </div>
       )}
+
+      <ProductsFeatured
+        title={"Shop our most popular styles" }
+      />
+
     </>
   );
 };
