@@ -1,0 +1,153 @@
+import * as React from "react";
+
+import ReactSVG from "react-svg";
+import NetworkStatus from "../NetworkStatus";
+import { stringify } from "query-string";
+
+import { TypedSearchResults } from "./queries";
+import { SearchResults } from "./gqlTypes/SearchResults";
+import ProductItem from "./ProductItem";
+import NothingFound from "./NothingFound";
+
+import { searchUrl } from "../../app/routes";
+import { maybe } from "@temp/core/utils";
+import { Button, Loader } from "@components/atoms";
+import { FormattedMessage } from "react-intl";
+import { Error } from "../Error";
+import { OfflinePlaceholder } from "..";
+
+import searchImg from "../../images/search.svg";
+
+import "./scss/index.scss"
+
+export class Search extends React.Component<any> {
+    state = { search: "" }
+
+    submitBtnRef = React.createRef<HTMLButtonElement>();
+    node: HTMLDivElement;
+
+    componentWillMount() {
+        document.addEventListener('mousedown', this.handleClick, false);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClick, false);
+    }
+
+    handleClick = (e) => {
+        if (this.node.contains(e.target)) {
+            this.setState({ isActive: true })
+        }
+        else {
+            this.setState({ search: "" });
+        }
+    }
+
+    get hasSearchPhrase() {
+        return this.state.search.length > 0;
+    }
+
+    get redirectTo() {
+        return { pathname: searchUrl, search: `?${this.searchQs}` };
+    }
+
+    get searchQs() {
+        return stringify({ q: this.state.search });
+    }
+
+    hasResults = (data: SearchResults) =>
+        maybe(() => !!data.products.edges.length);
+
+    handleSubmit = (evt: React.FormEvent) => {
+        if (this.hasSearchPhrase && this.submitBtnRef.current) {
+            this.props.history.push(`${searchUrl}?${this.searchQs}`);
+        }
+
+        evt.preventDefault();
+    };
+
+    clear() {
+        this.setState({ search: "" });
+    }
+
+    render() {
+        return (
+            <>
+                <div ref={node => this.node = node}>
+                    <div className="search-container">
+                        <input className="search"
+                            placeholder={"Search"}
+                            onChange={evt => this.setState({ search: evt.target.value })}
+                            value={this.state.search}
+
+                        />
+                    </div>
+
+                    <NetworkStatus>
+                        {isOnline => {
+                            if (this.hasSearchPhrase) {
+                                return (
+                                    <div className="results-container">
+                                        <TypedSearchResults
+                                            renderOnError
+                                            displayError={false}
+                                            errorPolicy="all"
+                                            variables={{ query: this.state.search }}
+                                        >
+                                            {({ data, error, loading }) => {
+
+                                                if (this.hasResults(data)) {
+                                                    return (
+                                                        <>
+                                                            <ul>
+                                                                {data.products.edges.map(product => (
+                                                                    <div onClick={() => this.clear()}>
+                                                                        <ProductItem
+                                                                            {...product}
+                                                                            key={product.node.id}
+                                                                            
+                                                                        />
+                                                                    </div>
+
+                                                                ))}
+                                                            </ul>
+                                                            <div className="search__products__footer">
+                                                                {loading ? (
+                                                                    <Loader />
+                                                                ) : (
+                                                                        // <Button
+                                                                        //     testingContext="searchProductsButton"
+                                                                        //     btnRef={this.submitBtnRef}
+                                                                        //     type="submit"
+                                                                        // >
+                                                                        //     <FormattedMessage defaultMessage="Show all results" />
+                                                                        // </Button>
+                                                                        null
+                                                                    )}
+                                                            </div>
+                                                        </>
+                                                    );
+                                                }
+
+                                                if (error) {
+                                                    return isOnline ? (
+                                                        <Error error={error.message} />
+                                                    ) : (
+                                                            <OfflinePlaceholder />
+                                                        );
+                                                }
+
+                                                return <NothingFound search={this.state.search} />;
+                                            }}
+                                        </TypedSearchResults>
+                                    </div>
+                                );
+                            }
+                            return null;
+                        }}
+                    </NetworkStatus>
+                </div>
+            </>
+        );
+    }
+}

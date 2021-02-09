@@ -24,11 +24,13 @@ import { maybe } from "../../core/utils";
 import NavDropdown from "./NavDropdown";
 import { TypedMainMenuQuery } from "./queries";
 
+import { Search } from '../Search';
+
 import cartImg from "../../images/cart.svg";
 import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import logoImg from "../../images/logo.svg";
-import searchImg from "../../images/search.svg";
+
 import userImg from "../../images/user.svg";
 import {
   mediumScreen,
@@ -77,14 +79,14 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
     }
   };
 
-  function isBaseUrl(){
+  function isBaseUrl() {
     // condition is true for the homepage
     if (window.location.href.split("/").length == 4)
       return true;
   }
 
-  const mmContainerClass = isBaseUrl() ? 
-      "main-menu__mmcontainer" : "main-menu__mmcontainersolid";
+  const mmContainerClass = isBaseUrl() ?
+    "main-menu__mmcontainer" : "main-menu__mmcontainersolid";
 
   return (
     <header
@@ -208,6 +210,15 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
             <div className="main-menu__right">
               <ul>
                 <Online>
+
+                  <li
+                    data-test="menuSearchOverlayLink"
+                  >
+
+                    <Search />
+                    
+                  </li>
+
                   <Media
                     query={{ minWidth: smallScreen }}
                     render={() => (
@@ -295,24 +306,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     />
                   </li>
                 </Offline>
-
-                <li
-                  data-test="menuSearchOverlayLink"
-                  className="main-menu__search"
-                  onClick={() =>
-                    overlayContext.show(OverlayType.search, OverlayTheme.right)
-                  }
-                >
-                  <Media
-                    query={{ minWidth: mediumScreen }}
-                    render={() => (
-                      <span>
-                        <FormattedMessage {...commonMessages.search} />
-                      </span>
-                    )}
-                  />
-                  <ReactSVG path={searchImg} />
-                </li>
               </ul>
             </div>
           </div>

@@ -27,8 +27,6 @@
     background-color:#F2F0F1;
   }
 
-  
-
   &__top {
     // border: 1px solid blue;
     height: 50%;
@@ -98,6 +96,8 @@
 
   &__right {
     flex-basis: calc(50% - 2rem);
+    margin-top: 28px;
+    margin-right: 20px;
 
     @media (max-width: $small-screen) {
       margin-left: auto;

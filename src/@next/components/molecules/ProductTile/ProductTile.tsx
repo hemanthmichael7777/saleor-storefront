@@ -15,8 +15,6 @@ export const ProductTile: React.FC<IProps> = ({ product, link, key }: IProps) =>
       ? product.pricing.priceRange.start
       : undefined;
 
-      {console.log(product)}
-
   return (
     <S.Wrapper>
       <Link to={link} key={key}>
