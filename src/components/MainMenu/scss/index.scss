@@ -5,6 +5,10 @@
   background-color: $purple;
 }
 
+.nav-flex {
+  display: flex;
+}
+
 .main-menu {
   align-items: center;
   align-items: stretch;
@@ -75,9 +79,11 @@
   }
 
   &__arrow-icon {
-    margin-left: -20px;
     pointer-events: none;
     cursor: default;
+    margin-left: 20px;
+    margin-right: -20px;
+    margin-top:1px;
   }
 
   &__left {
@@ -314,6 +320,7 @@
     &--active {
       &:hover {
         background-color: $gray;
+        color: black;
         
       }
     }

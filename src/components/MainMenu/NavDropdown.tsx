@@ -7,6 +7,10 @@ import { NavLink, OverlayContextInterface } from "..";
 import { MainMenu_shop_navigation_main_items } from "./gqlTypes/MainMenu";
 import NavItem from "./NavItem";
 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+
 import "./scss/index.scss";
 
 class NavDropdown extends React.PureComponent<
@@ -17,7 +21,7 @@ class NavDropdown extends React.PureComponent<
     onShowDropdown: () => void;
     onHideDropdown: () => void;
   }
-> {
+  > {
   render() {
     const {
       children,
@@ -26,6 +30,8 @@ class NavDropdown extends React.PureComponent<
       onShowDropdown,
       onHideDropdown,
     } = this.props;
+
+    var hasSubNav = hasSubNavigation ? "true" : "none"
 
     return (
       <ul
@@ -37,9 +43,19 @@ class NavDropdown extends React.PureComponent<
         onMouseOver={onShowDropdown}
         onMouseLeave={onHideDropdown}
       >
-        <li>
-          <NavLink item={this.props} onClick={onHideDropdown} />
-        </li>
+
+        <div className="nav-flex">
+          <li>
+            <NavLink item={this.props} onClick={onHideDropdown} />
+          </li>
+
+          <div style={{display : hasSubNav}}>
+            <div className="main-menu__arrow-icon">
+              <FontAwesomeIcon icon={faCaretDown} />
+            </div>
+          </div>
+        </div>
+
         <li
           className={classNames({
             "main-menu__nav-dropdown__body": true,
@@ -50,7 +66,7 @@ class NavDropdown extends React.PureComponent<
             {children.map((subItem, i) => (
               <NavItem key={i} hideOverlay={onHideDropdown} {...subItem} />
             ))}
-          </ul> 
+          </ul>
         </li>
       </ul>
     );
