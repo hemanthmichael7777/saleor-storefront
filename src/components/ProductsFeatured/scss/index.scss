@@ -1,18 +1,30 @@
 @import "../../../globalStyles/scss/variables.scss";
 
+
+
 .products-featured {
-  padding: 2rem 0 4rem;
+  padding: 3.2rem 0 4rem;
+  margin-left: -16px;
+  &__container {
+    @media (min-width: $small-screen) {
+      > a {
+        &:nth-child(n + 5) {
+          display: none;
+        }
+      }
+    }
+  }
 
   h3 {
+    font-size: 30px;
     font-weight: $bold-font-weight;
     margin-bottom: $spacer * 2;
-    text-transform: uppercase;
+    margin-left: 16px;
   }
 
   a {
     color: $base-font-color;
     display: inline-block;
-    max-width: 255px;
     text-decoration: none;
   }
 }

@@ -2,11 +2,18 @@
 
 .product-list-item {
   text-align: center;
+  
+  width: 260px;
+  max-width: 260px;
+  margin-right: 20.8px;
+  overflow: hidden;
+  &__text {
+    margin-left: 16px;
+  }
 
   &__title {
-    text-transform: $product-item-title-text-transform;
     font-weight: $product-item-title-font-weight;
-    margin-top: $spacer;
+    margin-top: $spacer* 1.4;
     text-align: left;
   }
 
@@ -24,23 +31,27 @@
 
   &__price {
     font-weight: $product-item-price-font-weight;
-    margin: $product-item-price-margin;
+    
     text-align: left;
   }
 
   &__image {
-    //background-color: $turquoise-light;
     display: flex;
     height: 350px;
     justify-content: center;
-
+    
     img {
       object-fit: contain;
-      max-width: 100%;
+      border-radius: 12px;
+      
     }
 
     @media (max-width: $small-screen) {
       height: 210px;
     }
+  }
+
+  &__color_select {
+    
   }
 }
