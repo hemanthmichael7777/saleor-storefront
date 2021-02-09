@@ -203,7 +203,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
 
             <div className="main-menu__center">
               <Link to={appPaths.baseUrl}>
-                <ReactSVG path={logoImg} />
+                <ReactSVG path={logoImg}/>
               </Link>
             </div>
 

@@ -45,7 +45,7 @@ const getBgColor = (
     return '#666666';
   }
 
-  return '#EFEFEF';
+  return '#E9E7E8';
 };
 
 const getFontColor = (
@@ -93,7 +93,7 @@ export const VariantTileContent = styled.div<ContentProps>`
   color: ${props => getFontColor(props)};
   background-color: ${props => getBgColor(props)};
   padding: 8px 12.8px;
-  border: 1.2px solid #323436;
+  border: 1.3px solid #323436;
   opacity: ${props => getOpacity(props)};
   cursor: ${props => getCursor(props)};
   font-size: 14px;

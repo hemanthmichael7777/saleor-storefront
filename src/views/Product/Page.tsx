@@ -3,7 +3,7 @@ import React from "react";
 import Media from "react-media";
 import { useHistory } from "react-router-dom";
 import queryString from "query-string";
-import { ProductDescription } from "@components/molecules";
+// import { ProductDescription } from "@components/molecules";
 import { ProductGallery } from "@components/organisms";
 import AddToCartSection from "@components/organisms/AddToCartSection";
 import { smallScreen } from "../../globalStyles/scss/variables.scss";

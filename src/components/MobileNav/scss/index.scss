@@ -5,6 +5,9 @@
   max-width: calc(100vw - 5rem);
   width: 30rem;
 
+  background-color: $purple;
+  color: $white;;
+
   &__menu-item {
     border-bottom: 1px solid $gray-light;
     display: grid;
@@ -13,12 +16,10 @@
     &-link,
     &-back span {
       align-items: center;
-      color: $base-font-color;
+      color: $white;
       display: flex;
-      font-weight: 600;
       padding: $spacer;
       text-decoration: none;
-      text-transform: uppercase;
       transition: 0.3s;
 
       svg * {

@@ -2,8 +2,7 @@
 
 .header-with-dropdown {
   z-index: 3;
-  background-color: rgb(255, 255, 255);
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: $purple;
 }
 
 .main-menu {
@@ -19,12 +18,14 @@
 
   &__mmcontainer {
     height: 100%;
-    background-color: rgba(#F2F0F1, 0.5);
+    background-color: $purple;
+    color: $white;
   }
 
   &__mmcontainersolid {
     height: 100%;
-    background-color:#F2F0F1;
+    background-color: $purple;
+    color: $white;
   }
 
   &__top {
