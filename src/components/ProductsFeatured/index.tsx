@@ -19,13 +19,12 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
           () => data.shop.homepageCollection.products.edges,
           []
         );
-
+        
         if (products.length) {
           return (
             <div className="products-featured">
-              <div className="container">
                 <h3>{title}</h3>
-                <Carousel>
+                <div className="products-featured__container">
                   {products.map(({ node: product }) => (
                     <Link
                       to={generateProductUrl(product.id, product.name)}
@@ -34,8 +33,8 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
                       <ProductListItem product={product} />
                     </Link>
                   ))}
-                </Carousel>
-              </div>
+                </div>
+              
             </div>
           );
         }

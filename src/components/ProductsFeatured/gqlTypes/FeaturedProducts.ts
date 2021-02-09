@@ -219,6 +219,21 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node_ca
   name: string;
 }
 
+export interface FeaturedProducts_shop_homepageCollection_products_edges_node_productType_metadata {
+  key: string;
+  value: string;
+}
+
+export interface FeaturedProducts_shop_homepageCollection_products_edges_node_productType {
+  metadata: FeaturedProducts_shop_homepageCollection_products_edges_node_productType_metadata[]
+}
+
+export interface FeaturedProducts_shop_homepageCollection_products_edges_node_image {
+  id: number;
+  alt: string | null;
+  url: string;
+}
+
 export interface FeaturedProducts_shop_homepageCollection_products_edges_node {
   __typename: "Product";
   /**
@@ -239,6 +254,9 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node {
    */
   pricing: FeaturedProducts_shop_homepageCollection_products_edges_node_pricing | null;
   category: FeaturedProducts_shop_homepageCollection_products_edges_node_category | null;
+  productType: FeaturedProducts_shop_homepageCollection_products_edges_node_productType;
+
+  images: FeaturedProducts_shop_homepageCollection_products_edges_node_image[] | null;
 }
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges {

@@ -7,6 +7,45 @@ import {
 } from "../../views/Product/queries";
 import { FeaturedProducts } from "./gqlTypes/FeaturedProducts";
 
+export const productVariantFragment = gql`
+  fragment ProductVariantFields on ProductVariant {
+    id
+    sku
+    name
+    isAvailable
+    images {
+      id
+      url
+      alt
+    }
+    pricing {
+      onSale
+      priceUndiscounted {
+        ...Price
+      }
+      price {
+        ...Price
+      }
+    }
+    attributes {
+      attribute {
+        id
+        name
+        slug
+        metadata {
+          key
+          value
+        }
+      }
+      values {
+        id
+        name
+        value: name
+      }
+    }
+  }
+`;
+
 export const featuredProducts = gql`
   ${basicProductFragment}
   ${productPricingFragment}
@@ -22,6 +61,17 @@ export const featuredProducts = gql`
               category {
                 id
                 name
+              }
+              images {
+                id
+                alt
+                url
+              }
+              productType {
+                metadata {
+                  key
+                  value
+                }
               }
             }
           }

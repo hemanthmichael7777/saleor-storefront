@@ -160,14 +160,12 @@ const Page: React.FC<{
                 </div>
               ))}
             </div>
+            <ProductsFeatured
+              title={"Shop our most popular styles" }
+            />
           </div>
         </div>
       )}
-
-      <ProductsFeatured
-        title={"Shop our most popular styles" }
-      />
-
     </>
   );
 };

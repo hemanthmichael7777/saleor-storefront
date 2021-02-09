@@ -8,6 +8,8 @@ import { Thumbnail } from "@components/molecules";
 import { TaxedMoney } from "../../@next/components/containers";
 import { FeaturedProducts_shop_homepageCollection_products_edges_node } from "../ProductsFeatured/gqlTypes/FeaturedProducts";
 
+import { VariantTiles } from "../../@next/components/molecules/VariantTiles";
+
 interface ProductListItemProps {
   product: FeaturedProducts_shop_homepageCollection_products_edges_node;
 }
@@ -31,14 +33,22 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
       </>
     );
   };
+
+  
+
   return (
     <div className="product-list-item">
       <div className="product-list-item__image">
         <Thumbnail source={product} />
       </div>
+      <div className="product-list-item__text">
       <h4 className="product-list-item__title">{product.name}</h4>
       <p className="product-list-item__category">{category?.name}</p>
+      <div className="product-list-item__color_select">
+        
+      </div>
       <p className="product-list-item__price">{getProductPrice()}</p>
+      </div>
     </div>
   );
 };
