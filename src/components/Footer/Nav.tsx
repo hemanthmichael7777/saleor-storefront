@@ -9,6 +9,9 @@ import logoImg from "../../images/logo.svg";
 import "./scss/index.scss";
 
 class Nav extends React.PureComponent {
+
+  state = { formValue: "" }
+
   render() {
     return (
       <footer className="footer-nav">
@@ -31,15 +34,45 @@ class Nav extends React.PureComponent {
               ));
             }}
           </TypedSecondaryMenuQuery>
+
+          <div className="footer__sectionsecondary">
+
+            <div className="footer__contactcontainer">
+              <div className="footer__secondaryheader">
+                Stay In Touch
+              </div>
+
+              <input
+                className="footer__inputform"
+                placeholder="address@email.com"
+              />
+            </div>
+            
+            <div className="footer__paymentcontainer">
+              <div className="footer__secondaryheader">
+                Payment Options
+              </div>
+
+              <div className="footer__paymentimgcontainer">
+
+              </div>
+            </div>
+
+          </div>
+
+          <div className="footer__sectionsecondary">
+            <div className="footer__logo">
+              <ReactSVG path={logoImg} />
+            </div>
+
+            <div className="footer__c">
+              © 2021 All Rights Reserved
+            </div>
+
+          </div>
         </div>
 
-        <div className="footer__logo">
-          <ReactSVG path={logoImg} />
-        </div>
-        
-        <div className="footer__c">
-          © 2021 ALL RIGHTS RESERVED
-        </div>
+
       </footer>
     );
   }
