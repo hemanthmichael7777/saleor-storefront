@@ -1,26 +1,28 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .footer {
+
   &__favicons {
     border-top: 1px solid $gray-light;
-    background: $gray-light;
+    background: white;
     display: flex;
     justify-content: center;
   }
 
   &__logo {
     width: 175px;
-    margin: 0 auto;
+    margin: auto;
   }
 
   &__c {
     width: 170px;
-    font-size: 0.675rem;
-    margin: 0 auto;
+    font-size: 0.775rem;
+    margin: auto;
     cursor: default;
     user-select: none;
     text-align: center;
     margin-top: -15px;
+    color: white;
   }
 
   &__navcontainer {
@@ -30,17 +32,6 @@
   &__menu {
     background-color: $gray-light;
     padding: $spacer * 3 0 $spacer * 2;
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-
-      div {
-        &:not(:last-of-type) {
-          padding-right: $spacer * 3;
-        }
-      }
-    }
 
     &-section {
       &-header {
@@ -64,53 +55,105 @@
     }
   }
 
+  &__contactcontainer {
+    // border: 1px solid yellow;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  &__paymentcontainer {
+    // border: 1px solid white;
+    padding: 5px;
+  }
+
+  &__paymentimgcontainer {
+    width: 275px;
+    height: 75px;
+    border: 2px solid white;
+    border-radius: 5px;
+  }
+
+  &__sectionsecondary {
+    min-height: 100%;
+    min-width: 200px;
+    // border: 1px solid green;
+    padding: 10px;
+  }
+
+  &__secondaryheader {
+    color: white;
+    font-weight: 600;
+    font-size: $base-font-size;
+    margin-bottom: 15px;
+  }
+
+  &__inputform {
+    width: 220px;
+    height: 27.5px;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding-left: 5px;
+    font-size: 0.775rem;
+
+    &::placeholder {
+      color: black;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+  }
+
   &-nav {
     // border: 1px solid red;
-    background-color: $gray;
+    background-color: $purple;
     // padding: $spacer * 3 0 $spacer * 2;
     padding: 3rem 0 0rem;
     min-height: 300px;
 
     .container {
-      // display: flex;
-      // flex-wrap: wrap;
-
+      display: flex;
+      justify-content: space-around;
       // border: 1px solid blue;
-      width: 200px;
-      text-align: center;
-      padding-top: 10px;
-      margin-top: -40px;
-
-      div:not(:last-of-type) {
-        // padding-right: $spacer * 3;
-      }
+      text-align: left;
     }
 
     &__section {
+      min-width: 200px;
+      // border: 1px solid pink;
+      padding: 10px;
+      
       &-header {
+        color: white;
+        font-size: $base-font-size;
         font-weight: $bold-font-weight;
-        margin-bottom: $spacer;
-        text-transform: uppercase;
+        margin-bottom: 15px;
+        text-transform: none;
 
         a {
-          color: black;
-          font-family: $base-font-family;
-          font-size: $small-font-size;
+          color: white;
+          font-size: 0.775rem;
+          text-transform: none;
           &:hover {
-            color: $gray-dark;
+            color: $gray;
           }
         }
       }
 
       &-content {
         p {
-          margin-bottom: $spacer;
+          margin-bottom: 2px;
           font-size: $small-font-size;
           color: $gray;
 
           a {
             text-decoration: none;
-            color: $gray;
+            color: white;
+
+            &:hover {
+              color: $gray;
+            }
           }
         }
       }

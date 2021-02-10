@@ -1,11 +1,11 @@
 @import "../../../globalStyles/scss/variables.scss";
 
-img {
-    height: 75px;
-}
-
 .image-container {
     margin-top: -1px;
+
+    img {
+        height: 75px;
+    }
 }
 
 .search-container-nophrase {
