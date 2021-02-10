@@ -150,7 +150,7 @@
 
       a {
         &:hover {
-          color: $gray-dark;
+          color: $gray;
         }
       }
     }
@@ -206,7 +206,7 @@
 
     &:hover {
       svg * {
-        fill: black;
+        fill: $gray;
       }
     }
 

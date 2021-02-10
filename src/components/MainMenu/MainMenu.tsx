@@ -7,9 +7,6 @@ import Media from "react-media";
 import { Link } from "react-router-dom";
 import ReactSVG from "react-svg";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-
 import classNames from "classnames";
 import {
   MenuDropdown,
@@ -323,9 +320,8 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                         items.map(item => {
                           const hasSubNavigation = !!item?.children?.length;
 
-                          var dropDownIcon = hasSubNavigation ? "true" : "none";
                           var dropDownStyleClass = hasSubNavigation ? "main-menu__item" : "main-menu__item__no-nav";
-                          var activeClass = activeDropdown ? "black" : "white";
+                          
                           return (
                             <div className="main-menu__menudiv">
                               <li
@@ -346,12 +342,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                   onHideDropdown={hideDropdownHandler}
                                   {...item}
                                 />
-
-                                {/* <div style={{ display: dropDownIcon }}>
-                                  <div className="main-menu__arrow-icon" style={{"color" : activeClass}}>
-                                    <FontAwesomeIcon icon={faCaretDown} />
-                                  </div>
-                                </div> */}
                               </li>
                             </div>
                           );

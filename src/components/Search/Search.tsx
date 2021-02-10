@@ -71,10 +71,12 @@ export class Search extends React.Component<any> {
     }
 
     render() {
+        var searchContainerStyle = this.hasSearchPhrase ? "search-container-phrase" : "search-container-nophrase";
+
         return (
             <>
                 <div ref={node => this.node = node}>
-                    <div className="search-container">
+                    <div className={searchContainerStyle}>
                         <input className="search"
                             placeholder={"Search"}
                             onChange={evt => this.setState({ search: evt.target.value })}
@@ -115,13 +117,14 @@ export class Search extends React.Component<any> {
                                                                 {loading ? (
                                                                     <Loader />
                                                                 ) : (
-                                                                        // <Button
-                                                                        //     testingContext="searchProductsButton"
-                                                                        //     btnRef={this.submitBtnRef}
-                                                                        //     type="submit"
-                                                                        // >
-                                                                        //     <FormattedMessage defaultMessage="Show all results" />
-                                                                        // </Button>
+                                                                        // <div className="allresults-container">
+                                                                        //     <button
+                                                                        //         onClick={() => console.log("clicked")}
+                                                                        //         type="submit"
+                                                                        //     >
+                                                                        //         <FormattedMessage defaultMessage="Show all results" />
+                                                                        //     </button>
+                                                                        // </div>
                                                                         null
                                                                     )}
                                                             </div>

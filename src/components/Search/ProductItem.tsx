@@ -11,14 +11,18 @@ import "./scss/index.scss"
 const ProductItem: React.FC<SearchResults_products_edges> = ({
   node: product,
 }) => (
-  
+
   <li >
     <Link to={generateProductUrl(product.id, product.name)}>
-      {/* <Thumbnail source={product} /> */}
-        <div className="results-flex">
+      <div className="results-flex">
+        <div className="image-container">
+          <Thumbnail source={product} />
+        </div>
+        <div className="info-container">
           <h4>{product.name}</h4>
           <p className="category-container">{product.category?.name || "-"}</p>
         </div>
+      </div>
     </Link>
   </li>
 );
