@@ -11,4 +11,5 @@ export interface IProps {
   disabledOptions?: string[];
   onSelect: (value: string) => void;
   disabled: boolean;
+  tSize?: string;
 }

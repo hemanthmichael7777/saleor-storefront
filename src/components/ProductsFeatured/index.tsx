@@ -27,7 +27,8 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
                 <div className="products-featured__container">
                   {products.map(({ node: product }) => (
                     <Link
-                      to={generateProductUrl(product.id, product.name)}
+                      to={"/"}
+                      onClick={ (event) => event.preventDefault() }
                       key={product.id}
                     >
                       <ProductListItem product={product} />

@@ -7,7 +7,8 @@ export const VariantTile: React.FC<IProps> = ({
   children,
   selected,
   disabled,
-  onClick
+  onClick,
+  tSize = "normal"
 }: IProps) => {
 
   return (

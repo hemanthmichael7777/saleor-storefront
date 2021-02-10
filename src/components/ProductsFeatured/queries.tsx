@@ -18,15 +18,6 @@ export const productVariantFragment = gql`
       url
       alt
     }
-    pricing {
-      onSale
-      priceUndiscounted {
-        ...Price
-      }
-      price {
-        ...Price
-      }
-    }
     attributes {
       attribute {
         id
@@ -49,6 +40,7 @@ export const productVariantFragment = gql`
 export const featuredProducts = gql`
   ${basicProductFragment}
   ${productPricingFragment}
+  
   query FeaturedProducts {
     shop {
       homepageCollection {
@@ -73,6 +65,7 @@ export const featuredProducts = gql`
                   value
                 }
               }
+              
             }
           }
         }

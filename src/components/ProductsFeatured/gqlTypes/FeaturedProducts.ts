@@ -2,6 +2,8 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { ProductDetails_product_variants } from "../../../views/Product/gqlTypes/ProductDetails";
+
 // ====================================================
 // GraphQL query operation: FeaturedProducts
 // ====================================================
@@ -257,6 +259,8 @@ export interface FeaturedProducts_shop_homepageCollection_products_edges_node {
   productType: FeaturedProducts_shop_homepageCollection_products_edges_node_productType;
 
   images: FeaturedProducts_shop_homepageCollection_products_edges_node_image[] | null;
+
+  variants: (ProductDetails_product_variants | null)[] | null;
 }
 
 export interface FeaturedProducts_shop_homepageCollection_products_edges {

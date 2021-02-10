@@ -13,6 +13,7 @@ type WrapperProps = {
 type ContentProps = {
   selected: boolean;
   disabled: boolean;
+  tSize: string | null;
 };
 
 const getEdgeColor = (
@@ -100,10 +101,17 @@ export const VariantTileContent = styled.div<ContentProps>`
   border-radius: 6px;
 `;
 
+const getTSize = (props: ContentProps) => {
+  if(props.tSize === "small"){
+    return "36px";
+  }
+  return "50px";
+}
+
 
 export const VariantTileContentImage = styled.div<ContentProps>`
   color: ${props => getFontColor(props)};
-  height: 50px;
+  height: ${props => getTSize(props)};
   opacity: ${props => getOpacityImg(props)};
   cursor: ${props => getCursor(props)};
 `;
