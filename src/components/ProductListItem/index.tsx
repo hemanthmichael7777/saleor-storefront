@@ -31,7 +31,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
     url: "",
   });
 
-  const [currentImage, setCurrentImage] = React.useState(thumbnail.url);
+  const [currentImage, setCurrentImage] = React.useState(product.images[0].url);
 
   const getProductPrice = () => {
     if (isEqual(price, priceUndiscounted)) {
@@ -48,7 +48,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
     );
   };
 
-  const productHasColor = (metaKey) => {
+  const productHasColor = (metaKey: string) => {
     var color = metaKey.replace("color", "").toLowerCase();
     return product.images.filter(img => {
       return img.url.toLowerCase().indexOf(color) > -1;
