@@ -22,8 +22,16 @@ interface ProductListItemProps {
 
 const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
   const { category } = product;
+  const { thumbnail } = product;
   const price = product.pricing?.priceRange?.start;
   const priceUndiscounted = product.pricing?.priceRangeUndiscounted?.start;
+  const [selectedColor, setSelectedColor] = React.useState({
+    id: "",
+    alt: null,
+    url: "",
+  });
+
+  const [currentImage, setCurrentImage] = React.useState(thumbnail.url);
 
   const getProductPrice = () => {
     if (isEqual(price, priceUndiscounted)) {
@@ -62,10 +70,20 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
       return r;
     });
 
-  const selectedColor:FeaturedProducts_shop_homepageCollection_products_edges_node_image  = {
-    id: 0,
-    alt: null,
-    url: "",
+  const onSelectValueHandler = (optionValue: string) => {
+    var color = optionValue.replace("color", "").toLowerCase();
+    var fImages = product.images.filter(img => {
+      return img.url.toLowerCase().indexOf(color) > -1;
+    });
+
+    if(fImages.length > 0) {
+      setSelectedColor({
+        id: optionValue,
+        alt: null,
+        url: fImages[0].url,
+      });
+      setCurrentImage(fImages[0].url);
+    }
   }
 
   const selectedValue = selectedColor && {
@@ -77,9 +95,6 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
 
   const selectedValuesList = selectedValue ? [selectedValue.value] : [];
 
-  const onSelectValueHandler = (optionValue: string) => {
-    alert(optionValue);
-  }
 
   return (
     <div className="product-list-item">
@@ -89,7 +104,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
           to={generateProductUrl(product.id, product.name)}
           key={product.id + "a"}
           className={"product-list-item__image"}>
-            <Thumbnail source={product} />
+            <Thumbnail source={product} override={currentImage} />
         </Link>
       
 
@@ -100,7 +115,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
         >
         <div className="product-list-item__text">
           <h4 className="product-list-item__title">{product.name}</h4>
-          {/* <p className="product-list-item__category">{category?.name}</p> */}
+          <p className="product-list-item__category">{category?.name}</p>
         </div>
       </Link>
       <div className="product-list-item__color_select">
@@ -115,6 +130,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
             selectedOptions={selectedValuesList}
             disabledOptions={[]}
             onSelect={onSelectValueHandler}
+            onHover={onSelectValueHandler}
             tSize="small"
         />
         

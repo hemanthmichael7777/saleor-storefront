@@ -3,5 +3,6 @@ export interface IProps {
     selected?: boolean;
     disabled?: boolean;
     onClick?: () => void;
+    onHover?: () => void;
     tSize?: string;
 }

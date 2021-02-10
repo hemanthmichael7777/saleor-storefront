@@ -8,6 +8,7 @@ export const VariantTile: React.FC<IProps> = ({
   selected,
   disabled,
   onClick,
+  onHover,
   tSize = "normal"
 }: IProps) => {
 
@@ -16,6 +17,7 @@ export const VariantTile: React.FC<IProps> = ({
       selected={!!selected}
       disabled={!!disabled}
       onClick={onClick}
+      onMouseOver={onHover}
     >
       <S.Content>{children}</S.Content>
     </S.Wrapper>

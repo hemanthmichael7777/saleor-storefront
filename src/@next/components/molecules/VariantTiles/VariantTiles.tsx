@@ -14,7 +14,8 @@ export const VariantTiles: React.FC<IProps> = ({
   options = [],
   disabledOptions = [],
   selectedOptions = [],
-  tSize,
+  tSize = "normal",
+  onHover,
   ...props
 }: IProps) => {
   const elementRef = React.useRef(null);
@@ -41,11 +42,15 @@ export const VariantTiles: React.FC<IProps> = ({
       var r = "6px";
       var b = "";
       if(isSelected){
-        b = "4px solid #06A09E"
+        b = "4px solid #06A09E";
+        if (tSize === "small"){
+          b = "2px solid #06A09E";
+        }
       }
-      c = <S.VariantTileContentImage selected={isSelected} disabled={isDisabled} tSize="small">
-        <img src={option.image} 
-          style={{width: w, borderRadius: r, border: b}}>
+      c = <S.VariantTileContentImage selected={isSelected} disabled={isDisabled} tSize={tSize}>
+        <img 
+          src={option.image} 
+          style={{width: w, height: w, borderRadius: r, border: b}}>
         </img>
       </S.VariantTileContentImage>;
     }
@@ -55,6 +60,7 @@ export const VariantTiles: React.FC<IProps> = ({
         selected={isSelected}
         disabled={isDisabled}
         onClick={() => onSelect(option.value)}
+        onHover={() => onSelect(option.value)}
         key={"key-" + option.value}
         tSize={tSize}
       >
