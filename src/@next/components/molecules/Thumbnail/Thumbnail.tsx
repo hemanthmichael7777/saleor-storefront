@@ -9,12 +9,26 @@ import { IProps } from "./types";
 export const Thumbnail: React.FC<IProps> = ({
   source,
   children,
+  override,
   ...props
 }: IProps) => {
   const { thumbnail, thumbnail2x } = source;
 
   if (!thumbnail && !thumbnail2x) {
     return <PlaceholderImage />;
+  }
+
+  if(override){
+    return (
+      <CachedImage
+        {...props}
+        url={maybe(() => override)}
+        url2x={maybe(() => override)}
+        alt={maybe(() => (thumbnail!.alt ? thumbnail!.alt : ""), "")}
+      >
+        {children}
+      </CachedImage>
+    );
   }
 
   return (

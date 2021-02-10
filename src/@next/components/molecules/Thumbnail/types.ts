@@ -12,4 +12,5 @@ export interface IProps {
   source: ISource;
   noPhotoDefault?: boolean;
   children?: any;
+  override?: string;
 }
