@@ -42,9 +42,9 @@ export const VariantTiles: React.FC<IProps> = ({
       var r = "6px";
       var b = "";
       if(isSelected){
-        b = "4px solid #06A09E";
+        b = "4px solid #431833";
         if (tSize === "small"){
-          b = "2px solid #06A09E";
+          b = "2px solid #431833";
         }
       }
       c = <S.VariantTileContentImage selected={isSelected} disabled={isDisabled} tSize={tSize}>

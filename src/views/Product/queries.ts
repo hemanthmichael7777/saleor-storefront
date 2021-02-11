@@ -34,6 +34,17 @@ export const basicProductFragment = gql`
       key
       value
     }
+    productType {
+      metadata {
+        key
+        value
+      }
+    }
+    images {
+      id
+      url
+      alt
+    }
   }
 `;
 

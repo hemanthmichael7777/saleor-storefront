@@ -7,19 +7,18 @@ import { Link } from "react-router-dom";
 import { Thumbnail } from "@components/molecules";
 
 import { TaxedMoney } from "../../@next/components/containers";
-import { 
-  FeaturedProducts_shop_homepageCollection_products_edges_node,
-} from "../ProductsFeatured/gqlTypes/FeaturedProducts";
 
 import { generateProductUrl, maybe } from "../../core/utils";
 
 import { VariantTiles } from "../../@next/components/molecules/VariantTiles";
+import { IProductControlled } from "@types";
 
 interface ProductListItemProps {
-  product: FeaturedProducts_shop_homepageCollection_products_edges_node;
+  product: IProductControlled;
 }
 
-const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
+const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({ product }) => {
+  console.log(product);
   const { category } = product;
   const price = product.pricing?.priceRange?.start;
   const priceUndiscounted = product.pricing?.priceRangeUndiscounted?.start;
@@ -146,4 +145,4 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
   );
 };
 
-export default ProductListItem;
+export default ProductListItemNonFeatured;

@@ -68,6 +68,10 @@ export const FHeader = styled.div`
   font-weight: ${props => props.theme.typography.boldFontWeight};
 `
 
+export const FeaturesText = styled.div`
+  
+`
+
 export const FittingGuideLink = styled.div`
   text-decoration: underline;
   font-size: 12px;
