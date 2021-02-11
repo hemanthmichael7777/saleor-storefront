@@ -220,12 +220,12 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         onSubmit={() => onAddToCart(variantId, quantity)}
         disabled={disableButton}
       />
-      {/* 
+      
       <S.Features>
         <S.FHeader>Features:</S.FHeader>
-        <div>{features}</div>
+        <S.FeaturesText>{features}</S.FeaturesText>
       </S.Features>
-      */}
+      
     </S.AddToCartSelection>
   );
 };

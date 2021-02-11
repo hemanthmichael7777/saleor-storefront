@@ -2,12 +2,11 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 
 import { Button, Loader } from "@components/atoms";
-import { ProductTile } from "@components/molecules";
-
-import { generateProductUrl } from "../../../../core/utils";
 
 import * as S from "./styles";
 import { IProps } from "./types";
+
+import ProductListItemNonFeatured from "../../../../components/ProductListItemNonFeatured";
 
 export const ProductList: React.FC<IProps> = ({
   products,
@@ -24,7 +23,7 @@ export const ProductList: React.FC<IProps> = ({
           return (
             id &&
             name && (
-              <ProductTile link={generateProductUrl(id, name)} key={id} product={product} />
+              <ProductListItemNonFeatured product={product} />
             )
           );
         })}

@@ -54,18 +54,6 @@ export const featuredProducts = gql`
                 id
                 name
               }
-              images {
-                id
-                alt
-                url
-              }
-              productType {
-                metadata {
-                  key
-                  value
-                }
-              }
-              
             }
           }
         }
