@@ -105,17 +105,17 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
             <Thumbnail source={product} override={currentImage} />
         </Link>
       
-
       <Link
           to={generateProductUrl(product.id, product.name)}
           key={product.id + "b"}
-          style={{width: "100%", textAlign: "left"}}
+          style={{width: "100%"}}
         >
         <div className="product-list-item__text">
           <h4 className="product-list-item__title">{product.name}</h4>
           <p className="product-list-item__category">{category?.name}</p>
         </div>
       </Link>
+
       <div className="product-list-item__color_select">
         
         <VariantTiles

@@ -82,22 +82,24 @@
     display: flex;
 
     @media(max-width: $small-screen) {
-      width: none;
+      width: auto;
     }
   }
 
   &__paymentimg {
-    margin: auto;
-    border: 1px solid red;
+    margin: 7.5px;
+    // border: 1px solid red;
     width: 100%;
-    background-size: 325px;
-    height: 100%;
+    
+    @media (max-width: $small-screen) {
+      margin-top: 12.5px;
+    }
   }
 
   &__sectionsecondary {
     min-height: 100%;
     min-width: 200px;
-    // border: 1px solid green;
+    //border: 1px solid green;
     padding: 10px;
 
     @media(max-width: $small-screen) {
@@ -127,7 +129,6 @@
 
     &::placeholder {
       color: black;
-      text-align: center;
 
       @media(max-width: $small-screen) {
         text-align: center;
@@ -165,7 +166,7 @@
 
     &__section {
       min-width: 200px;
-      // border: 1px solid pink;
+      //border: 1px solid pink;
       padding: 10px;
       
       &-header {

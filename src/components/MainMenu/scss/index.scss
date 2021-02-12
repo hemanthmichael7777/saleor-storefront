@@ -87,47 +87,99 @@
   }
 
   &__left {
-    flex-basis: calc(50% - 2rem);
+
+    // border: 1px solid red;
     
-    @media (max-width: $small-screen) {
-      margin-left: auto;
-      flex-basis: auto;
-    }
+    flex-basis: calc(50% - 2rem);
 
     ul {
       display: flex;
       align-items: center;
+      justify-content: flex-start;
+      padding-left: 20px;
       height: 100%;
+    }
+    
+    @media (max-width: $small-screen) {
+      
+      // border: 1px solid red;
+
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding-left: 0px;
+        height: 100%;
+      }
     }
   }
 
   &__right {
-    flex-basis: calc(50% - 2rem);
-    margin-top: 28px;
-    margin-right: 20px;
 
-    @media (max-width: $small-screen) {
-      margin-left: auto;
-      flex-basis: auto;
-      margin-top: 10px;
-    }
+    // border: 1px solid blue;
+    
+    flex-basis: calc(50% - 2rem);
 
     ul {
       display: flex;
-      justify-content: flex-end;
       align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+      padding-right: 20px;
     }
+
+    @media (min-width: $medium-screen) {
+      margin-top: 0px;
+      // border: 1px solid blue;
+
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+        padding-right: 30px;
+        padding-top: 3px;
+      }
+    }
+
+    @media (max-width: $small-screen) {
+      margin-top: 0px;
+      margin-right: 0px;
+      // border: 1px solid blue;
+
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 100%;
+        padding-right: 0px;
+      }
+    }
+
+   
   }
 
   &__center {
 
-    @media (max-width: $small-screen) {
-      margin-top: 10px;
+    // border: 1px solid yellow;
+
+    &__logo {
+      margin-top: 0px;
+
+      @media (max-width: $small-screen) {
+        margin-top: 10px;
+      }
+    }
+  
+    @media (max-width: $small-screen) {    
+      // border: 1px solid yellow;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     svg {
       width: 13rem;
-      margin-top: 8px;
 
       @media (max-width: $small-screen) {
         width: 8rem;
@@ -164,7 +216,8 @@
   }
 
   &__hamburger {
-    border-right: 1px solid $gray-light;
+    // border-right: 1px solid $gray-light;
+    // border: 1px solid pink;
     padding: $spacer;
     
 
@@ -178,6 +231,7 @@
       }
 
       .main-menu__hamburger--hover {
+        cursor: pointer;
         display: block;
       }
     }
@@ -196,9 +250,10 @@
   }
 
   &__icon {
-    padding: 0 $spacer;
+    // border: 1px solid aqua;
+    padding:$spacer;
     cursor: pointer;
-    margin-right: 10px;
+    //margin-right: 10px;
 
     svg * {
       transition: 0.0s;
@@ -237,7 +292,7 @@
 
   &__user {
     &--active * {
-      fill: $turquoise;
+      fill: $gray;
       fill-rule: inherit;
     }
   }
@@ -379,7 +434,7 @@
           position: relative;
 
           &:before {
-            background-color: $turquoise-light;
+            background-color: $gray;
             content: "";
             height: 1px;
             left: 0;

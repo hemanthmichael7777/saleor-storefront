@@ -14,7 +14,12 @@ import "./scss/index.scss";
 
 class Nav extends React.PureComponent {
 
-  state = { formValue: "" }
+  state = { value: "" }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
 
   render() {
     return (
@@ -40,16 +45,20 @@ class Nav extends React.PureComponent {
           </TypedSecondaryMenuQuery>
 
           <div className="footer__sectionsecondary">
-
             <div className="footer__contactcontainer">
               <div className="footer__secondaryheader">
                 Stay In Touch
               </div>
-
-              <input
-                className="footer__inputform"
-                placeholder="address@email.com"
-              />
+              <form>
+                <input
+                  type="text" disabled
+                  className="footer__inputform"
+                  placeholder="address@email.com"
+                  value={this.state.value}
+                  onChange={evt => this.setState({ value: evt.target.value })}
+                />
+                 {/* <input type="submit" value="Submit" /> */}
+              </form>
             </div>
 
             <div className="footer__paymentcontainer">
@@ -58,7 +67,7 @@ class Nav extends React.PureComponent {
               </div>
 
               <div className="footer__paymentimgcontainer">
-                {/* <div className="footer__paymentimg">
+                <div className="footer__paymentimg">
                   <ReactSVG path={visaImg} />
                 </div>
                 <div className="footer__paymentimg">
@@ -69,7 +78,7 @@ class Nav extends React.PureComponent {
                 </div>
                 <div className="footer__paymentimg">
                   <ReactSVG path={mastercardImg} />
-                </div> */}
+                </div>
               </div>
             </div>
 

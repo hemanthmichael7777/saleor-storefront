@@ -27,6 +27,7 @@ import cartImg from "../../images/cart.svg";
 import hamburgerHoverImg from "../../images/hamburger-hover.svg";
 import hamburgerImg from "../../images/hamburger.svg";
 import logoImg from "../../images/logo.svg";
+import searchImg from "../../images/search.svg";
 
 import userImg from "../../images/user.svg";
 import {
@@ -129,7 +130,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
 
                       <Online>
                         <Media
-                          query={{ maxWidth: smallScreen }}
+                          query={{ maxWidth: mediumScreen }}
                           render={() => (
                             <>
                               {user ? (
@@ -199,25 +200,53 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
             </div>
 
             <div className="main-menu__center">
-              <Link to={appPaths.baseUrl}>
-                <ReactSVG path={logoImg}/>
-              </Link>
+              <div className="main-menu__center__logo">
+                <Link to={appPaths.baseUrl}>
+                  <ReactSVG path={logoImg} />
+                </Link>
+              </div>
             </div>
 
             <div className="main-menu__right">
               <ul>
                 <Online>
-
-                  <li
-                    data-test="menuSearchOverlayLink"
-                  >
-
-                    <Search />
-                    
-                  </li>
-
                   <Media
-                    query={{ minWidth: smallScreen }}
+                    query={{ maxWidth: mediumScreen }}
+                    render={() => (
+                      <li
+                        data-test="menuCartOverlayLink"
+                        className="main-menu__icon main-menu__cart"
+                        onClick={() => {
+                          overlayContext.show(OverlayType.cart, OverlayTheme.right);
+                        }}
+                      >
+                        <ReactSVG path={searchImg} />
+                        {cartItemsQuantity > 0 ? (
+                          <span className="main-menu__cart__quantity">
+                            {cartItemsQuantity}
+                          </span>
+                        ) : null}
+                      </li>
+                    )}
+                  />
+                </Online>
+
+                <Online>
+                  <Media
+                    query={{ minWidth: mediumScreen }}
+                    render={() => (
+                      <li
+                        data-test="menuSearchOverlayLink"
+                      >
+                        <Search />
+                      </li>
+                    )}
+                  />
+                </Online>
+
+                <Online>
+                  <Media
+                    query={{ minWidth: mediumScreen }}
                     render={() => (
                       <>
                         {user ? (
@@ -291,6 +320,9 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     ) : null}
                   </li>
                 </Online>
+
+
+
                 <Offline>
                   <li className="main-menu__offline">
                     <Media
@@ -303,6 +335,9 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     />
                   </li>
                 </Offline>
+
+
+
               </ul>
             </div>
           </div>
@@ -321,7 +356,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                           const hasSubNavigation = !!item?.children?.length;
 
                           var dropDownStyleClass = hasSubNavigation ? "main-menu__item" : "main-menu__item__no-nav";
-                          
+
                           return (
                             <div className="main-menu__menudiv">
                               <li
@@ -355,7 +390,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
           </div>
         </div>
       </nav>
-    </header>
+    </header >
   );
 };
 
