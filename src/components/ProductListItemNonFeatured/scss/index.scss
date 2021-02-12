@@ -1,11 +1,6 @@
 @import "../../../globalStyles/scss/variables.scss";
 
-.product-list-item {
-  text-align: center;
-  
-  width: 260px;
-  max-width: 260px;
-  margin-right: 20.8px;
+.product-list-item-nf {
   overflow: hidden;
   &__text {
     margin-left: 18px;
@@ -38,17 +33,12 @@
   &__image {
     text-align: center;
     height: 342px;
-    width: 100%;
-    padding-left: 0;
+    
     img {
       margin-left: 0;
       border-radius: 12px;
-      height: 100%;
-      
-    }
-
-    @media (max-width: $small-screen) {
-      height: 210px;
+      /* width: 100%; */
+      width: 42.5%;
     }
   }
 

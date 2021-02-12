@@ -1,26 +1,10 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .product-list-item {
-
-  margin-bottom: 55px;
-
-  @media (max-width: $small-screen) {
-    margin-right: 0px;
-    margin-bottom: 50px;
-  }
-
-  text-align: center;
   
-  width: 260px;
-  max-width: 260px;
-  margin-right: 20.8px;
   overflow: hidden;
   &__text {
     margin-left: 18px;
-
-    @media (max-width: $small-screen) {
-      margin-left: 0px;
-    }
   }
 
   &__title {

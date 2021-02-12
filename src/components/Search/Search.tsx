@@ -77,7 +77,7 @@ export class Search extends React.Component<any> {
             <>
                 <div ref={node => this.node = node}>
                     <div className={searchContainerStyle}>
-                        <input className="search"
+                        <input className="search-web"
                             placeholder={"Search"}
                             onChange={evt => this.setState({ search: evt.target.value })}
                             value={this.state.search}

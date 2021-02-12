@@ -96,8 +96,6 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
 
   return (
     <div className="product-list-item">
-      
-      
         <Link 
           to={generateProductUrl(product.id, product.name)}
           key={product.id + "a"}

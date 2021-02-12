@@ -209,24 +209,28 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
 
             <div className="main-menu__right">
               <ul>
+                
                 <Online>
                   <Media
                     query={{ maxWidth: mediumScreen }}
                     render={() => (
                       <li
-                        data-test="menuCartOverlayLink"
-                        className="main-menu__icon main-menu__cart"
-                        onClick={() => {
-                          overlayContext.show(OverlayType.cart, OverlayTheme.right);
-                        }}
-                      >
-                        <ReactSVG path={searchImg} />
-                        {cartItemsQuantity > 0 ? (
-                          <span className="main-menu__cart__quantity">
-                            {cartItemsQuantity}
+                      data-test="menuSearchOverlayLink"
+                      className="main-menu__search"
+                      onClick={() =>
+                        overlayContext.show(OverlayType.search, OverlayTheme.right)
+                      }
+                    >
+                      <Media
+                        query={{ minWidth: mediumScreen }}
+                        render={() => (
+                          <span>
+                            <FormattedMessage {...commonMessages.search} />
                           </span>
-                        ) : null}
-                      </li>
+                        )}
+                      />
+                      <ReactSVG path={searchImg} />
+                    </li>
                     )}
                   />
                 </Online>

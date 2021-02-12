@@ -18,6 +18,8 @@ $autofillColorSelected: rgb(232, 240, 254);
 $darkGreen: #06847b;
 $transparent-background: rgba(255,255,255,0.5);
 $purple: #431933;
+$purple-light: #69214a;
+$purple-dark: #250e1c;
 $purple-hover: #69214a;
 
 // typography
@@ -66,7 +68,7 @@ $message-right-position: $spacer;
 $message-botttom-position: $spacer;
 $message-success-color: $green;
 $message-error-color: $rose;
-$message-neutral-color: $turquoise-dark;
+$message-neutral-color: $purple;
 $message-border-left: 0.3rem solid $message-neutral-color;
 $message-title-transform: uppercase;
 $message-title-weight: $bold-font-weight;

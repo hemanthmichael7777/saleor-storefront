@@ -94,13 +94,11 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({ product })
 
 
   return (
-    <div className="product-list-item">
-      
-      
+    <div className="product-list-item-nf">
         <Link 
           to={generateProductUrl(product.id, product.name)}
           key={product.id + "a"}
-          className={"product-list-item__image"}>
+          className={"product-list-item-nf__image"}>
             <Thumbnail source={product} override={currentImage} />
         </Link>
       
@@ -108,14 +106,14 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({ product })
       <Link
           to={generateProductUrl(product.id, product.name)}
           key={product.id + "b"}
-          style={{width: "100%", textAlign: "left"}}
+          style={{width: "100%"}}
         >
-        <div className="product-list-item__text">
-          <h4 className="product-list-item__title">{product.name}</h4>
-          <p className="product-list-item__category">{category?.name}</p>
+        <div className="product-list-item-nf__text">
+          <h4 className="product-list-item-nf__title">{product.name}</h4>
+          <p className="product-list-item-nf__category">{category?.name}</p>
         </div>
       </Link>
-      <div className="product-list-item__color_select">
+      <div className="product-list-item-nf__color_select">
         
         <VariantTiles
             label={null}
@@ -137,7 +135,7 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({ product })
           key={product.id + "c"}
           style={{width: "100%", textAlign: "left"}}
         >
-      <p className="product-list-item__price">{getProductPrice()}</p>
+      <p className="product-list-item-nf__price">{getProductPrice()}</p>
       </Link>
       
 
