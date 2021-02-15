@@ -120,7 +120,7 @@
     
     flex-basis: calc(50% - 2rem);
 
-    ul {
+    &-ul {
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -128,11 +128,19 @@
       padding-right: 20px;
     }
 
+    // ul {
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: flex-end;
+    //   height: 100%;
+    //   padding-right: 20px;
+    // }
+
     @media (min-width: $medium-screen) {
       margin-top: 0px;
       // border: 1px solid blue;
 
-      ul {
+      &-ul {
         display: flex;
         align-items: center;
         justify-content: flex-end;
@@ -340,9 +348,9 @@
     }
 
     &:hover {
-      color: $black;
+      color: $gray;
       svg * {
-        fill: $black;
+        fill: $gray;
       }
     }
 

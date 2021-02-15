@@ -123,11 +123,10 @@
     @media(max-width: 1600px) {
         width: 272.6px;
     }
+}
 
-    ul {
-        justify-content: flex-start;
-        color: black;
-    }
+.results-ul {
+    color: black;
 }
 
 .info-container {
