@@ -101,7 +101,7 @@ export class Search extends React.Component<any> {
                                                 if (this.hasResults(data)) {
                                                     return (
                                                         <>
-                                                            <ul>
+                                                            <ul className="results-ul">
                                                                 {data.products.edges.map(product => (
                                                                     <div onClick={() => this.clear()}>
                                                                         <ProductItem
@@ -113,7 +113,7 @@ export class Search extends React.Component<any> {
 
                                                                 ))}
                                                             </ul>
-                                                            <div className="search__products__footer">
+                                                            <div>
                                                                 {loading ? (
                                                                     <Loader />
                                                                 ) : (

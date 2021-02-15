@@ -86,6 +86,8 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
   const mmContainerClass = isBaseUrl() ?
     "main-menu__mmcontainer" : "main-menu__mmcontainersolid";
 
+  const isMediumScreenExact = window.innerWidth == 992 ? "none" : "true"
+
   return (
     <header
       className={classNames({
@@ -137,7 +139,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                 <MenuDropdown
                                   suffixClass="__rightdown"
                                   head={
-                                    <li className="main-menu__icon main-menu__user--active">
+                                    <li className="main-menu__icon main-menu__user--active" style={{display: isMediumScreenExact}}>
                                       <ReactSVG path={userImg} />
                                     </li>
                                   }
@@ -178,7 +180,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                               ) : (
                                   <li
                                     data-test="mobileMenuLoginLink"
-                                    className="main-menu__icon"
+                                    className="main-menu__icon" style={{display: isMediumScreenExact}}
                                     onClick={() =>
                                       overlayContext.show(
                                         OverlayType.login,
@@ -208,27 +210,19 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
             </div>
 
             <div className="main-menu__right">
-              <ul>
-                
+              <ul className="main-menu__right-ul">
                 <Online>
                   <Media
-                    query={{ maxWidth: mediumScreen }}
+                    query={{ maxWidth: mediumScreen}}
                     render={() => (
                       <li
                       data-test="menuSearchOverlayLink"
                       className="main-menu__search"
+                      style={{display: isMediumScreenExact}}
                       onClick={() =>
                         overlayContext.show(OverlayType.search, OverlayTheme.right)
                       }
                     >
-                      <Media
-                        query={{ minWidth: mediumScreen }}
-                        render={() => (
-                          <span>
-                            <FormattedMessage {...commonMessages.search} />
-                          </span>
-                        )}
-                      />
                       <ReactSVG path={searchImg} />
                     </li>
                     )}
