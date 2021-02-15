@@ -2,9 +2,11 @@
 
 .product-list-item {
   
-  overflow: hidden;
+  width: 277px;
+  
+
   &__text {
-    margin-left: 18px;
+    margin-left: 0px;
   }
 
   &__title {
@@ -35,7 +37,7 @@
 
   &__price {
     font-weight: $product-item-price-font-weight;
-    margin-left: 18px;
+    margin-left: 0px;
     text-align: left;
 
     @media (max-width: $small-screen) {
@@ -47,14 +49,12 @@
 
   &__image {
     text-align: center;
-    height: 342px;
-    width: 100%;
-    padding-left: 0;
+    height: 317px;
+    width: 210px;
+    overflow: hidden;
+    border-radius: 12px;
     img {
-      margin-left: 0;
-      border-radius: 12px;
       height: 100%;
-      
     }
 
     @media (max-width: $small-screen) {
@@ -63,7 +63,7 @@
   }
 
   &__color_select {
-    margin-left: 16px;
+    margin-left: 0px;
     margin-top: -2px;
 
     @media (max-width: $small-screen) {

@@ -124,6 +124,7 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
           selectedOptions={selectedValuesList}
           disabledOptions={disabledValuesList}
           onSelect={onSelectValueHandler}
+          disableHover={true}
         />
   );
 };

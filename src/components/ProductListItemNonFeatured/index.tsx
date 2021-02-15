@@ -8,7 +8,7 @@ import { Thumbnail } from "@components/molecules";
 
 import { TaxedMoney } from "../../@next/components/containers";
 
-import { generateProductUrl, maybe } from "../../core/utils";
+import { generateProductUrl } from "../../core/utils";
 
 import { VariantTiles } from "../../@next/components/molecules/VariantTiles";
 import { IProductControlled } from "@types";

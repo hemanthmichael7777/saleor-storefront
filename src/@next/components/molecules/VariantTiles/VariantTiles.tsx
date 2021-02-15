@@ -16,6 +16,7 @@ export const VariantTiles: React.FC<IProps> = ({
   selectedOptions = [],
   tSize = "normal",
   onHover,
+  disableHover = false,
   ...props
 }: IProps) => {
   const elementRef = React.useRef(null);
@@ -60,7 +61,7 @@ export const VariantTiles: React.FC<IProps> = ({
         selected={isSelected}
         disabled={isDisabled}
         onClick={() => onSelect(option.value)}
-        onHover={() => onSelect(option.value)}
+        onHover={!disableHover ? () => onSelect(option.value) : () => {}}
         key={"key-" + option.value}
         tSize={tSize}
       >
