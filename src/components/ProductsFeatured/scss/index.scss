@@ -2,13 +2,15 @@
 
 .products-featured {
   padding: 3.2rem 0 4rem;
-  margin-left: -16px;
+  overflow: hidden;
   &__container {
+    overflow: hidden;
     @media (min-width: $small-screen) {
       > a {
         &:nth-child(n + 5) {
           display: none;
         }
+        
       }
     }
   }
@@ -17,7 +19,7 @@
     font-size: 30px;
     font-weight: $bold-font-weight;
     margin-bottom: $spacer * 2;
-    margin-left: 16px;
+    
     color: $purple;
   }
 

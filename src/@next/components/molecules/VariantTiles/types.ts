@@ -13,4 +13,5 @@ export interface IProps {
   onHover?: (value: string) => void;
   disabled: boolean;
   tSize?: string;
+  disableHover?: boolean;
 }

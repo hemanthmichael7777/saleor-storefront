@@ -199,7 +199,7 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
       var actualKey = convertToActualKey(selectedKeyAndCurrentAttr, aMapList);
       return variantMap[actualKey] > 0;
     }
-
+    
     for(let i=0; i<missingAttrs.length; i++){
       // for each missing attribute start inserting attribute values 
       // if you find stock return true
@@ -237,7 +237,7 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
   ){
     
     var skuOrderStringList = product.productType.metadata.filter((m) => {
-      return m.key = "skuKeyString";
+      return m.key == "skuKeyString";
     });
     if(skuOrderStringList.length < 1){
       alert("no skuKeyString configured on product type");
@@ -261,7 +261,6 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
       "{Style}", 
       "{Style}" + productNumber
     );
-    
     return skuOrderString;
   }
 
