@@ -63,8 +63,9 @@
   }
 
   &__color_select {
-    margin-left: 0px;
+    margin-left: 70px;
     margin-top: -2px;
+    min-height: 40px;
 
     @media (max-width: $small-screen) {
       margin-left: 0px;

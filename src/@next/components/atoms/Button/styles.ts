@@ -20,7 +20,7 @@ export const Primary = styled.button<{
     props.theme.button.colors[props.color].background};
   padding: ${props => padding[props.size]};
   border: none;
-  transition: 0.3s;
+  transition: 0.0s;
   outline: none;
   cursor: pointer;
   color: ${props => props.theme.button.colors[props.color].color};

@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-import { Button, Loader } from "@components/atoms";
+import { Button, DefaultLoader } from "@components/atoms";
 
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -45,21 +45,21 @@ export const ProductList: React.FC<IProps> = ({
       </div>
 
 
-      <S.Loader>
+      <S.DefaultLoader>
         {loading ? (
-          <Loader />
+          <DefaultLoader />
         ) : (
           canLoadMore && (
             <Button
               testingContext="loadMoreProductsButton"
-              color="secondary"
+              color="primary"
               onClick={onLoadMore}
             >
-              <FormattedMessage defaultMessage="More +" />
+              <FormattedMessage defaultMessage="More" />
             </Button>
           )
         )}
-      </S.Loader>
+      </S.DefaultLoader>
 
 
     </>

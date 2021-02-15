@@ -13,14 +13,14 @@ export const defaultTheme = {
   },
   button: {
     animation: {
-      transition: "0.3s",
+      transition: "0.0s",
     },
     colors: {
       primary: {
-        activeBackground: C.theme.primaryDark,
+        activeBackground: C.theme.primaryLight,
         background: C.theme.primary,
         color: C.white,
-        hoverBackground: C.theme.primaryDark,
+        hoverBackground: C.theme.primaryLight,
         hoverColor: C.white,
       },
       secondary: {

@@ -79,9 +79,25 @@
   }
 
   &__info {
+     /* width */
+     &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: $purple-scroll-track;
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: $purple-scroll-thumb;
+      border-radius: 10px;
+    } 
     height: 95%;
     min-width: 350px;
-    width: 50%;
+    width: 53.5%;
     padding: 10px;
     overflow-y: auto;
     margin: 0;

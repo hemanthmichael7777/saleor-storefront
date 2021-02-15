@@ -15,7 +15,7 @@ import {
   baseUrl,
   orderHistoryUrl,
 } from "../../app/routes";
-import { Breadcrumbs, Loader } from "../../components";
+import { Breadcrumbs, DefaultLoader } from "../../components";
 
 import "./scss/index.scss";
 
@@ -48,7 +48,7 @@ const Account: React.FC<RouteComponentProps> = ({ history, match }) => {
   const links = [accountUrl, orderHistoryUrl, addressBookUrl];
 
   if (!loaded) {
-    return <Loader />;
+    return <DefaultLoader />;
   }
 
   if (!user) {

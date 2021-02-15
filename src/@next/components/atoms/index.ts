@@ -19,7 +19,7 @@ export * from "./Input";
 export * from "./InputStandard";
 export * from "./InputLabel";
 export * from "./Label";
-export * from "./Loader";
+export * from "./DefaultLoader";
 export * from "./Message";
 export * from "./NavLink";
 export * from "./NotificationTemplate";

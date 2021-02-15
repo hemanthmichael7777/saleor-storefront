@@ -15,7 +15,7 @@ import { commonMessages } from "@temp/intl";
 
 import {
   Button,
-  Loader,
+  DefaultLoader,
   OfflinePlaceholder,
   Overlay,
   OverlayContextInterface,
@@ -147,7 +147,7 @@ class Search extends React.Component<SearchProps, SearchState> {
                               </ul>
                               <div className="search__products__footer">
                                 {loading ? (
-                                  <Loader />
+                                  <DefaultLoader />
                                 ) : (
                                   // <Button
                                   //   testingContext="searchProductsButton"

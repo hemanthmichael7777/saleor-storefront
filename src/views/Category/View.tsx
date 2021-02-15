@@ -5,7 +5,7 @@ import { RouteComponentProps } from "react-router";
 import { prodListHeaderCommonMsg } from "@temp/intl";
 import { IFilters } from "@types";
 import { StringParam, useQueryParam } from "use-query-params";
-import { Loader } from "@components/atoms";
+import { DefaultLoader } from "@components/atoms";
 import { MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
 import NetworkStatus from "../../components/NetworkStatus";
 import { PRODUCTS_PER_PAGE } from "../../core/config";
@@ -143,7 +143,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
         >
           {categoryData => {
             if (categoryData.loading) {
-              return <Loader />;
+              return <DefaultLoader />;
             }
 
             if (categoryData.data && categoryData.data.category === null) {
@@ -162,7 +162,7 @@ export const View: React.FC<ViewProps> = ({ match }) => {
               <TypedCategoryProductsQuery variables={variables}>
                 {categoryProducts => {
                   if (!canDisplayFilters && categoryProducts.loading) {
-                    return <Loader />;
+                    return <DefaultLoader />;
                   }
 
                   if (canDisplayFilters) {

@@ -63,7 +63,7 @@ export const theme = {
   tabTitle: darkGreen,
   tableDivider: tabelGray,
   tabsBorder: baseFontColorTransparent,
-  thumbnailBorder: darkGreen,
+  thumbnailBorder: purple,
   white,
 };
 
