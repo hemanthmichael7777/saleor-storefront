@@ -10,10 +10,12 @@ const OtherProducts: React.FC<{
 }> = ({ products }) => (
   <div className="product-page__other-products">
     <div className="container">
-      <h4 className="product-page__other-products__title">
-        <FormattedMessage defaultMessage="Other products in this category" />
-      </h4>
-      <ProductList products={products.map(({ node }) => node)} />
+      <ProductList 
+        products={products.map(({ node }) => node)} 
+        title="Other Products in this Category" 
+        rowCount={1}
+        columnCount={3}
+      />
     </div>
   </div>
 );

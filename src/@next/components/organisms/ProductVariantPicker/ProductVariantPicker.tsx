@@ -68,8 +68,6 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
   const { search } = history.location;
   const searchQueryAttributes = queryString.parse(search);
 
-  
-
   useEffect(() => {
     const selectedVariant = productVariants.find(productVariant => {
       return productVariant.attributes.every(productVariantAttribute => {

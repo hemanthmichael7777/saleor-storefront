@@ -15,10 +15,13 @@ import { IProductControlled } from "@types";
 
 interface ProductListItemProps {
   product: IProductControlled;
+  columnCount?: number;
 }
 
-const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({ product }) => {
-  console.log(product);
+const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({ 
+  product,
+  columnCount = 3,
+}) => {
   const { category } = product;
   const price = product.pricing?.priceRange?.start;
   const priceUndiscounted = product.pricing?.priceRangeUndiscounted?.start;
@@ -36,7 +39,7 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({ product })
     }
     return (
       <>
-        <span className="product-list-item__undiscounted_price">
+        <span className="product-list-item-nonfeatured__undiscounted_price">
           <TaxedMoney taxedMoney={priceUndiscounted} />
         </span>
         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -94,15 +97,12 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({ product })
 
 
   return (
-    <div className="product-list-item">
+    <div className="product-list-item-nonfeatured">
       
       
-        <Link 
-          to={generateProductUrl(product.id, product.name)}
-          key={product.id + "a"}
-          className={"product-list-item__image"}>
+        <div className="product-list-item-nonfeatured__image">
             <Thumbnail source={product} override={currentImage} />
-        </Link>
+        </div>
       
 
       <Link
@@ -110,12 +110,12 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({ product })
           key={product.id + "b"}
           style={{width: "100%", textAlign: "left"}}
         >
-        <div className="product-list-item__text">
-          <h4 className="product-list-item__title">{product.name}</h4>
-          <p className="product-list-item__category">{category?.name}</p>
+        <div className="product-list-item-nonfeatured__text">
+          <h4 className="product-list-item-nonfeatured__title">{product.name}</h4>
+          <p className="product-list-item-nonfeatured__category">{category?.name}</p>
         </div>
       </Link>
-      <div className="product-list-item__color_select">
+      <div className="product-list-item-nonfeatured__color_select">
         
         <VariantTiles
             label={null}
@@ -137,7 +137,7 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({ product })
           key={product.id + "c"}
           style={{width: "100%", textAlign: "left"}}
         >
-      <p className="product-list-item__price">{getProductPrice()}</p>
+      <p className="product-list-item-nonfeatured__price">{getProductPrice()}</p>
       </Link>
       
 

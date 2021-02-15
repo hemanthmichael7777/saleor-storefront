@@ -10,4 +10,7 @@ export interface IProps {
    * multiple elements in the same view from each other
    */
   testingContextId?: string;
+  title?: string;
+  rowCount?: number;
+  columnCount?: number;
 }

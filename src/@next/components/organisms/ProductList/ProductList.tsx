@@ -6,7 +6,11 @@ import { Button, Loader } from "@components/atoms";
 import * as S from "./styles";
 import { IProps } from "./types";
 
+import { Link } from "react-router-dom";
+
 import ProductListItemNonFeatured from "../../../../components/ProductListItemNonFeatured";
+
+import "./scss/index.scss";
 
 export const ProductList: React.FC<IProps> = ({
   products,
@@ -14,20 +18,29 @@ export const ProductList: React.FC<IProps> = ({
   loading = false,
   testingContextId,
   onLoadMore = () => null,
+  title,
+  rowCount = 1,
+  columnCount = 3,
 }: IProps) => {
+
   return (
     <>
-      <S.List data-test="productList" data-test-id={testingContextId}>
-        {products.map(product => {
-          const { id, name } = product;
-          return (
-            id &&
-            name && (
-              <ProductListItemNonFeatured product={product} />
-            )
-          );
-        })}
-      </S.List>
+      <div className="products-listed">
+          <h3>{title}</h3>
+          <div className="products-listed__container">
+            {products.map(product => (
+              <Link
+                to={"/"}
+                onClick={ (event: any) => event.preventDefault() }
+                key={product.id}
+              >
+                <ProductListItemNonFeatured product={product} />
+              </Link>
+            ))}
+          </div>
+      </div>
+
+
       <S.Loader>
         {loading ? (
           <Loader />
@@ -43,6 +56,8 @@ export const ProductList: React.FC<IProps> = ({
           )
         )}
       </S.Loader>
+
+
     </>
   );
 };
