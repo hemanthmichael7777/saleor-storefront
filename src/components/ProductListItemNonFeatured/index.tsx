@@ -103,7 +103,7 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({
           key={product.id + "a"}
           className={"product-list-item-nf__image"}>
             <Thumbnail source={product} override={currentImage} />
-        </div>
+        </Link>
       
 
       <Link
