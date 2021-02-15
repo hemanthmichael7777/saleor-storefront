@@ -97,8 +97,7 @@
 }
 
 .category-container {
-    margin-top: -1px;
-    margin-left: 30px;
+  padding-left: 10px;
 }
 
 .results-container {
@@ -131,8 +130,8 @@
 
 .info-container {
     display: flex;
-    margin-top: 23.5px;
-    margin-left: 30px;
+    padding-left: 5px;
+    align-self: center;
 }
 
 .product-not-found-container {

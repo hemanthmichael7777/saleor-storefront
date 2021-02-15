@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import ReactSVG from "react-svg";
 import NetworkStatus from "../NetworkStatus";
 import { stringify } from "query-string";
 
@@ -11,12 +10,9 @@ import NothingFound from "./NothingFound";
 
 import { searchUrl } from "../../app/routes";
 import { maybe } from "@temp/core/utils";
-import { Button, Loader } from "@components/atoms";
-import { FormattedMessage } from "react-intl";
+import { Loader } from "@components/atoms";
 import { Error } from "../Error";
 import { OfflinePlaceholder } from "..";
-
-import searchImg from "../../images/search.svg";
 
 import "./scss/index.scss"
 
