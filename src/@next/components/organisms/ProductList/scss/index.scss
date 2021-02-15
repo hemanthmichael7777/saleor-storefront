@@ -4,7 +4,7 @@
 
 .products-listed {
   padding: 3.2rem 0 4rem;
-  overflow: hidden;
+  margin-left: -16px;
   &__container {
     @media (min-width: $small-screen) {
       > a {
@@ -19,6 +19,7 @@
     font-size: 30px;
     font-weight: $bold-font-weight;
     margin-bottom: $spacer * 2;
+    margin-left: 16px;
     color: $purple;
   }
 
@@ -26,9 +27,5 @@
     color: $base-font-color;
     display: inline-block;
     text-decoration: none;
-  }
-
-  @media(max-width: $small-screen) {
-    text-align: center;
   }
 }
