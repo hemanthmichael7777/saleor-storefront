@@ -9,9 +9,11 @@ import {
 } from "@types";
 
 import * as S from "./styles";
+import { ProductDetails_product } from "../../../../views/Product/gqlTypes/ProductDetails";
 
 
 export const ProductVariantAttributeSelectTiles: React.FC<{
+  product: ProductDetails_product;
   selectSidebar: boolean;
   selectSidebarTarget?: HTMLElement | null;
   productVariantsAttributeId: string;
@@ -27,6 +29,7 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
     currentAttribute: ProductDetails_product_variants_attributes_values
   ) => boolean;
 }> = ({
+  product,
   productVariantsAttributeId,
   productVariants,
   productVariantsAttribute,
@@ -64,14 +67,12 @@ export const ProductVariantAttributeSelectTiles: React.FC<{
         (selectableAttribute && !selectableAttribute.values.includes(value)) || outOfStockVariant(productVariantsAttributesSelectedValues, value);
 
       var img = "";
-      
       if(productVariantsAttribute.attribute.slug === 'color') {
-        for(let i=0; i<images.length; i++){
-          var im = images[i].url;
-          var n = im.lastIndexOf('_');
-          var image_color = im.substring(n + 1).split('.')[0];
-          if(image_color === value.name){
-            img = im;
+        for(let i=0; i<product.productType.metadata.length; i++){
+          var im = product.productType.metadata[i].key
+                    .replace("color", "").toLowerCase();
+          if(im === value.name?.toLowerCase()){
+            img = product.productType.metadata[i].value;
           }
         }
       }
