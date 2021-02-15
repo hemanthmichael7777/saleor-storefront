@@ -20,7 +20,7 @@ export const ProductList: React.FC<IProps> = ({
   onLoadMore = () => null,
   title,
   rowCount = 1,
-  columnCount = 3,
+  columnCount = 4,
 }: IProps) => {
 
   return (
@@ -34,7 +34,11 @@ export const ProductList: React.FC<IProps> = ({
                 onClick={ (event: any) => event.preventDefault() }
                 key={product.id}
               >
-                <ProductListItemNonFeatured product={product} />
+                <ProductListItemNonFeatured 
+                  product={product}
+                  rowCount={rowCount}
+                  columnCount={columnCount} 
+                />
               </Link>
             ))}
           </div>

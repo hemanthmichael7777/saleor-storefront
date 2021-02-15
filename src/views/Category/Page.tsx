@@ -114,6 +114,7 @@ const Page: React.FC<PageProps> = ({
             canLoadMore={hasNextPage}
             loading={displayLoader}
             onLoadMore={onLoadMore}
+            columnCount={4}
           />
         )}
       </div>

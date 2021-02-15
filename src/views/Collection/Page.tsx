@@ -92,7 +92,7 @@ const Page: React.FC<PageProps> = ({
         ),
       []
     );
-
+  
   const collectionName = collection.name;
   const description = JSON.parse(collection.descriptionJson).blocks[0].text || null;
   return (
@@ -154,8 +154,10 @@ const Page: React.FC<PageProps> = ({
             canLoadMore={hasNextPage}
             loading={displayLoader}
             onLoadMore={onLoadMore}
+            columnCount={4}
           />
         )}
+        
       </div>
 
 

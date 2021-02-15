@@ -16,11 +16,13 @@ import { IProductControlled } from "@types";
 interface ProductListItemProps {
   product: IProductControlled;
   columnCount?: number;
+  rowCount?: number;
 }
 
 const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({ 
   product,
-  columnCount = 3,
+  columnCount = 4,
+  rowCount = 1,
 }) => {
   const { category } = product;
   const price = product.pricing?.priceRange?.start;
@@ -95,13 +97,14 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({
 
   const selectedValuesList = selectedValue ? [selectedValue.value] : [];
 
-
+  var cName = columnCount == 3 ? "product-list-item-nf-large" : "product-list-item-nf";
+  
   return (
-    <div className="product-list-item-nf">
+    <div className={cName}>
         <Link 
           to={generateProductUrl(product.id, product.name)}
           key={product.id + "a"}
-          className={"product-list-item-nf__image"}>
+          className={cName + "__image"}>
             <Thumbnail source={product} override={currentImage} />
         </Link>
       
@@ -111,12 +114,12 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({
           key={product.id + "b"}
           style={{width: "100%"}}
         >
-        <div className="product-list-item-nf__text">
-          <h4 className="product-list-item-nf__title">{product.name}</h4>
-          <p className="product-list-item-nf__category">{category?.name}</p>
+        <div className={cName + "__text"}>
+          <h4 className={cName + "__title"}>{product.name}</h4>
+          <p className={cName + "__category"}>{category?.name}</p>
         </div>
       </Link>
-      <div className="product-list-item-nf__color_select">
+      <div className={cName + "__color_select"}>
         
         <VariantTiles
             label={null}
@@ -138,7 +141,7 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({
           key={product.id + "c"}
           style={{width: "100%", textAlign: "left"}}
         >
-      <p className="product-list-item-nf__price">{getProductPrice()}</p>
+      <p className={cName + "__price"}>{getProductPrice()}</p>
       </Link>
       
 
