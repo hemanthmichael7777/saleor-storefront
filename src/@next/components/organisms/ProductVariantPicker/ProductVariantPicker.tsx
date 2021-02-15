@@ -339,6 +339,7 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
                 {"Select " + vTileHeaderText}
               </S.VariantTilesHeader>
               <ProductVariantAttributeSelectTiles
+                product={product}
                 key={productVariantsAttributeId}
                 selectSidebar={selectSidebar}
                 selectSidebarTarget={selectSidebarTarget}
