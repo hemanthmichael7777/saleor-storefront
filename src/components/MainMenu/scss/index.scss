@@ -307,13 +307,13 @@
 
   &__dropdown {
     font-weight: $bold-font-weight;
-
+    color: $purple;
     li {
       cursor: pointer;
       margin: 0 auto;
 
       &:hover {
-        color: $gray;
+        color: $blue;
       }
 
       &:not(:last-of-type) {

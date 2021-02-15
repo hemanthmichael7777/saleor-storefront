@@ -3,6 +3,7 @@ import "./scss/index.scss";
 import isEqual from "lodash/isEqual";
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router";
 
 import { Thumbnail } from "@components/molecules";
 
@@ -20,6 +21,7 @@ interface ProductListItemProps {
 }
 
 const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
+  const [width, setWidth] = React.useState<number>(window.innerWidth);
   const { category } = product;
   const price = product.pricing?.priceRange?.start;
   const priceUndiscounted = product.pricing?.priceRangeUndiscounted?.start;
@@ -28,6 +30,8 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
     alt: null,
     url: "",
   });
+
+  const [isRedirect, setIsRedirect] = React.useState(false);
 
   const [currentImage, setCurrentImage] = React.useState(product.images[0].url);
 
@@ -68,7 +72,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
       return r;
     });
 
-  const onSelectValueHandler = (optionValue: string) => {
+  const onHoverHandler = (optionValue: string) => {
     var color = optionValue.replace("color", "").toLowerCase();
     var fImages = product.images.filter(img => {
       return img.url.toLowerCase().indexOf(color) > -1;
@@ -84,6 +88,28 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
     }
   }
 
+  
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  React.useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+        window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
+  let isMobile: boolean = (width <= 768);
+
+  const onSelectValueHandler = (optionsValue: string) => {
+    if(isMobile){
+      onHoverHandler(optionsValue);
+    } else {
+      window.location.href = 
+        generateProductUrl(product.id, product.name) + "?color=" 
+          + optionsValue.replace("color", "");
+    }
+  }
+
   const selectedValue = selectedColor && {
     disabled: false,
     id: selectedColor.id,
@@ -92,6 +118,10 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
   };
 
   const selectedValuesList = selectedValue ? [selectedValue.value] : [];
+
+  if(isRedirect){
+    return <Redirect to={generateProductUrl(product.id, product.name)}></Redirect>
+  }
 
 
   return (
@@ -126,7 +156,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
             selectedOptions={selectedValuesList}
             disabledOptions={[]}
             onSelect={onSelectValueHandler}
-            onHover={onSelectValueHandler}
+            onHover={onHoverHandler}
             tSize="small"
         />
         

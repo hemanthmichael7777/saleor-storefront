@@ -16,7 +16,7 @@ export const ButtonLink = styled.button<{
   box-shadow: none;
   transform: none;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: none;
   padding: 0;
   transition: color 0.3s ease;
   &:hover {

@@ -21,9 +21,10 @@ export const Photo = styled.div`
     max-width: 60px;
   }
 `;
+
 export const Sku = styled.div`
   grid-area: sku;
-  color: ${props => props.theme.colors.baseFontColorSemiTransparent};
+  color: ${props => props.theme.colors.baseFont};
   font-size: ${props => props.theme.typography.smallFontSize};
 `;
 
@@ -39,6 +40,6 @@ export const Price = styled.div`
 `;
 export const Quantity = styled.div`
   grid-area: quantity;
-  color: ${props => props.theme.colors.baseFontColorSemiTransparent};
+  color: ${props => props.theme.colors.baseFont};
   font-size: ${props => props.theme.typography.smallFontSize};
 `;

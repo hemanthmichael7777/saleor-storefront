@@ -30,7 +30,7 @@ export const purpleDark = "#250e1c";
 
 // theme colors
 export const theme = {
-  activeMenuOption: darkGreen,
+  activeMenuOption: purple,
   autofill: autofillColor,
   autofillSelected: autofillColorSelected,
   bannerBackground: secondaryGrey,
@@ -48,7 +48,7 @@ export const theme = {
   light: grayLight,
   lightFont: gray,
   listAttributeName: baseFontColorSemiTransparent,
-  listBullet: darkGreen,
+  listBullet: purple,
   overlay: overlayColor,
   primary: purple,
   primaryDark: purpleDark,
@@ -60,7 +60,7 @@ export const theme = {
   secondaryOverlay: blueOverlay,
   secondaryOverlayDark: blueOverlayDark,
   success: green,
-  tabTitle: darkGreen,
+  tabTitle: purple,
   tableDivider: tabelGray,
   tabsBorder: baseFontColorTransparent,
   thumbnailBorder: purple,

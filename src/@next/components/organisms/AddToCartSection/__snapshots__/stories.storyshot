@@ -51,7 +51,7 @@ exports[`Storyshots @components/organisms/AddToCartSection default 1`] = `
 .c14 {
   display: inline-block;
   font-size: 1.125rem;
-  text-transform: uppercase;
+  text-transform: none;
   font-weight: 600;
   line-height: 1.25rem;
 }
@@ -125,7 +125,7 @@ exports[`Storyshots @components/organisms/AddToCartSection default 1`] = `
 }
 
 .c1 {
-  text-transform: uppercase;
+  text-transform: none;
   font-weight: 600;
   margin-bottom: 1rem;
 }

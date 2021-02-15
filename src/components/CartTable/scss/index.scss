@@ -25,7 +25,7 @@
   &__cost {
     color: $base-font-color;
     font-weight: $bold-font-weight;
-    text-transform: uppercase;
+    text-transform: none;
   }
 
   &__quantity {
@@ -91,7 +91,7 @@
 
     h4 {
       font-weight: $bold-font-weight;
-      text-transform: uppercase;
+      text-transform: none;
       margin-bottom: $spacer;
     }
 

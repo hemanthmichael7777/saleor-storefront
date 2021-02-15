@@ -104,7 +104,7 @@ export const VariantTileContent = styled.div<ContentProps>`
 
 const getTSize = (props: ContentProps) => {
   if(props.tSize === "small"){
-    return "36px";
+    return "31px";
   }
   return "50px";
 }

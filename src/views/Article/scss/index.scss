@@ -149,7 +149,7 @@
         display: inline-block;
         transform: skew(-45deg);
         font-weight: $bold-font-weight;
-        text-transform: uppercase;
+        text-transform: none;
         color: $blue;
         font-size: 8vw;
         font-weight: 900;
@@ -212,7 +212,7 @@
         counter-increment: my-awesome-counter;
         &:before {
           content: counter(my-awesome-counter) ".";
-          color: $darkGreen;
+          color: $purple;
           position: absolute;
           left: 0;
         }
@@ -232,7 +232,7 @@
           width: 0.375rem;
           height: 0.375rem;
           border-radius: 50%;
-          background-color: $darkGreen;
+          background-color: $purple;
         }
         &:last-child {
           margin-bottom: 0;
@@ -245,7 +245,7 @@
       font-size: 1.125rem;
       font-style: italic;
       background-color: $purple-light;
-      border-left: 0.5rem solid $darkGreen;
+      border-left: 0.5rem solid $purple;
       margin: 1.875rem auto;
       padding: 3.75rem 2.5rem 3rem 2.5rem;
       &:before {
@@ -271,7 +271,7 @@
       font-family: "Montserrat";
       font-size: 1.5rem;
       font-weight: 600;
-      text-transform: uppercase;
+      text-transform: none;
 
       &--active {
         a {
