@@ -1,5 +1,6 @@
 @import "../../../globalStyles/scss/variables.scss";
 
+<<<<<<< HEAD
 .product-list-item-nonfeatured {
   text-align: center;
   
@@ -8,6 +9,10 @@
   margin-right: 20.8px;
   
   
+=======
+.product-list-item-nf {
+  overflow: hidden;
+>>>>>>> 3b0e11f5c5e1ca48a188b0f544d3a494939ad18d
   &__text {
     margin-left: 18px;
   }
@@ -44,19 +49,14 @@
   }
 
   &__image {
+    text-align: center;
+    height: 342px;
     
-    margin-left: 0;
-    border-radius: 12px;
-    width: 200px;
-    height: 400px;
-    overflow: hidden;
     img {
-      
-      
-    }
-
-    @media (max-width: $small-screen) {
-      height: 210px;
+      margin-left: 0;
+      border-radius: 12px;
+      /* width: 100%; */
+      width: 42.5%;
     }
   }
 

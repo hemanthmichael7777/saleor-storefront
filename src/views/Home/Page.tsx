@@ -115,7 +115,7 @@ const Page: React.FC<{
                   Whether you’re lounging at home, dressing for a special occasion, getting in a workout or
                   looking for a sexy style - we’ve got you covered. Even better? We’ve organized our gorgeous
                   pieces into five separate collections, so you can easily find the perfect bra, shapewear,
-                  activewear and lingerie—all based on how you’re feeling. 
+                  activewear and lingerie—all based on how you’re feeling.
                 </div>
               </div>
               {filteredCollections.map(({ node: collection }) => (

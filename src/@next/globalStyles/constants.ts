@@ -17,9 +17,6 @@ export const grayLight = "#f1f5f5";
 export const green = "#3ed256";
 export const overlayColor = "rgba(199, 207, 207, 0.8)";
 export const rose = "#c22d74";
-export const turquoise = "#13bebb";
-export const turquoiseDark = "#06a09e";
-export const turquoiseLight = "rgba(6, 132, 123, 0.25)";
 export const turquoiseTransparent = "rgba(6, 132, 123, 0.1)";
 export const white = "#fff";
 export const tabelGray = "#eaeaea";
@@ -27,6 +24,9 @@ export const darkGreen = "#06847B";
 export const secondaryGrey = "#EBF1F6";
 export const secondaryGreyDark = "#9D9FB1";
 export const secondaryBlue = "#036DFF";
+export const purple = "#431933";
+export const purpleLight = "#69214a";
+export const purpleDark = "#250e1c";
 
 // theme colors
 export const theme = {
@@ -44,15 +44,15 @@ export const theme = {
   divider: grayLight,
   dividerDark: grayMedium,
   error: rose,
-  hoverLightBackground: turquoiseLight,
+  hoverLightBackground: purpleLight,
   light: grayLight,
   lightFont: gray,
   listAttributeName: baseFontColorSemiTransparent,
   listBullet: darkGreen,
   overlay: overlayColor,
-  primary: turquoise,
-  primaryDark: turquoiseDark,
-  primaryLight: turquoiseLight,
+  primary: purple,
+  primaryDark: purpleDark,
+  primaryLight: purpleLight,
   primaryTransparent: turquoiseTransparent,
   secondary: blue,
   secondaryDark: blueDark,

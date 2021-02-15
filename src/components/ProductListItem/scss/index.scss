@@ -1,11 +1,7 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .product-list-item {
-  text-align: center;
   
-  width: 260px;
-  max-width: 260px;
-  margin-right: 20.8px;
   overflow: hidden;
   &__text {
     margin-left: 18px;
@@ -15,6 +11,10 @@
     font-weight: $product-item-title-font-weight;
     margin-top: $spacer* 1.2;
     text-align: left;
+
+    @media (max-width: $small-screen) {
+      text-align: center;
+    }
   }
 
   &__undiscounted_price {
@@ -27,12 +27,22 @@
   &__category {
     color: $base-font-color;
     text-align: left;
+
+    @media (max-width: $small-screen) {
+      text-align: center;
+    }
   }
 
   &__price {
     font-weight: $product-item-price-font-weight;
     margin-left: 18px;
     text-align: left;
+
+    @media (max-width: $small-screen) {
+      margin-left: 0px;
+      margin-top: 10px;
+      text-align: center;
+    }
   }
 
   &__image {
@@ -55,5 +65,9 @@
   &__color_select {
     margin-left: 16px;
     margin-top: -2px;
+
+    @media (max-width: $small-screen) {
+      margin-left: 0px;
+    }
   }
 }

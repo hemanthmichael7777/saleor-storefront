@@ -118,12 +118,21 @@
     width: 77%;
     margin-bottom: 20px;
     margin-top: 20px;
-    cursor: default;
-    user-select: none;
     color: $purple;
+
+    @media (max-width: $small-screen) {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 40px;
+      margin-top: 0px;
+    }
   }
   &__texttopbottom {
     font-size: 19px;
+
+    @media (max-width: $small-screen) {
+      text-align: center;
+    }
   }
 
 
@@ -169,9 +178,14 @@
         overflow-y: hidden;
         border-radius: 8.4px;
 
+        @media(max-width: $small-screen) {
+          width: 100%;
+          overflow-y: auto;
+        }
+
         
         &--no-photo {
-          background-color: $turquoise-light;
+          background-color: $purple-light;
           background-repeat: no-repeat;
           background-size: contain;
         }

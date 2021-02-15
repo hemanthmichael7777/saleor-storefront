@@ -189,7 +189,7 @@ export const productVariants: ProductDetails_product_variants[] = [
   {
     id: "UHJvZHVjdFZhcmlhbnQ6MzE2",
     sku: "100",
-    name: "500ml / wool / turquoise",
+    name: "500ml / wool / purple",
     quantityAvailable: 50,
     isAvailable: true,
     images: [],
@@ -251,8 +251,8 @@ export const productVariants: ProductDetails_product_variants[] = [
         values: [
           {
             id: "QXR0cmlidXRlVmFsdWU6ODU=",
-            name: "turquoise",
-            value: "turquoise",
+            name: "purple",
+            value: "purple",
             __typename: "AttributeValue",
           },
         ],
