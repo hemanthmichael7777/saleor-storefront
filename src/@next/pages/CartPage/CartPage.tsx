@@ -36,7 +36,7 @@ const getCheckoutButton = (history: History, user?: UserDetails_me | null) => (
     testingContext="proceedToCheckoutButton"
     onClick={() => history.push(user ? `/checkout/` : `/login/`)}
   >
-    <FormattedMessage defaultMessage="PROCEED TO CHECKOUT" />
+    <FormattedMessage defaultMessage="Proceed to Checkout" />
   </Button>
 );
 

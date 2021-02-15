@@ -62,7 +62,7 @@
       h1 {
         display: inline-block;
         transform: skew(-45deg);
-        text-transform: uppercase;
+        text-transform: none;
         color: $blue;
         font-size: $h1-font-size;
         font-weight: 900;
@@ -101,7 +101,7 @@
     }
 
     h5 {
-      text-transform: uppercase;
+      text-transform: none;
       padding: 5px;
     }
 

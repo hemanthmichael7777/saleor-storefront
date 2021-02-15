@@ -41,7 +41,7 @@ export const Link = styled.a`
 
 export const TextEmphasis = styled.span`
   color: ${props => props.theme.colors.bannerLink};
-  text-transform: uppercase;
+  text-transform: none;
   font-weight: 600;
 `;
 

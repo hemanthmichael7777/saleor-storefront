@@ -35,7 +35,7 @@
             font-size: 1rem;
             color: white;
             letter-spacing: 2px;
-            text-transform: uppercase;
+            text-transform: none;
         }
     }
 
@@ -118,7 +118,7 @@
             font-family: $base-font-family;
             font-size: 1rem;
             font-weight: $bold-font-weight;
-            text-transform: uppercase;
+            text-transform: none;
             line-height: 40px;
 
             @media (max-width: $small-screen) {

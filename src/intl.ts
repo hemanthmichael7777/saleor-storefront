@@ -116,10 +116,10 @@ export const commonMessages = defineMessages({
     defaultMessage: "Add",
   },
   filterHeader: {
-    defaultMessage: "FILTERS",
+    defaultMessage: "Filters",
   },
   clearFilterHeader: {
-    defaultMessage: "CLEAR FILTERS",
+    defaultMessage: "Clear Filters",
   },
   status: {
     defaultMessage: "Status",
@@ -161,22 +161,22 @@ export const checkoutMessages = defineMessages({
     defaultMessage: "Add new address",
   },
   shippingMethod: {
-    defaultMessage: "SHIPPING METHOD",
+    defaultMessage: "Shipping Method",
   },
   billingAddress: {
-    defaultMessage: "BILLING ADDRESS",
+    defaultMessage: "Billing Address",
   },
   paymentMethod: {
-    defaultMessage: "PAYMENT METHOD",
+    defaultMessage: "Payment Method",
   },
   reviewOrder: {
-    defaultMessage: "REVIEW ORDER",
+    defaultMessage: "Review Order",
   },
   shippingAddress: {
     defaultMessage: "Shipping Address",
   },
   continueShopping: {
-    defaultMessage: "CONTINUE SHOPPING",
+    defaultMessage: "Continue Shopping",
   },
 });
 

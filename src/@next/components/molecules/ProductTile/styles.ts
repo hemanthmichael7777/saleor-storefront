@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h4`
-  text-transform: uppercase;
+  text-transform: none;
   font-weight: bold;
   margin-top: 40px;
   font-weight: bold;

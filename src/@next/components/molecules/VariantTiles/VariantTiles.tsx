@@ -38,7 +38,7 @@ export const VariantTiles: React.FC<IProps> = ({
     if(option.image !== ""){
       var w = "48px";
       if (tSize === "small"){
-        w = "34px";
+        w = "29px";
       }
       var r = "6px";
       var b = "";
@@ -61,7 +61,7 @@ export const VariantTiles: React.FC<IProps> = ({
         selected={isSelected}
         disabled={isDisabled}
         onClick={() => onSelect(option.value)}
-        onHover={!disableHover ? () => onSelect(option.value) : () => {}}
+        onHover={onHover ? () => onHover(option.value) : () => {}}
         key={"key-" + option.value}
         tSize={tSize}
       >

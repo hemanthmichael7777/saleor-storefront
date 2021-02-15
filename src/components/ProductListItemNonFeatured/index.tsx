@@ -2,7 +2,8 @@ import "./scss/index.scss";
 
 import isEqual from "lodash/isEqual";
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+
 
 import { Thumbnail } from "@components/molecules";
 
@@ -12,6 +13,7 @@ import { generateProductUrl } from "../../core/utils";
 
 import { VariantTiles } from "../../@next/components/molecules/VariantTiles";
 import { IProductControlled } from "@types";
+
 
 interface ProductListItemProps {
   product: IProductControlled;
@@ -24,6 +26,7 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({
   columnCount = 4,
   rowCount = 1,
 }) => {
+  const [width, setWidth] = React.useState<number>(window.innerWidth);
   const { category } = product;
   const price = product.pricing?.priceRange?.start;
   const priceUndiscounted = product.pricing?.priceRangeUndiscounted?.start;
@@ -72,21 +75,43 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({
       return r;
     });
 
-  const onSelectValueHandler = (optionValue: string) => {
-    var color = optionValue.replace("color", "").toLowerCase();
-    var fImages = product.images.filter(img => {
-      return img.url.toLowerCase().indexOf(color) > -1;
-    });
-
-    if(fImages.length > 0) {
-      setSelectedColor({
-        id: optionValue,
-        alt: null,
-        url: fImages[0].url,
+    const onHoverHandler = (optionValue: string) => {
+      var color = optionValue.replace("color", "").toLowerCase();
+      var fImages = product.images.filter(img => {
+        return img.url.toLowerCase().indexOf(color) > -1;
       });
-      setCurrentImage(fImages[0].url);
+  
+      if(fImages.length > 0) {
+        setSelectedColor({
+          id: optionValue,
+          alt: null,
+          url: fImages[0].url,
+        });
+        setCurrentImage(fImages[0].url);
+      }
     }
-  }
+  
+    
+    function handleWindowSizeChange() {
+      setWidth(window.innerWidth);
+    }
+    React.useEffect(() => {
+      window.addEventListener('resize', handleWindowSizeChange);
+      return () => {
+          window.removeEventListener('resize', handleWindowSizeChange);
+      }
+    }, []);
+    let isMobile: boolean = (width <= 768);
+  
+    const onSelectValueHandler = (optionsValue: string) => {
+      if(isMobile){
+        onHoverHandler(optionsValue);
+      } else {
+        window.location.href = 
+          generateProductUrl(product.id, product.name) + "?color=" 
+            + optionsValue.replace("color", "");
+      }
+    }
 
   const selectedValue = selectedColor && {
     disabled: false,
@@ -131,7 +156,7 @@ const ProductListItemNonFeatured: React.FC<ProductListItemProps> = ({
             selectedOptions={selectedValuesList}
             disabledOptions={[]}
             onSelect={onSelectValueHandler}
-            onHover={onSelectValueHandler}
+            onHover={onHoverHandler}
             tSize="small"
         />
         
