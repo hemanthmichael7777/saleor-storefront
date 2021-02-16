@@ -116,7 +116,7 @@ export const commonMessages = defineMessages({
     defaultMessage: "Add",
   },
   filterHeader: {
-    defaultMessage: "Filters",
+    defaultMessage: "Filter Results",
   },
   clearFilterHeader: {
     defaultMessage: "Clear Filters",

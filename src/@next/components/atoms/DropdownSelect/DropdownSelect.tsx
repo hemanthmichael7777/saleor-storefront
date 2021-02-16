@@ -30,7 +30,7 @@ export const DropdownSelect: React.FC<IProps> = ({
         </Label>
         <S.Value>{` ${value ? value.label : ""}`}</S.Value>
         <S.Indicator rotate={String(menuIsOpen)}>
-          <Icon name="select_arrow" size={10} />
+          <Icon name="select_arrow" size={10} color={"white"} />
         </S.Indicator>
       </S.SortLine>
     ),

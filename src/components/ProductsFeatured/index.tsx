@@ -19,6 +19,7 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
           () => data.shop.homepageCollection.products.edges,
           []
         );
+        alert(data)
         
         if (products.length) {
           return (

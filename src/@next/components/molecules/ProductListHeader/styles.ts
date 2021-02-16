@@ -5,15 +5,17 @@ export const Wrapper = styled.div`
 `;
 
 export const Bar = styled.div`
-  height: 5rem;
-  background-color: ${props => props.theme.tile.backgroundColor};
+  height: 3.3rem;
+  background-color: #431933;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
   font-size: ${props => props.theme.typography.smallFontSize};
-  margin-top: 1rem;
+  margin-top: 2rem;
   margin-bottom: 1.4rem;
+  border-radius: 6px;
+  color: white;
 `;
 
 export const LeftSide = styled.div`
@@ -30,6 +32,7 @@ export const FiltersButton = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: white;
 `;
 
 export const Clear = styled.button`
@@ -48,7 +51,7 @@ export const Filters = styled.span`
 `;
 
 export const Label = styled.span`
-  color: ${props => props.theme.colors.lightFont};
+  color: white;
 `;
 
 export const Sort = styled.div`

@@ -23,7 +23,7 @@ export const ProductListHeader: React.FC<IProps> = ({
       <S.Bar>
         <S.LeftSide>
           <S.FiltersButton onClick={openFiltersMenu} data-test="filtersButton">
-            <Icon name="filter" size={24} />
+            <Icon name="filter" size={24} color={"white"}/>
             <S.Filters>
               <FormattedMessage {...commonMessages.filterHeader} />{" "}
               {activeFilters > 0 && (
