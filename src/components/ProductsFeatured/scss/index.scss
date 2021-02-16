@@ -38,6 +38,11 @@
     text-decoration: none;
     width: 221px;
     margin-left: 70px;
+
+    @media(max-width: $small-screen) {
+      width: auto;
+      margin-left: 0px;
+    }
   }
 
   @media(max-width: $small-screen) {

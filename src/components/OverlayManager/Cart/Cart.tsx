@@ -83,7 +83,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
           {items?.length ? (
             <>
               {missingVariants() ? (
-                <DefaultLoader full />
+                <DefaultLoader />
               ) : (
                 <>
                   <ProductList lines={items} remove={removeItem} />

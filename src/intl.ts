@@ -2,7 +2,7 @@ import { defineMessages, IntlShape } from "react-intl";
 
 export const commonMessages = defineMessages({
   search: {
-    defaultMessage: "search",
+    defaultMessage: "Search",
   },
   outOfStock: {
     defaultMessage: "Out of stock",

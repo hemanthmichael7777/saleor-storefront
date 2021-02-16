@@ -69,30 +69,35 @@
     // border: 1px solid white;
     padding: 5px;
 
-    @media(max-width: $small-screen) {
+    @media(max-width: 850px) {
       padding: 20px;
     }
   }
 
   &__paymentimgcontainer {
     width: 275px;
-    height: 75px;
-    border: 2px solid white;
+    height: 70px;
+    border: 1.5px solid white;
     border-radius: 5px;
     display: flex;
 
     @media(max-width: $small-screen) {
       width: auto;
     }
+    @media(max-width: 850px) {
+      margin: auto;
+    }
   }
 
   &__paymentimg {
-    margin: 7.5px;
-    // border: 1px solid red;
+    margin: 2.5px;
+    padding-top: 1px;
+    margin-top: 0px;
     width: 100%;
     
     @media (max-width: $small-screen) {
-      margin: auto;
+      padding-top: 0px;
+      margin-top: auto; 
     }
   }
 
@@ -158,7 +163,7 @@
       // border: 1px solid blue;
       text-align: left;
 
-      @media(max-width: $small-screen) {
+      @media(max-width: 850px) {
         flex-direction: column;
         text-align: center;
       }

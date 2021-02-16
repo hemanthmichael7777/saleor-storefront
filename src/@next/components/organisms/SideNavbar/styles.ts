@@ -14,7 +14,7 @@ const MenuItemStyles = css`
   outline: none;
   padding: 0 25px 0px 15px;
   text-transform: none;
-  transition: 300ms;
+  transition: 100ms;
   height: ${NAVBAR_HEIGHT};
   width: 100%;
   ${({ theme }) => `

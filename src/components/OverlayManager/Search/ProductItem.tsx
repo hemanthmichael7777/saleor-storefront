@@ -11,11 +11,13 @@ const ProductItem: React.FC<SearchResults_products_edges> = ({
 }) => (
   <li className="search__products__item">
     <Link to={generateProductUrl(product.id, product.name)}>
-      <Thumbnail source={product} />
-      <span>
-        <h4>{product.name}</h4>
-        <p>{product.category?.name || "-"}</p>
-      </span>
+      <div className="search__mobile-flex-search">
+        <Thumbnail source={product} />
+        <span>
+          <h4>{product.name}</h4>
+          <p>{product.category?.name || "-"}</p>
+        </span>
+      </div>
     </Link>
   </li>
 );

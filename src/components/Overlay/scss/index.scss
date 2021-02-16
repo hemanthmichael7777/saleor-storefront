@@ -7,7 +7,7 @@
   min-height: 100vh;
   position: fixed;
   top: 0;
-  transition: 300ms;
+  transition: 100ms;
   width: 100%;
   z-index: 2;
 
@@ -26,7 +26,7 @@
     position: fixed;
     min-height: 100%;
     background-color: $white;
-    animation: sidenavLeftOpen 0.3s;
+    animation: sidenavLeftOpen 0.1s;
   }
 
   &__right {
@@ -35,7 +35,7 @@
     right: 0;
     top: 0;
     height: 100%;
-    animation: sidenavRightOpen 0.3s;
+    animation: sidenavRightOpen 0.1s;
   }
 
   &__header {

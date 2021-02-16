@@ -87,7 +87,7 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
           }
 
           if (displayLoader && loading && !hasData) {
-            return <DefaultLoader full={loaderFull} />;
+            return <DefaultLoader />;
           }
 
           if (hasData || (renderOnError && error) || alwaysRender) {

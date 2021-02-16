@@ -2,7 +2,6 @@ import React from "react";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import * as S from "./styles";
-import { IProps } from "./types";
 
 import Loader from "react-loader-spinner";
 export class DefaultLoader extends React.Component {
