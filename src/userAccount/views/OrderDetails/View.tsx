@@ -3,7 +3,7 @@ import "./scss/index.scss";
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
-import { Loader } from "@components/atoms";
+import { DefaultLoader } from "@components/atoms";
 import { useAuth, useOrderDetails } from "@saleor/sdk";
 
 import Page from "./Page";
@@ -34,7 +34,7 @@ const View: React.FC<RouteComponentProps<{ token?: string }>> = ({
   };
 
   if (loading) {
-    return <Loader />;
+    return <DefaultLoader />;
   }
 
   return (

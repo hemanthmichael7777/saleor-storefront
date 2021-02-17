@@ -6,10 +6,26 @@
   padding: 3.2rem 0 4rem;
   margin-left: -16px;
   &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2px;
+    // border: 1px solid red;
     @media (min-width: $small-screen) {
       > a {
         &:nth-child(n + 5) {
           
+        }
+      }
+    }
+    @media (min-width: $small-screen) {
+      > a {
+        &:first-child {
+          margin-left: 0px;
+        }
+
+        &:nth-child(5n) {
+          margin-left: 0px;
         }
       }
     }
@@ -27,5 +43,6 @@
     color: $base-font-color;
     display: inline-block;
     text-decoration: none;
+    
   }
 }

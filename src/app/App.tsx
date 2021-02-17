@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useAuth } from "@saleor/sdk";
-import { Loader } from "@components/atoms";
+import { DefaultLoader } from "@components/atoms";
 import { demoMode } from "@temp/constants";
 import {
   Footer,
@@ -19,7 +19,7 @@ const App: React.FC = () => {
   const { tokenRefreshing, tokenVerifying } = useAuth();
 
   if (tokenRefreshing || tokenVerifying) {
-    return <Loader />;
+    return <DefaultLoader />;
   }
 
   return (

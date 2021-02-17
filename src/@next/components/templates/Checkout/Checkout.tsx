@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Loader } from "@components/atoms";
+import { DefaultLoader } from "@components/atoms";
 
 import { Container } from "../Container";
 
@@ -22,9 +22,9 @@ const Checkout: React.FC<IProps> = ({
   return (
     <Container>
       {loading && (
-        <S.Loader>
-          <Loader fullScreen />
-        </S.Loader>
+        <S.DefaultLoader>
+          <DefaultLoader />
+        </S.DefaultLoader>
       )}
       <S.Wrapper>
         <S.Navigation>{navigation}</S.Navigation>

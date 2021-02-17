@@ -1,6 +1,6 @@
 import { media, styled } from "@styles";
 
-export const Loader = styled.div`
+export const DefaultLoader = styled.div`
   position: fixed;
   top: 0;
   left: 0;

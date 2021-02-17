@@ -21,6 +21,8 @@ $purple: #431933;
 $purple-light: #69214a;
 $purple-dark: #250e1c;
 $purple-hover: #69214a;
+$purple-scroll-thumb: #8D7585;
+$purple-scroll-track: #C5BAC2;
 
 // typography
 //$base-font-family: "Inter", sans-serif;
@@ -42,15 +44,15 @@ $spacer: 1rem; // 16px
 $container-width: 1140px;
 
 // button
-$button-font-size: 1.125rem;
+$button-font-size: 1rem;
 $button-line-height: $base-line-height;
-$button-box-shadow: -5px 5px 14px 0px rgba(0, 0, 0, 0.2);
-$button-box-shadow-clicked: -3px 3px 14px 0px rgba(129, 67, 67, 0.2);
-$button-padding: 0.9rem 3.7rem;
-$button-padding-small-screen: 0.9rem 1rem;
-$button-transition: 0.3s;
-$button-transform: skew(45deg);
-$button-content-transform: skew(-45deg);
+$button-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+$button-box-shadow-clicked: 0px 0px 0px 0px rgba(0, 0, 0, 0.0);
+$button-padding: 0.6rem 3.5rem;
+$button-padding-small-screen: 0.8rem 0.9rem;
+$button-transition: 0.0s;
+$button-transform: skew(0deg);
+$button-content-transform: skew(0deg);
 $button-text-transform: none;
 $button-font-weight: $bold-font-weight;
 

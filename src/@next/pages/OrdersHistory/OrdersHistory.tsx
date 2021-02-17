@@ -2,7 +2,7 @@ import { useOrdersByUser } from "@saleor/sdk/";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-import { Button, Loader } from "@components/atoms";
+import { Button, DefaultLoader } from "@components/atoms";
 import { OrderTabel } from "@components/molecules";
 
 import * as S from "./styles";
@@ -21,7 +21,7 @@ export const OrdersHistory: React.FC<IProps> = ({ history }: IProps) => {
   );
 
   return loading && !data ? (
-    <Loader />
+    <DefaultLoader />
   ) : (
     <>
       <OrderTabel orders={data?.edges} history={history} />

@@ -20,7 +20,7 @@ export const Primary = styled.button<{
   padding: ${props => padding[props.size]};
   border: none;
   border-radius: 6px;
-  transition: 0.3s;
+  transition: 0.0s;
   outline: none;
   height: 46px;
   cursor: pointer;

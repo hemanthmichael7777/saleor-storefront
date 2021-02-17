@@ -15,12 +15,12 @@ export const Wrapper = styled.div`
   border-radius: 50%;
   border-width: 0;
 
-  transition: 0.3s;
+  transition: 0.0s;
 
   svg {
     display: block;
     path {
-      transition: 0.3s;
+      transition: 0.0s;
     }
   }
 

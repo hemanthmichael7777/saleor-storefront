@@ -4,7 +4,7 @@ export { default as CheckoutLogin } from "./CheckoutLogin";
 export { default as ContentPage } from "./ContentPage";
 export { default as Dropdown } from "./Dropdown";
 export { default as Form } from "./Form";
-export { default as Loader } from "./Loader";
+export { default as DefaultLoader } from "./DefaultLoader";
 export { default as LoginForm } from "./LoginForm";
 export { default as MenuDropdown } from "./MenuDropdown";
 export { default as Message } from "./Message";

@@ -8,12 +8,21 @@
   width: 30rem;
 
   background-color: $purple;
-  color: $white;;
+  color: $white;
+
+  &:hover {
+    color: $gray;
+  }
 
   &__menu-item {
+    cursor: pointer;
     border-bottom: 1px solid $gray-light;
     display: grid;
     height: $item-height;
+
+    &:hover {
+      background: $purple-hover;
+    }
 
     &-link,
     &-back span {
@@ -22,7 +31,7 @@
       display: flex;
       padding: $spacer;
       text-decoration: none;
-      transition: 0.3s;
+      transition: 0.0s;
 
       svg * {
         fill: currentColor;
@@ -42,10 +51,10 @@
     &-more,
     &-back,
     &-close {
-      transition: 0.3s;
+      transition: 0.0s;
 
       &:hover {
-        color: $purple-hover;
+        color: $gray;
       }
 
       svg * {
@@ -86,7 +95,7 @@
       }
 
       &:hover {
-        color: $purple-hover;
+        color: $gray;
       }
     }
 

@@ -10,7 +10,7 @@ import NothingFound from "./NothingFound";
 
 import { searchUrl } from "../../app/routes";
 import { maybe } from "@temp/core/utils";
-import { Loader } from "@components/atoms";
+import { DefaultLoader } from "@components/atoms";
 import { Error } from "../Error";
 import { OfflinePlaceholder } from "..";
 
@@ -111,7 +111,7 @@ export class Search extends React.Component<any> {
                                                             </ul>
                                                             <div>
                                                                 {loading ? (
-                                                                    <Loader />
+                                                                    <DefaultLoader />
                                                                 ) : (
                                                                         // <div className="allresults-container">
                                                                         //     <button

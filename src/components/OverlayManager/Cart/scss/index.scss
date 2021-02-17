@@ -18,6 +18,12 @@
     &__close-icon {
       margin-left: auto;
     }
+
+    &-text-items {
+      color: $gray-dark;
+      margin-left: 10px;
+      margin-top: 1px;
+    }
   }
 
   &__list {
@@ -118,7 +124,7 @@
     }
 
     p {
-      color: $gray;
+      color: $gray-dark;
     }
 
     &__action {

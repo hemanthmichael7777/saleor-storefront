@@ -2,7 +2,7 @@ import { media, styled } from "@styles";
 import { Size } from "./types";
 
 const padding = {
-  md: "0.9rem 3.7rem",
+  md: "0.6rem 3.5rem",
   sm: "0.1rem 2rem",
 };
 
@@ -19,8 +19,9 @@ export const Primary = styled.button<{
   background-color: ${props =>
     props.theme.button.colors[props.color].background};
   padding: ${props => padding[props.size]};
-  border: none;
-  transition: 0.3s;
+  border: 1px;
+  border-radius: 6px;
+  transition: 0.0s;
   outline: none;
   cursor: pointer;
   color: ${props => props.theme.button.colors[props.color].color};
@@ -55,10 +56,7 @@ export const Primary = styled.button<{
 `;
 
 export const Secondary = styled(Primary)`
-  box-shadow: inset 0px 0px 0px 3px
-    ${props => props.theme.button.colors.secondary.color};
-  border-left: 1px solid ${props => props.theme.button.colors.secondary.color};
-  border-right: 1px solid ${props => props.theme.button.colors.secondary.color};
+  border: 2px solid ${props => props.theme.button.colors.secondary.color};
 `;
 
 export const Text = styled.span<{ size: Size }>`

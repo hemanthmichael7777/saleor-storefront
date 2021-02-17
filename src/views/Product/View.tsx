@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import { useHistory } from "react-router-dom";
 
-import { Loader } from "@components/atoms";
+import { DefaultLoader } from "@components/atoms";
 import { MetaWrapper, NotFound, OfflinePlaceholder } from "../../components";
 import NetworkStatus from "../../components/NetworkStatus";
 import { getGraphqlIdFromDBId, maybe } from "../../core/utils";
@@ -137,7 +137,7 @@ const View: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
             }
 
             if (loading) {
-              return <Loader />;
+              return <DefaultLoader />;
             }
 
             if (product === null) {

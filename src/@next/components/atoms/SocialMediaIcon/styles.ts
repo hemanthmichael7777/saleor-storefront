@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 
 export const Link = styled.a`
   path {
-    transition: 0.3s;
+    transition: 0.0s;
   }
 
   &:hover {

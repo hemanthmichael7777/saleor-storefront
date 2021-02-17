@@ -16,12 +16,10 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
   return (
     <TypedFeaturedProductsQuery displayError={false}>
       {({ data }) => {
-        console.log("sodvnosindvosivndoisvndo")
         const products = maybe(
           () => data.shop.homepageCollection.products.edges,
           []
         );
-        
         
         if (products.length) {
           return (

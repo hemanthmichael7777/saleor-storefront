@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useIntl } from "react-intl";
 import { Redirect, useLocation, useHistory } from "react-router-dom";
 
-import { Button, Loader } from "@components/atoms";
+import { Button, DefaultLoader } from "@components/atoms";
 import { CheckoutProgressBar } from "@components/molecules";
 import {
   CartSummary,
@@ -288,7 +288,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         )}
       />
     ) : (
-      <Loader />
+      <DefaultLoader />
     );
 
   const handleProcessPayment = async (
