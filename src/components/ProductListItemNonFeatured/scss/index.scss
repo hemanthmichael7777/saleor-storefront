@@ -6,7 +6,7 @@
   margin-bottom: 50px;
   
   &__text {
-    margin-left: 0px;
+    margin-left: 33px;
   }
 
   &__title {
@@ -37,7 +37,7 @@
 
   &__price {
     font-weight: $product-item-price-font-weight;
-    margin-left: 0px;
+    margin-left: 34px;
     text-align: left;
 
     @media (max-width: $small-screen) {
@@ -63,7 +63,7 @@
   }
 
   &__color_select {
-    margin-left: 0px;
+    margin-left: 32px;
     margin-top: -2px;
     min-height: 40px;
 
@@ -113,7 +113,7 @@
     font-weight: $product-item-price-font-weight;
     margin-left: 0px;
     text-align: left;
-
+    margin-left: 0px;
     @media (max-width: $small-screen) {
       margin-left: 0px;
       margin-top: 10px;
