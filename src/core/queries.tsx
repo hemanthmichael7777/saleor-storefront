@@ -64,7 +64,6 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
             LoadMore<TData, TVariables>
         ) => {
           const { error, loading, data, fetchMore } = queryData;
-          console.log(queryData);
           const hasData = maybe(() => !!Object.keys(data).length, false);
           const loadMore = (
             mergeFunc: (
