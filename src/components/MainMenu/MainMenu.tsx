@@ -111,7 +111,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                             key="toggleSideMenuLinkKey"
                             data-test="toggleSideMenuLink"
                             className="main-menu__hamburger"
-                            style={{display: isMediumScreenExact}}
+                            style={{ display: isMediumScreenExact }}
                             onClick={() =>
                               overlayContext.show(
                                 OverlayType.sideNav,
@@ -141,7 +141,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                 <MenuDropdown
                                   suffixClass="__rightdown"
                                   head={
-                                    <li key="userKey" className="main-menu__icon main-menu__user--active" style={{display: isMediumScreenExact}}>
+                                    <li key="userKey" className="main-menu__icon main-menu__user--active" style={{ display: isMediumScreenExact }}>
                                       <ReactSVG path={userImg} />
                                     </li>
                                   }
@@ -184,7 +184,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                   <li
                                     key="mobileMenuLoginLink"
                                     data-test="mobileMenuLoginLink"
-                                    className="main-menu__icon" style={{display: isMediumScreenExact}}
+                                    className="main-menu__icon" style={{ display: isMediumScreenExact }}
                                     onClick={() =>
                                       overlayContext.show(
                                         OverlayType.login,
@@ -217,19 +217,19 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
               <ul className="main-menu__right-ul">
                 <Online>
                   <Media
-                    query={{ maxWidth: mediumScreen}}
+                    query={{ maxWidth: mediumScreen }}
                     render={() => (
                       <li
-                      key="menuSearchOverlayLink"
-                      data-test="menuSearchOverlayLink"
-                      className="main-menu__search"
-                      style={{display: isMediumScreenExact}}
-                      onClick={() =>
-                        overlayContext.show(OverlayType.search, OverlayTheme.right)
-                      }
-                    >
-                      <ReactSVG path={searchImg} />
-                    </li>
+                        key="menuSearchOverlayLink"
+                        data-test="menuSearchOverlayLink"
+                        className="main-menu__search"
+                        style={{ display: isMediumScreenExact }}
+                        onClick={() =>
+                          overlayContext.show(OverlayType.search, OverlayTheme.right)
+                        }
+                      >
+                        <ReactSVG path={searchImg} />
+                      </li>
                     )}
                   />
                 </Online>
@@ -360,32 +360,30 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                       query={{ minWidth: mediumScreen }}
                       render={() =>
                         items.map(item => {
-                          const hasSubNavigation = !!item?.children?.length;
 
-                          var dropDownStyleClass = hasSubNavigation ? "main-menu__item" : "main-menu__item__no-nav";
+                          const hasSubNavigation = !!item?.children?.length;
+                          const dropDownStyleClass = hasSubNavigation ? "main-menu__item" : "main-menu__item__no-nav";
 
                           return (
-                            <div className="main-menu__menudiv">
-                              <li
-                                data-test="mainMenuItem"
-                                className={dropDownStyleClass}
-                                key={item.id}
-                              >
+                            <li
+                              data-test="mainMenuItem"
+                              className={dropDownStyleClass}
+                              key={item.id}
+                            >
 
-                                <NavDropdown
-                                  hasSubNavigation={hasSubNavigation}
-                                  overlay={overlayContext}
-                                  showDropdown={
-                                    activeDropdown === item.id && hasSubNavigation
-                                  }
-                                  onShowDropdown={() =>
-                                    showDropdownHandler(item.id, hasSubNavigation)
-                                  }
-                                  onHideDropdown={hideDropdownHandler}
-                                  {...item}
-                                />
-                              </li>
-                            </div>
+                              <NavDropdown
+                                hasSubNavigation={hasSubNavigation}
+                                overlay={overlayContext}
+                                showDropdown={
+                                  activeDropdown === item.id && hasSubNavigation
+                                }
+                                onShowDropdown={() =>
+                                  showDropdownHandler(item.id, hasSubNavigation)
+                                }
+                                onHideDropdown={hideDropdownHandler}
+                                {...item}
+                              />
+                            </li>
                           );
                         })
                       }

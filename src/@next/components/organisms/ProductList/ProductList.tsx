@@ -29,17 +29,12 @@ export const ProductList: React.FC<IProps> = ({
           <h3>{title}</h3>
           <div className="products-listed__container">
             {products.map(product => (
-              <Link
-                to={"/"}
-                onClick={ (event: any) => event.preventDefault() }
-                key={product.id}
-              >
                 <ProductListItemNonFeatured 
+                  key={product.id}
                   product={product}
                   rowCount={rowCount}
                   columnCount={columnCount} 
                 />
-              </Link>
             ))}
           </div>
       </div>

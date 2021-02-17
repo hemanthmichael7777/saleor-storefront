@@ -2,33 +2,15 @@
 
 .products-featured {
   padding: 3.2rem 0 4rem;
-  overflow: hidden;
   &__container {
-    overflow: hidden;
-    @media (min-width: $small-screen) {
-      > a {
-        &:nth-child(n + 5) {
-          display: none;
-        }
-        
-      }
-    }
-
-    @media (min-width: $small-screen) {
-      > a {
-        &:first-child {
-          margin-left: -70px;
-        }
-        
-      }
-    }
+    display: flex;
+    flex-wrap: wrap;
   }
 
   h3 {
     font-size: 30px;
     font-weight: $bold-font-weight;
     margin-bottom: $spacer * 2;
-    
     color: $purple;
   }
 
@@ -36,16 +18,5 @@
     color: $base-font-color;
     display: inline-block;
     text-decoration: none;
-    width: 221px;
-    margin-left: 70px;
-
-    @media(max-width: $small-screen) {
-      width: auto;
-      margin-left: 0px;
-    }
-  }
-
-  @media(max-width: $small-screen) {
-    text-align: center;
   }
 }

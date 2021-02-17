@@ -8,7 +8,7 @@ import { Redirect } from "react-router";
 import { Thumbnail } from "@components/molecules";
 
 import { TaxedMoney } from "../../@next/components/containers";
-import { 
+import {
   FeaturedProducts_shop_homepageCollection_products_edges_node,
 } from "../ProductsFeatured/gqlTypes/FeaturedProducts";
 
@@ -60,7 +60,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
   const attributeOptions = product.productType.metadata
     .filter(value => {
       return (value.key.indexOf("color") > -1) && productHasColor(value.key)
-    }).map(value => { 
+    }).map(value => {
       var r = {
         disabled: false,
         id: value.key,
@@ -78,7 +78,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
       return img.url.toLowerCase().indexOf(color) > -1;
     });
 
-    if(fImages.length > 0) {
+    if (fImages.length > 0) {
       setSelectedColor({
         id: optionValue,
         alt: null,
@@ -88,25 +88,25 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
     }
   }
 
-  
+
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
   }
   React.useEffect(() => {
     window.addEventListener('resize', handleWindowSizeChange);
     return () => {
-        window.removeEventListener('resize', handleWindowSizeChange);
+      window.removeEventListener('resize', handleWindowSizeChange);
     }
   }, []);
   let isMobile: boolean = (width <= 768);
 
   const onSelectValueHandler = (optionsValue: string) => {
-    if(isMobile){
+    if (isMobile) {
       onHoverHandler(optionsValue);
     } else {
-      window.location.href = 
-        generateProductUrl(product.id, product.name) + "?color=" 
-          + optionsValue.replace("color", "");
+      window.location.href =
+        generateProductUrl(product.id, product.name) + "?color="
+        + optionsValue.replace("color", "");
     }
   }
 
@@ -119,25 +119,25 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
 
   const selectedValuesList = selectedValue ? [selectedValue.value] : [];
 
-  if(isRedirect){
+  if (isRedirect) {
     return <Redirect to={generateProductUrl(product.id, product.name)}></Redirect>
   }
 
 
   return (
     <div className="product-list-item">
-        <Link 
-          to={generateProductUrl(product.id, product.name)}
-          key={product.id + "a"}
-          className={"product-list-item__image"}>
-            <Thumbnail source={product} override={currentImage} />
-        </Link>
-      
       <Link
-          to={generateProductUrl(product.id, product.name)}
-          key={product.id + "b"}
-          style={{width: "100%"}}
-        >
+        to={generateProductUrl(product.id, product.name)}
+        key={product.id + "a"}
+        className={"product-list-item__image"}>
+        <Thumbnail source={product} override={currentImage} />
+      </Link>
+
+      <Link
+        to={generateProductUrl(product.id, product.name)}
+        key={product.id + "b"}
+        style={{ width: "100%" }}
+      >
         <div className="product-list-item__text">
           <h4 className="product-list-item__title">{product.name}</h4>
           <p className="product-list-item__category">{category?.name}</p>
@@ -145,30 +145,29 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
       </Link>
 
       <div className="product-list-item__color_select">
-        
         <VariantTiles
-            label={null}
-            value={selectedValue ? selectedValue.value : ""}
-            disabled={false}
-            name={"color"}
-            data-test="variantPicker"
-            options={attributeOptions}
-            selectedOptions={selectedValuesList}
-            disabledOptions={[]}
-            onSelect={onSelectValueHandler}
-            onHover={onHoverHandler}
-            tSize="small"
+          label={null}
+          value={selectedValue ? selectedValue.value : ""}
+          disabled={false}
+          name={"color"}
+          data-test="variantPicker"
+          options={attributeOptions}
+          selectedOptions={selectedValuesList}
+          disabledOptions={[]}
+          onSelect={onSelectValueHandler}
+          onHover={onHoverHandler}
+          tSize="small"
         />
-        
       </div>
+
       <Link
-          to={generateProductUrl(product.id, product.name)}
-          key={product.id + "c"}
-          style={{width: "100%", textAlign: "left"}}
-        >
-      <p className="product-list-item__price">{getProductPrice()}</p>
+        to={generateProductUrl(product.id, product.name)}
+        key={product.id + "c"}
+        style={{ width: "100%", textAlign: "left" }}
+      >
+        <p className="product-list-item__price">{getProductPrice()}</p>
       </Link>
-      
+
 
     </div>
   );
