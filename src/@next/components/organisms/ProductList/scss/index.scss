@@ -6,6 +6,11 @@
   &__container {
     display: flex;
     flex-wrap: wrap;
+
+    @media(max-width: $small-screen) {
+      display: contents;
+      flex-wrap: nowrap;
+    }
   }
 
   h3 {
@@ -14,6 +19,10 @@
     margin-bottom: $spacer * 2;
     color: $purple;
     padding-left: 32.5px;
+
+    @media(max-width: $small-screen) {
+      padding-left: 5px;
+    }
   }
 
   a {
