@@ -75,7 +75,6 @@ export const ThumbnailList = styled.div`
 
 export const Preview = styled.div`
   grid-area: preview;
-  width: 98%;
   overflow: hidden;
   width: 554px;
   height: 686px;
