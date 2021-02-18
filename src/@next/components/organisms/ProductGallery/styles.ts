@@ -10,7 +10,8 @@ export const Wrapper = styled.div`
 `;
 
 export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
-  width: 76px;
+  width: 88.83px;
+  height: 110px;
   display: flex;
   border-width: 5px;
   border-style: solid;
@@ -21,10 +22,7 @@ export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
   justify-content: center;
   height: 100px;
   overflow: hidden;
-  img {
-    width: 100%;
-    height: 108%;
-  }
+  
   margin-top: 1px;
   margin-bottom: 1px;
   border-radius: 7px;
@@ -72,13 +70,15 @@ export const ThumbnailList = styled.div`
     padding: 0;
     margin: 0;
   }
+  width: 96px;
 `;
 
 export const Preview = styled.div`
   grid-area: preview;
   width: 98%;
   overflow: hidden;
-  height: 680px;
+  width: 554px;
+  height: 686px;
   img {
     width: 100%;
     object-fit: contain;
