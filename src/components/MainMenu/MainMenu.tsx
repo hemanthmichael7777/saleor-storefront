@@ -107,8 +107,10 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                         query={{ maxWidth: mediumScreen }}
                         render={() => (
                           <li
+                            key="toggleSideMenuLinkKey"
                             data-test="toggleSideMenuLink"
                             className="main-menu__hamburger"
+                            style={{ display: isMediumScreenExact }}
                             onClick={() =>
                               overlayContext.show(
                                 OverlayType.sideNav,
@@ -138,27 +140,27 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                 <MenuDropdown
                                   suffixClass="__rightdown"
                                   head={
-                                    <li className="main-menu__icon main-menu__user--active" style={{display: isMediumScreenExact}}>
+                                    <li key="userKey" className="main-menu__icon main-menu__user--active" style={{ display: isMediumScreenExact }}>
                                       <ReactSVG path={userImg} />
                                     </li>
                                   }
                                   content={
                                     <ul className="main-menu__dropdown">
-                                      <li data-test="mobileMenuMyAccountLink">
+                                      <li key="mobileMenuMyAccountLink" data-test="mobileMenuMyAccountLink">
                                         <Link to={appPaths.accountUrl}>
                                           <FormattedMessage
                                             {...commonMessages.myAccount}
                                           />
                                         </Link>
                                       </li>
-                                      <li data-test="mobileMenuOrderHistoryLink">
+                                      <li key="mobileMenuOrderHistoryLink" data-test="mobileMenuOrderHistoryLink">
                                         <Link to={appPaths.orderHistoryUrl}>
                                           <FormattedMessage
                                             {...commonMessages.orderHistory}
                                           />
                                         </Link>
                                       </li>
-                                      <li data-test="mobileMenuAddressBookLink">
+                                      <li key="mobileMenuAddressBookLink" data-test="mobileMenuAddressBookLink">
                                         <Link to={appPaths.addressBookUrl}>
                                           <FormattedMessage
                                             {...commonMessages.addressBook}
@@ -166,6 +168,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                         </Link>
                                       </li>
                                       <li
+                                        key="mobileMenuLogoutLink"
                                         onClick={handleSignOut}
                                         data-test="mobileMenuLogoutLink"
                                       >
@@ -178,8 +181,9 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                 />
                               ) : (
                                   <li
+                                    key="mobileMenuLoginLink"
                                     data-test="mobileMenuLoginLink"
-                                    className="main-menu__icon" style={{display: isMediumScreenExact}}
+                                    className="main-menu__icon" style={{ display: isMediumScreenExact }}
                                     onClick={() =>
                                       overlayContext.show(
                                         OverlayType.login,
@@ -212,18 +216,19 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
               <ul className="main-menu__right-ul">
                 <Online>
                   <Media
-                    query={{ maxWidth: mediumScreen}}
+                    query={{ maxWidth: mediumScreen }}
                     render={() => (
                       <li
-                      data-test="menuSearchOverlayLink"
-                      className="main-menu__search"
-                      style={{display: isMediumScreenExact}}
-                      onClick={() =>
-                        overlayContext.show(OverlayType.search, OverlayTheme.right)
-                      }
-                    >
-                      <ReactSVG path={searchImg} />
-                    </li>
+                        key="menuSearchOverlayLink"
+                        data-test="menuSearchOverlayLink"
+                        className="main-menu__search"
+                        style={{ display: isMediumScreenExact }}
+                        onClick={() =>
+                          overlayContext.show(OverlayType.search, OverlayTheme.right)
+                        }
+                      >
+                        <ReactSVG path={searchImg} />
+                      </li>
                     )}
                   />
                 </Online>
@@ -233,7 +238,8 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     query={{ minWidth: mediumScreen }}
                     render={() => (
                       <li
-                        data-test="menuSearchOverlayLink"
+                        key="menuSearchOverlayLinkWeb"
+                        data-test="menuSearchOverlayLinkWeb"
                       >
                         <Search />
                       </li>
@@ -249,27 +255,27 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                         {user ? (
                           <MenuDropdown
                             head={
-                              <li className="main-menu__icon main-menu__user--active">
+                              <li key="userActiveKey" className="main-menu__icon main-menu__user--active">
                                 <ReactSVG path={userImg} />
                               </li>
                             }
                             content={
                               <ul className="main-menu__dropdown">
-                                <li data-test="desktopMenuMyAccountLink">
+                                <li key="desktopMenuMyAccountLink" data-test="desktopMenuMyAccountLink">
                                   <Link to={appPaths.accountUrl}>
                                     <FormattedMessage
                                       {...commonMessages.myAccount}
                                     />
                                   </Link>
                                 </li>
-                                <li data-test="desktopMenuOrderHistoryLink">
+                                <li key="desktopMenuOrderHistoryLink" data-test="desktopMenuOrderHistoryLink">
                                   <Link to={appPaths.orderHistoryUrl}>
                                     <FormattedMessage
                                       {...commonMessages.orderHistory}
                                     />
                                   </Link>
                                 </li>
-                                <li data-test="desktopMenuAddressBookLink">
+                                <li key="desktopMenuAddressBookLink" data-test="desktopMenuAddressBookLink">
                                   <Link to={appPaths.addressBookUrl}>
                                     <FormattedMessage
                                       {...commonMessages.addressBook}
@@ -277,6 +283,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                   </Link>
                                 </li>
                                 <li
+                                  key="desktopMenuLogoutLink"
                                   onClick={handleSignOut}
                                   data-test="desktopMenuLogoutLink"
                                 >
@@ -287,6 +294,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                           />
                         ) : (
                             <li
+                              key="desktopMenuLoginOverlayLink"
                               data-test="desktopMenuLoginOverlayLink"
                               className="main-menu__icon"
                               onClick={() =>
@@ -303,6 +311,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                     )}
                   />
                   <li
+                    key="menuCartOverlayLink"
                     data-test="menuCartOverlayLink"
                     className="main-menu__icon main-menu__cart"
                     onClick={() => {
@@ -321,7 +330,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
 
 
                 <Offline>
-                  <li className="main-menu__offline">
+                  <li key="offlineKey" className="main-menu__offline">
                     <Media
                       query={{ minWidth: mediumScreen }}
                       render={() => (
@@ -350,32 +359,30 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                       query={{ minWidth: mediumScreen }}
                       render={() =>
                         items.map(item => {
-                          const hasSubNavigation = !!item?.children?.length;
 
-                          var dropDownStyleClass = hasSubNavigation ? "main-menu__item" : "main-menu__item__no-nav";
+                          const hasSubNavigation = !!item?.children?.length;
+                          const dropDownStyleClass = hasSubNavigation ? "main-menu__item" : "main-menu__item__no-nav";
 
                           return (
-                            <div className="main-menu__menudiv">
-                              <li
-                                data-test="mainMenuItem"
-                                className={dropDownStyleClass}
-                                key={item.id}
-                              >
+                            <li
+                              data-test="mainMenuItem"
+                              className={dropDownStyleClass}
+                              key={item.id}
+                            >
 
-                                <NavDropdown
-                                  hasSubNavigation={hasSubNavigation}
-                                  overlay={overlayContext}
-                                  showDropdown={
-                                    activeDropdown === item.id && hasSubNavigation
-                                  }
-                                  onShowDropdown={() =>
-                                    showDropdownHandler(item.id, hasSubNavigation)
-                                  }
-                                  onHideDropdown={hideDropdownHandler}
-                                  {...item}
-                                />
-                              </li>
-                            </div>
+                              <NavDropdown
+                                hasSubNavigation={hasSubNavigation}
+                                overlay={overlayContext}
+                                showDropdown={
+                                  activeDropdown === item.id && hasSubNavigation
+                                }
+                                onShowDropdown={() =>
+                                  showDropdownHandler(item.id, hasSubNavigation)
+                                }
+                                onHideDropdown={hideDropdownHandler}
+                                {...item}
+                              />
+                            </li>
                           );
                         })
                       }
@@ -385,6 +392,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
               }}
             </TypedMainMenuQuery>
           </div>
+
         </div>
       </nav>
     </header >

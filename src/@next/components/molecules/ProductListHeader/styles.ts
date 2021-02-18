@@ -16,6 +16,16 @@ export const Bar = styled.div`
   margin-bottom: 1.4rem;
   border-radius: 6px;
   color: white;
+  @media(max-width: 540px) {
+    height: 3.3rem;
+    background-color: #431933;
+    padding: 0 1rem;
+    font-size: ${props => props.theme.typography.baseFontSize};
+    margin-top: 2rem;
+    margin-bottom: 1.4rem;
+    border-radius: 6px;
+    color: white;
+  }
 `;
 
 export const LeftSide = styled.div`
@@ -25,6 +35,9 @@ export const LeftSide = styled.div`
 
 export const RightSide = styled.div`
   height: 1.2rem;
+  @media(max-width: 540px) {
+    height: 2.4rem;
+  }
 `;
 
 export const FiltersButton = styled.button`
@@ -33,6 +46,9 @@ export const FiltersButton = styled.button`
   align-items: center;
   cursor: pointer;
   color: white;
+  @media(max-width: 540px) {
+    font-size: ${props => props.theme.typography.baseFontSize};
+  }
 `;
 
 export const Clear = styled.button`
@@ -40,9 +56,15 @@ export const Clear = styled.button`
   cursor: pointer;
   font-size: ${props => props.theme.typography.smallFontSize};
   color: ${props => props.theme.colors.lightFont};
+  @media(max-width: 540px) {
+    font-size: ${props => props.theme.typography.baseFontSize};
+  }
 `;
 export const Element = styled.span`
   padding-left: 2rem;
+  @media(max-width: 540px) {
+    padding-left: 1rem;
+  }
 `;
 
 export const Filters = styled.span`

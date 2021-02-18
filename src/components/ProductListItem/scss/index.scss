@@ -1,9 +1,87 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .product-list-item {
+  flex-basis: 212px;
+  flex-grow: 1;
+  margin-bottom: 70px;
+
+  @media (max-width: $small-screen) {
+    flex-basis: auto;
+    flex-grow: 0;
+    padding-left: 0px;
+    margin-bottom: 70px;
+  }
   
-  width: 277px;
+  &:first-child {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    @media(max-width: $small-screen) {
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+      
+    }
+  }
   
+  &:nth-child(2n) {
+    padding-left: 24px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    @media(max-width: $small-screen) {
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+      
+    }
+  }
+  &:nth-child(3n) {
+    padding-left: 49px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    @media(max-width: $small-screen) {
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+      
+    }
+  }
+  &:nth-child(4n) {
+    padding-left: 70px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    @media(max-width: $small-screen) {
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+      
+    }
+  }
+  &:nth-child(5n) {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    @media(max-width: $small-screen) {
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  }
 
   &__text {
     margin-left: 0px;
@@ -15,7 +93,7 @@
     text-align: left;
 
     @media (max-width: $small-screen) {
-      text-align: center;
+      //text-align: center;
     }
   }
 
@@ -31,7 +109,7 @@
     text-align: left;
 
     @media (max-width: $small-screen) {
-      text-align: center;
+      //text-align: center;
     }
   }
 
@@ -43,29 +121,36 @@
     @media (max-width: $small-screen) {
       margin-left: 0px;
       margin-top: 10px;
-      text-align: center;
+      //text-align: center;
     }
   }
 
   &__image {
     text-align: center;
-    height: 317px;
-    width: 210px;
+    height: 337px;
+    width: 232px;
     overflow: hidden;
     border-radius: 12px;
+
     img {
       height: 100%;
+      // border: 2px solid black;
+      @media (max-width: $small-screen) {
+        height: auto;
+        width: 100%;
+      }
     }
 
     @media (max-width: $small-screen) {
-      height: 210px;
+      height: 400px;
+      width: auto;
     }
   }
 
   &__color_select {
-    margin-left: 70px;
-    margin-top: -2px;
-    min-height: 40px;
+    // margin-left: 70px;
+    // margin-top: -2px;
+    // min-height: 40px;
 
     @media (max-width: $small-screen) {
       margin-left: 0px;

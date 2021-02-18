@@ -12,7 +12,7 @@ interface ProductsFeaturedProps {
 }
 
 const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
-  
+
   return (
     <TypedFeaturedProductsQuery displayError={false}>
       {({ data }) => {
@@ -20,23 +20,17 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
           () => data.shop.homepageCollection.products.edges,
           []
         );
-        
+
         if (products.length) {
           return (
             <div className="products-featured">
-                <h3>{title}</h3>
-                <div className="products-featured__container">
-                  {products.map(({ node: product }) => (
-                    <Link
-                      to={"/"}
-                      onClick={ (event) => event.preventDefault() }
-                      key={product.id}
-                    >
-                      <ProductListItem product={product} />
-                    </Link>
-                  ))}
-                </div>
-              
+              <h3>{title}</h3>
+              <div className="products-featured__container">
+                {products.slice(0, 4).map(({ node: product }) => (
+                  <ProductListItem key={product.id} product={product} />
+                ))}
+              </div>
+
             </div>
           );
         }

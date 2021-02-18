@@ -1,12 +1,21 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .product-list-item-nf {
-  
-  width: 277px;
-  margin-bottom: 50px;
-  
+
+  flex-basis: 212px;
+  flex-grow: 1;
+  padding-left: 32.5px;
+  margin-bottom: 70px;
+
+  @media (max-width: $small-screen) {
+    flex-basis: auto;
+    flex-grow: 0;
+    padding-left: 0px;
+    margin-bottom: 70px;
+  }
+
   &__text {
-    margin-left: 33px;
+    margin-left: 0px;
   }
 
   &__title {
@@ -15,7 +24,7 @@
     text-align: left;
 
     @media (max-width: $small-screen) {
-      text-align: center;
+      //text-align: center;
     }
   }
 
@@ -31,20 +40,13 @@
     text-align: left;
 
     @media (max-width: $small-screen) {
-      text-align: center;
+      //text-align: center;
     }
   }
 
   &__price {
     font-weight: $product-item-price-font-weight;
-    margin-left: 34px;
     text-align: left;
-
-    @media (max-width: $small-screen) {
-      margin-left: 0px;
-      margin-top: 10px;
-      text-align: center;
-    }
   }
 
   &__image {
@@ -55,29 +57,38 @@
     border-radius: 12px;
     img {
       height: 100%;
+
+      @media (max-width: $small-screen) {
+        height: auto;
+        width: 100%;
+      }
     }
 
     @media (max-width: $small-screen) {
-      height: 210px;
+      height: 400px;
+      width: auto;
     }
   }
 
   &__color_select {
-    margin-left: 32px;
-    margin-top: -2px;
-    min-height: 40px;
 
-    @media (max-width: $small-screen) {
-      margin-left: 0px;
-    }
   }
 }
 
 .product-list-item-nf-large {
   
-  width: 277px;
-  margin-bottom: 50px;
-  
+  flex-basis: 212px;
+  flex-grow: 1;
+  padding-left: 32.5px;
+  margin-bottom: 70px;
+
+  @media (max-width: $small-screen) {
+    flex-basis: auto;
+    flex-grow: 0;
+    padding-left: 0px;
+    margin-bottom: 70px;
+    margin-left: 7px;
+  }
 
   &__text {
     margin-left: 0px;
@@ -89,7 +100,7 @@
     text-align: left;
 
     @media (max-width: $small-screen) {
-      text-align: center;
+      //text-align: center;
     }
   }
 
@@ -111,38 +122,31 @@
 
   &__price {
     font-weight: $product-item-price-font-weight;
-    margin-left: 0px;
     text-align: left;
-    margin-left: 0px;
-    @media (max-width: $small-screen) {
-      margin-left: 0px;
-      margin-top: 10px;
-      text-align: center;
-    }
   }
 
   &__image {
     text-align: center;
-    height: 420px;
+    height: 450px;
     width: 300px;
     overflow: hidden;
     border-radius: 12px;
     img {
-      height: 500px;
+      height: 100%;
+
+      @media (max-width: $small-screen) {
+        height: auto;
+        width: 100%;
+      }
     }
 
     @media (max-width: $small-screen) {
-      height: 210px;
+      height: 450px;
+      width: auto;
     }
   }
 
   &__color_select {
-    margin-left: 0px;
-    margin-top: -2px;
-    min-height: 40px;
 
-    @media (max-width: $small-screen) {
-      margin-left: 0px;
-    }
   }
 }

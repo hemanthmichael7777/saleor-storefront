@@ -36,7 +36,7 @@ export const Wrapper = styled.div<WrapperProps>`
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-top: 10px;
-  @media(max-width: 540px){justify-content:center}
+  @media(max-width: 540px){margin-left: -11px;}
 `;
 
 const getBgColor = (
