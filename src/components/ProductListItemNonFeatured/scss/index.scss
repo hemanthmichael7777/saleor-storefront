@@ -52,11 +52,15 @@
   &__image {
     text-align: center;
     height: 317px;
-    width: 210px;
+    width: 256px;
     overflow: hidden;
-    border-radius: 12px;
+    
     img {
-      height: 100%;
+      height: 317px;
+      width: 256px;
+      //object-fit: contain;
+      border: 1px;
+      border-radius: 12px;
 
       @media (max-width: $small-screen) {
         height: auto;
@@ -127,12 +131,14 @@
 
   &__image {
     text-align: center;
-    height: 450px;
-    width: 300px;
+    height: 415px;
+    width: 335.2px;
     overflow: hidden;
-    border-radius: 12px;
     img {
-      height: 100%;
+      height: 415px;
+      width: 335.2px;
+      border: 1px;
+      border-radius: 12px;
 
       @media (max-width: $small-screen) {
         height: auto;
