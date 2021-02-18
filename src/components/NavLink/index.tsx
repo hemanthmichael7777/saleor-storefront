@@ -31,7 +31,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ item, ...props }) => {
 
   if (url) {
     return (
-      <a href={url} {...props} target="_blank">
+      <a href={url} {...props}>
         {name}
       </a>
     );
