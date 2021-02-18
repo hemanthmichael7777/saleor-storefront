@@ -2,8 +2,8 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { string } from "yup";
 import { CountryCode } from "./../../../../gqlTypes/globalTypes";
+import { ProductList_products_edges_node_category, ProductList_products_edges_node_image, ProductList_products_edges_node_productType } from "./ProductList";
 
 // ====================================================
 // GraphQL query operation: ProductDetails
@@ -436,6 +436,11 @@ export interface ProductDetails_product_category_products_edges_node {
    * Lists the storefront product's pricing, the current price and discounts, only meant for displaying.
    */
   pricing: ProductDetails_product_category_products_edges_node_pricing | null;
+
+  category: ProductList_products_edges_node_category | null;
+  productType: ProductList_products_edges_node_productType;
+
+  images: ProductList_products_edges_node_image[] | null;
 }
 
 export interface ProductDetails_product_category_products_edges {

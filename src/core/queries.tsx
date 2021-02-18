@@ -41,7 +41,6 @@ export function TypedQuery<TData, TVariables>(query: DocumentNode) {
       alwaysRender = false,
       fetchPolicy = "cache-and-network",
       errorPolicy,
-      loaderFull,
       skip,
       variables,
       onCompleted,

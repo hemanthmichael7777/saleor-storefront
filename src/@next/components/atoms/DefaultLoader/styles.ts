@@ -1,5 +1,4 @@
 import { styled } from "@styles";
-import { keyframes } from "styled-components";
 
 // import { getContentWindowHeight } from "@utils/styles";
 

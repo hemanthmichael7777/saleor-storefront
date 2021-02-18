@@ -22,7 +22,7 @@ export const ProductList: React.FC<IProps> = ({
   rowCount = 1,
   columnCount = 4,
 }: IProps) => {
-
+  
   return (
     <>
       <div className="products-listed">

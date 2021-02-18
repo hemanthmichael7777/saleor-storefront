@@ -2,6 +2,7 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+import { ProductList_products_edges_node_image, ProductList_products_edges_node_productType } from "@temp/views/Product/gqlTypes/ProductList";
 import { AttributeInput, ProductOrder } from "./../../../../gqlTypes/globalTypes";
 
 // ====================================================
@@ -241,6 +242,10 @@ export interface CategoryProducts_products_edges_node {
    */
   pricing: CategoryProducts_products_edges_node_pricing | null;
   category: CategoryProducts_products_edges_node_category | null;
+
+  productType: ProductList_products_edges_node_productType;
+
+  images: ProductList_products_edges_node_image[] | null;
 }
 
 export interface CategoryProducts_products_edges {

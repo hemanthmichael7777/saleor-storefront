@@ -12,7 +12,7 @@ import {
   FeaturedProducts_shop_homepageCollection_products_edges_node,
 } from "../ProductsFeatured/gqlTypes/FeaturedProducts";
 
-import { generateProductUrl, maybe } from "../../core/utils";
+import { generateProductUrl } from "../../core/utils";
 
 import { VariantTiles } from "../../@next/components/molecules/VariantTiles";
 
@@ -31,7 +31,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ product }) => {
     url: "",
   });
 
-  const [isRedirect, setIsRedirect] = React.useState(false);
+  const [isRedirect] = React.useState(false);
 
   const [currentImage, setCurrentImage] = React.useState(product.images[0].url);
 

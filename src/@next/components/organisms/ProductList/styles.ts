@@ -1,4 +1,4 @@
-import { media, styled } from "@styles";
+import { styled } from "@styles";
 
 export const List = styled.div`
   border: 3px solid black;

@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useIntl } from "react-intl";
+import React from "react";
 import { VariantTiles } from "@components/molecules";
 import { useSelectableProductVariantsAttributeValues } from "@hooks";
 import { ProductDetails_product_variants, ProductDetails_product_images, ProductDetails_product_variants_attributes_values } from "../../../../views/Product/gqlTypes/ProductDetails";
@@ -8,7 +7,6 @@ import {
   IProductVariantsAttributesSelectedValues,
 } from "@types";
 
-import * as S from "./styles";
 import { ProductDetails_product } from "../../../../views/Product/gqlTypes/ProductDetails";
 
 

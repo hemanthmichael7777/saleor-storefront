@@ -1,10 +1,4 @@
-import { media, styled } from "@styles";
-import { css } from "styled-components";
-
-const textProps = css`
-  margin: 0 0 0.5rem 0;
-  text-align: left;
-`;
+import { styled } from "@styles";
 
 export const Wrapper = styled.div`
   width: 200px;

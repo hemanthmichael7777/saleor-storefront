@@ -6,11 +6,6 @@ const padding = {
   sm: "0.1rem 2rem",
 };
 
-const fontSize = (fontSize: string, smallFontSize: string) => ({
-  md: fontSize,
-  sm: smallFontSize,
-});
-
 export const Primary = styled.button<{
   color: "primary" | "secondary";
   fullWidth?: boolean;

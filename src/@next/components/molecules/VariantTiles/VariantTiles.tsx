@@ -19,8 +19,6 @@ export const VariantTiles: React.FC<IProps> = ({
   disableHover = false,
   ...props
 }: IProps) => {
-  const elementRef = React.useRef(null);
-  const [active, setActive] = React.useState(false);
 
 
   const vTiles = options.map(option => {

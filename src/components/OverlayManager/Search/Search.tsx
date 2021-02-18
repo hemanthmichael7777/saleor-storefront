@@ -6,7 +6,6 @@ import * as React from "react";
 import {
   injectIntl,
   WrappedComponentProps,
-  FormattedMessage,
 } from "react-intl";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import ReactSVG from "react-svg";
@@ -14,7 +13,6 @@ import ReactSVG from "react-svg";
 import { commonMessages } from "@temp/intl";
 
 import {
-  Button,
   DefaultLoader,
   OfflinePlaceholder,
   Overlay,

@@ -2,7 +2,7 @@ import "./scss/index.scss";
 
 import isEqual from "lodash/isEqual";
 import * as React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 import { Thumbnail } from "@components/molecules";

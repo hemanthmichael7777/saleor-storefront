@@ -10,13 +10,10 @@ import {
   ProductDetails_product,
   ProductDetails_product_variants, 
   ProductDetails_product_variants_attributes_values,
-  ProductDetails_product_variants_attributes
 } from "../../../../views/Product/gqlTypes/ProductDetails";
 
 import {
-  IProductVariantsAttribute,
   IProductVariantsAttributesSelectedValues,
-  IProductVariantsAttributeValueMap,
 } from "@types";
 
 import { 
@@ -28,7 +25,6 @@ import {
   ProductDetails_product_images,
 } from "../../../../views/Product/gqlTypes/ProductDetails";
 import * as S from "./styles";
-import { identity } from "lodash";
 
 export interface IProductVariantPickerProps {
   product: ProductDetails_product;
@@ -206,10 +202,10 @@ const ProductVariantPicker: React.FC<IProductVariantPickerProps> = ({
       var missingAttr = missingAttrs[i];
       var aVals = productVariantsAttributes[attributesMap[missingAttr]];
         for (const [_key2, value2] of Object.entries(aVals.values)) {
-          var selectedKeyAndCurrentAttrTemp = selectedKeyAndCurrentAttr.replace(
-            "{" + missingAttr + "}",
-            "{" + missingAttr + "}" + value2.value
-          )
+          // var selectedKeyAndCurrentAttrTemp = selectedKeyAndCurrentAttr.replace(
+          //   "{" + missingAttr + "}",
+          //   "{" + missingAttr + "}" + value2.value
+          // )
           
           for (const [key3, _value3] of Object.entries(variantMap)) {
             if(key3.indexOf(value2.value || "") > -1){
