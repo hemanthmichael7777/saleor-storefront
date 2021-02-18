@@ -127,14 +127,15 @@
 
   &__image {
     text-align: center;
-    height: 337px;
-    width: 232px;
+    height: 298px;
+    width: 241px;
     overflow: hidden;
-    border-radius: 12px;
 
     img {
-      height: 100%;
-      // border: 2px solid black;
+      height: 298px;
+      width: 241px;
+      border: 1px;
+      border-radius: 12px;
       @media (max-width: $small-screen) {
         height: auto;
         width: 100%;
