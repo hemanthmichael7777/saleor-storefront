@@ -125,12 +125,6 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsUpdatedAt),
       value: "updated_at",
     },
-    {
-      label: intl.formatMessage(
-        prodListHeaderCommonMsg.sortOptionsUpdatedAtDsc
-      ),
-      value: "-updated_at",
-    },
   ];
 
   return (
