@@ -62,18 +62,16 @@
     background-repeat: repeat;
     background-position: left top;
     width: 100%;
-    padding-top: 17.5%;
-    padding-bottom: 17.5%;
+    padding-top: 5.5%;
+    padding-bottom: 10.5%;
 
 
     h1{
       font-family: $base-font-family;
-      font-size: 2rem;
     }
 
     h2 {
       font-family: $base-font-family;
-      font-size: $base-font-size
     }
   }
 
@@ -82,6 +80,11 @@
     //border: 2px solid green;
     text-align: left;
     margin-left: 50px;
+
+    h1 {
+      font-size: 48px;
+      color: $purple;
+    }
   }
 
   &__descriptionbody {
@@ -89,12 +92,14 @@
     max-width: 80%;
     margin-top: 5%;
     margin-left: 50px;
-    text-align: left;
+    font-size: 25px;
+    line-height: 28px;
   }
 
   &__flexcontainer {
     display: flex;
     flex-direction: row;
+    height: 57vh;
 
     @media (max-width: $small-screen) {
       flex-direction: column;

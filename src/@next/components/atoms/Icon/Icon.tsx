@@ -7,7 +7,7 @@ const getPathColor = (color: string | string[], index: number) => {
   if (typeof color === "string") {
     return color;
   }
-
+  
   return color[index] ? color[index] : "inherit";
 };
 

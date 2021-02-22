@@ -63,8 +63,8 @@ export const Lightbox = styled.div<IStyleProps>`
       return css`
         ${position}: 0;
         transform: translateX(${getTranslate(position)});
-        animation: ${slideAnimation(open, position)} 0.4s both;
-        animation-delay: ${open ? ".1s" : 0};
+        animation: ${slideAnimation(open, position)} 0.1s both;
+        
       `;
     }
   }}
@@ -80,8 +80,6 @@ export const Overlay = styled.div<IStyleProps>`
   min-height: 100vh;
   top: 0;
   z-index: 2;
-  transition: opacity 0.2s ease;
-  transition-delay: ${({ open }) => (open ? 0 : ".4s")};
   background-color: ${({ transparent, theme }) =>
     transparent ? "" : theme.colors.overlay};
   align-items: center;

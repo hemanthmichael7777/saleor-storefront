@@ -55,7 +55,7 @@ export const FilterFixed: React.FC<IProps> = ({
             onClick={hide}
             name="x"
             size={18}
-            color="000"
+            color="#e9e7e7"
           />
         </S.Header>
         {attributes.map(({ id, name, slug, values }) => {
