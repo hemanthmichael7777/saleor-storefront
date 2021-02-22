@@ -35,6 +35,7 @@ export const basicProductFragment = gql`
       value
     }
     productType {
+      id
       metadata {
         key
         value
