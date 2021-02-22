@@ -45,13 +45,15 @@ export const ProductList: React.FC<IProps> = ({
           <DefaultLoader />
         ) : (
           canLoadMore && (
-            <Button
-              testingContext="loadMoreProductsButton"
-              color="primary"
-              onClick={onLoadMore}
-            >
-              <FormattedMessage defaultMessage="More" />
-            </Button>
+            <div className="load-more-button">
+              <Button
+                testingContext="loadMoreProductsButton"
+                color="primary"
+                onClick={onLoadMore}
+              >
+                <FormattedMessage defaultMessage="More" />
+              </Button>
+            </div>
           )
         )}
       </S.DefaultLoader>

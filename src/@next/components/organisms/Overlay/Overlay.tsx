@@ -9,7 +9,7 @@ const modalRoot = document.getElementById("modal-root");
 
 export const Overlay: React.FC<IProps> = ({
   children,
-  duration = 600,
+  duration = 0,
   hide,
   position = "center",
   show,

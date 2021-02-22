@@ -1,7 +1,7 @@
 import { styled } from "@styles";
 
 export const Wrapper = styled.div`
-  overflow: scroll;
+  overflow-y: scroll;
   width: 410px;
   display: flex;
   justify-content: flex-start;

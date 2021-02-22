@@ -15,5 +15,5 @@ export const List = styled.div`
 
 export const DefaultLoader = styled.div`
   text-align: center;
-  margin: 2.5rem 0;
+  
 `;

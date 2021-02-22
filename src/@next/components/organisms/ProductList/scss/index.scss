@@ -1,7 +1,7 @@
 @import "../../../../../globalStyles/scss/variables.scss";
 
 .products-listed {
-  padding: 3.2rem 0 4rem;
+  padding-top: 2rem;
   
   &__container {
     display: flex;
@@ -30,4 +30,8 @@
     display: inline-block;
     text-decoration: none;
   }
+}
+
+.load-more-button {
+  margin-bottom: 40px;
 }

@@ -54,8 +54,7 @@ export const FilterSidebar: React.FC<IProps> = ({
             testingContext="hideFilters"
             onClick={hide}
             name="x"
-            size={18}
-            color="000"
+            size={16}
           />
         </S.Header>
         {attributes.map(({ id, name, slug, values }) => {
