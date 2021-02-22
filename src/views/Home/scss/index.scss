@@ -122,7 +122,7 @@
     margin-bottom: 20px;
     margin-top: 20px;
     color: $purple;
-
+    
     @media (max-width: $small-screen) {
       text-align: center;
       width: 100%;
@@ -132,7 +132,7 @@
   }
   &__texttopbottom {
     font-size: 19px;
-
+    line-height: 29px;
     @media (max-width: $small-screen) {
       text-align: center;
     }

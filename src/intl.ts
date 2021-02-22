@@ -191,13 +191,13 @@ export const prodListHeaderCommonMsg = defineMessages({
     defaultMessage: "Price High-Low",
   },
   sortOptionsName: {
-    defaultMessage: "Name Increasing",
+    defaultMessage: "Name A to Z",
   },
   sortOptionsNameDsc: {
-    defaultMessage: "Name Decreasing",
+    defaultMessage: "Name Z to A",
   },
   sortOptionsUpdatedAt: {
-    defaultMessage: "Last updated Ascending",
+    defaultMessage: "Newest Arrivals",
   },
   sortOptionsUpdatedAtDsc: {
     defaultMessage: "Last updated Descending",

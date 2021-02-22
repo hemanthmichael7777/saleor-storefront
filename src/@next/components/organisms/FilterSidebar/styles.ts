@@ -2,7 +2,7 @@ import { styled } from "@styles";
 
 export const Wrapper = styled.div`
   overflow-y: scroll;
-  width: 410px;
+  width: 350px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
