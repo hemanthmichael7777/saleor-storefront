@@ -477,7 +477,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       checkout={checkoutView}
       paymentGateways={paymentGatewaysView}
       hidePaymentGateways={steps[activeStepIndex].step !== CheckoutStep.Payment}
-      button={getButton(buttonText?.toUpperCase(), handleNextStepClick)}
+      button={getButton(buttonText, handleNextStepClick)}
     />
   );
 };

@@ -387,7 +387,7 @@
     }
 
     &__body {
-      //border: 1px solid red;
+      // border: 1px solid red;
       background: $gray;
       //border-top-color: $gray-light;
       //border-top-style: solid;
@@ -404,6 +404,7 @@
       
       &--visible {
         display: block;
+        
       }
 
       li *,
