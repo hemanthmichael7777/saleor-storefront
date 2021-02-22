@@ -32,6 +32,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
   return (
     <S.Wrapper>
       {paymentGateways.map(({ id, name, config }, index) => {
+        
         const checked = selectedPaymentGateway === id;
 
         switch (name) {
@@ -102,23 +103,13 @@ const PaymentGatewaysList: React.FC<IProps> = ({
           case PROVIDERS.AUTHORIZENET.label:
               return (
                 <div key={index}>
-                  <S.Tile checked={checked}>
-                    <Radio
-                      data-test="checkoutPaymentGatewayDummyInput"
-                      name="payment-method"
-                      value="dummy"
-                      checked={checked}
-                      onChange={() =>
-                        selectPaymentGateway && selectPaymentGateway(id)
-                      }
-                      customLabel
-                    >
-                      <span data-test="checkoutPaymentGatewayDummyName">
-                        {name}
-                      </span>
-                    </Radio>
+                  <S.Tile checked={checked} style={{cursor: "auto"}}>
+                    <span data-test="checkoutPaymentGatewayDummyName">
+                      {PROVIDERS.AUTHORIZENET.displayLabel}
+                    </span>
                   </S.Tile>
-                  {checked && (
+                  
+                  {/* {checked && ( */}
                     <AuthorizeNetPaymentGateway
                       config={config}  
                       formRef={formRef}
@@ -130,7 +121,7 @@ const PaymentGatewaysList: React.FC<IProps> = ({
                       errors={errors}
                       onError={onError}
                     />
-                  )}
+                  {/* )} */}
                 </div>
               );
 

@@ -14,6 +14,7 @@ export const PROVIDERS = {
   },
   AUTHORIZENET: {
     label: "AuthorizeNet",
+    displayLabel: "Credit / Debit Card"
   },
   STRIPE: {
     label: "Stripe",

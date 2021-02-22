@@ -17,6 +17,8 @@ export const InputWrapper = styled.div`
 export const ButtonWrapper = styled.div`
   width: auto;
   min-width: 110px;
+  margin-left: 20px;
+  margin-top: 1.5px;
 
   button {
     padding: 0.8rem 1rem;
