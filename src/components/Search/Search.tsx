@@ -109,7 +109,7 @@ export class Search extends React.Component<any> {
 
                                                                 ))}
                                                             </ul>
-                                                            <div>
+                                                            {/* <div>
                                                                 {loading ? (
                                                                     <DefaultLoader />
                                                                 ) : (
@@ -123,7 +123,7 @@ export class Search extends React.Component<any> {
                                                                         // </div>
                                                                         null
                                                                     )}
-                                                            </div>
+                                                            </div> */}
                                                         </>
                                                     );
                                                 }

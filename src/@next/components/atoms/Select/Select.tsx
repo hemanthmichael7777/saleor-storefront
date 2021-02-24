@@ -24,7 +24,7 @@ const optionStyle = (customTheme: any) => ({
         : state.isFocused
         ? customTheme.colors.primaryTransparent
         : "white",
-      color: state.isDisabled
+      color: state.isSelected
         ? customTheme.colors.lightFont
         : customTheme.colors.dark,
       display: "flex",

@@ -55,6 +55,10 @@ export const Text = styled.span<{ size: Size }>`
   vertical-align: middle;
 `;
 
+export const CloseButtonContainer = styled.div`
+  margin-top: 2px;
+`
+
 export const CloseButton = styled.button<{
   size: Size;
   color: "primary" | "secondary";

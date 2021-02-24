@@ -101,10 +101,10 @@ export const View: React.FC<ViewProps> = ({ match }) => {
   };
 
   const sortOptions = [
-    {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsClear),
-      value: null,
-    },
+    // {
+    //   label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsClear),
+    //   value: null,
+    // },
     {
       label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsPrice),
       value: "price",

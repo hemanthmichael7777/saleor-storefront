@@ -8,12 +8,15 @@ import { Modal } from "../Modal";
 
 import { IProps } from "./types";
 
+import { defaultCountryElement } from './config';
+
 export const AddressFormModal: React.FC<IProps> = ({
   hideModal,
   submitBtnText,
   target,
   title,
   userId,
+  countriesOptions,
   address,
   formId,
   ...props
@@ -67,6 +70,7 @@ export const AddressFormModal: React.FC<IProps> = ({
         {...props}
         {...{ errors }}
         formId={formId}
+        defaultValue={countriesOptions ? countriesOptions[defaultCountryElement] : null}
         address={address ? address.address : undefined}
         handleSubmit={data => {
           if (userId) {

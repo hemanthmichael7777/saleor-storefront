@@ -46,7 +46,7 @@ export const theme = {
   error: rose,
   hoverLightBackground: purpleLight,
   light: grayLight,
-  lightFont: gray,
+  lightFont: white,
   listAttributeName: baseFontColorSemiTransparent,
   listBullet: purple,
   overlay: overlayColor,

@@ -11,6 +11,8 @@ import { AddressGridSelector } from "../AddressGridSelector";
 import * as S from "./styles";
 import { IProps } from "./types";
 
+import { defaultCountryElement } from './config';
+
 /**
  * Address form used in checkout.
  */
@@ -64,6 +66,7 @@ const CheckoutAddress: React.FC<IProps> = ({
                 testingContext="shippingAddressForm"
                 formId={shippingFormId}
                 formRef={shippingFormRef}
+                defaultValue={countries?.filter(filterNotEmptyArrayItems)[defaultCountryElement]} // find default country from query
                 countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
                 address={{
                   ...checkoutShippingAddress,
@@ -119,6 +122,7 @@ const CheckoutAddress: React.FC<IProps> = ({
                 testingContext="billingAddressForm"
                 formId={billingFormId}
                 formRef={billingFormRef}
+                defaultValue={countries?.filter(filterNotEmptyArrayItems)[defaultCountryElement]} // find default country from query
                 countriesOptions={countries?.filter(filterNotEmptyArrayItems)}
                 address={checkoutBillingAddress || undefined}
                 handleSubmit={address =>

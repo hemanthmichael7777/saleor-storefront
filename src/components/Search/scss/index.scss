@@ -5,6 +5,10 @@
 
     img {
         height: 75px;
+
+        @media(max-width: 1600px) {
+            height: 74px;
+        }
     }
 }
 
@@ -121,6 +125,7 @@
 
     @media(max-width: 1600px) {
         width: 272.6px;
+        margin-left: 10px;
     }
 }
 

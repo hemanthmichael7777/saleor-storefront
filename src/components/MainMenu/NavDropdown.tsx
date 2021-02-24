@@ -44,30 +44,32 @@ class NavDropdown extends React.PureComponent<
         onMouseLeave={onHideDropdown}
       >
 
-        <div className="nav-flex">
-          <li>
-            <NavLink item={this.props} onClick={onHideDropdown} />
-          </li>
+        <div className="">
+          <div className="nav-flex">
+            <li>
+              <NavLink item={this.props} onClick={onHideDropdown} />
+            </li>
 
-          <div style={{display : hasSubNav}}>
-            <div className="main-menu__arrow-icon">
-              <FontAwesomeIcon icon={faCaretDown} />
+            <div style={{display : hasSubNav}}>
+              <div className="main-menu__arrow-icon">
+                <FontAwesomeIcon icon={faCaretDown} />
+              </div>
             </div>
           </div>
-        </div>
 
-        <li
-          className={classNames({
-            "main-menu__nav-dropdown__body": true,
-            "main-menu__nav-dropdown__body--visible": showDropdown,
-          })}
-        >
-          <ul className="main-menu__item-container">
-            {children.map((subItem, i) => (
-              <NavItem key={i} hideOverlay={onHideDropdown} {...subItem} />
-            ))}
-          </ul>
-        </li>
+          <li
+            className={classNames({
+              "main-menu__nav-dropdown__body": true,
+              "main-menu__nav-dropdown__body--visible": showDropdown,
+            })}
+          >
+            <ul className="main-menu__item-container">
+              {children.map((subItem, i) => (
+                <NavItem key={i} hideOverlay={onHideDropdown} {...subItem} />
+              ))}
+            </ul>
+          </li>
+        </div>
       </ul>
     );
   }

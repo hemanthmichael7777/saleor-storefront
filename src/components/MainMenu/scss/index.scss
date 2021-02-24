@@ -12,7 +12,6 @@
 .main-menu {
   align-items: center;
   align-items: stretch;
-  //border-bottom: 1px solid $gray-light;
   height: 7.75rem;
   position: relative;
 
@@ -387,11 +386,7 @@
     }
 
     &__body {
-      // border: 1px solid red;
       background: $gray;
-      //border-top-color: $gray-light;
-      //border-top-style: solid;
-      //border-top-width: 1px;
       display: none;
       left: 0;
       padding: 2rem;
@@ -403,8 +398,7 @@
       cursor: auto;
       
       &--visible {
-        display: block;
-        
+        display: block;    
       }
 
       li *,
@@ -416,12 +410,10 @@
       > ul > li {
         height: 30px;
         width: 200px;
-        //border: 1px solid black;
         margin-left: 20px;
         margin-bottom: 20px;
 
         &:hover {
-          //background-color: white;
           background-color: rgb(255, 255, 255);
           background-color: rgba(255, 255, 255, 0.5);
         }

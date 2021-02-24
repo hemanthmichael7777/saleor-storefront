@@ -144,7 +144,7 @@ class Search extends React.Component<SearchProps, SearchState> {
                                     />
                                   ))}
                                 </ul>
-                                <div className="search__products__footer">
+                                {/* <div className="search__products__footer">
                                   {loading ? (
                                     <DefaultLoader />
                                   ) : (
@@ -158,7 +158,7 @@ class Search extends React.Component<SearchProps, SearchState> {
                                       null
 
                                     )}
-                                </div>
+                                </div> */}
                               </>
                             );
                           }

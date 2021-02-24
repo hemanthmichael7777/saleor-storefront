@@ -55,7 +55,7 @@ export const Clear = styled.button`
   padding-left: 2rem;
   cursor: pointer;
   font-size: ${props => props.theme.typography.smallFontSize};
-  color: ${props => props.theme.colors.lightFont};
+  color: ${props => props.theme.colors.lightFont}; 
   @media(max-width: 540px) {
     font-size: ${props => props.theme.typography.baseFontSize};
   }
@@ -84,5 +84,6 @@ export const Sort = styled.div`
 export const FiltersChipsWrapper = styled.div`
   > div {
     margin: 0.4rem;
+    color: ${props => props.theme.colors.lightFont}; 
   }
 `;
