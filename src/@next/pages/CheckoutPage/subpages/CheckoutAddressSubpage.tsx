@@ -54,6 +54,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const [shippingErrors, setShippingErrors] = useState<IFormError[]>([]);
   const [billingErrors, setBillingErrors] = useState<IFormError[]>([]);
 
+  const [confirmDialogCallbackState, setConfirmDialogCallbackState] = useState<any>();
+
   const intl = useIntl();
 
   const isShippingRequiredForProducts =
@@ -147,22 +149,17 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     }
   };
 
-  const confirmDialogCallback = async (
-    address_usps_ship: any,
-    address_usps_bill: any,
-    addressB: any,
-    userAddressId: any,
-  ) => {
+  const confirmDialogCallback = async () => {
     var aShip:IAddress = {
-      id: userAddressId,
+      id: confirmDialogCallbackState.userAddressId,
       firstName: checkoutShippingAddress?.firstName,
       lastName: checkoutShippingAddress?.lastName,
       companyName: checkoutShippingAddress?.companyName,
-      streetAddress1: address_usps_ship.street1,
-      streetAddress2: address_usps_ship.street2,
-      city: address_usps_ship.city,
-      postalCode: address_usps_ship.zip,
-      countryArea: address_usps_ship.state,
+      streetAddress1: confirmDialogCallbackState.address_usps_ship.street1,
+      streetAddress2: confirmDialogCallbackState.address_usps_ship.street2,
+      city: confirmDialogCallbackState.address_usps_ship.city,
+      postalCode: confirmDialogCallbackState.address_usps_ship.zip,
+      countryArea: confirmDialogCallbackState.address_usps_ship.state,
       phone: checkoutShippingAddress?.phone,
       country: {
         code: checkoutShippingAddress?.country?.code,
@@ -170,19 +167,19 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       }
     }
     var aBill:IAddress = {
-      id: userAddressId,
-      firstName: addressB?.firstName,
-      lastName: addressB?.lastName,
+      id: confirmDialogCallbackState.userAddressId,
+      firstName: confirmDialogCallbackState.addressB?.firstName,
+      lastName: confirmDialogCallbackState.addressB?.lastName,
       companyName: checkoutShippingAddress?.companyName,
-      streetAddress1: address_usps_bill.street1,
-      streetAddress2: address_usps_bill.street2,
-      city: address_usps_bill.city,
-      postalCode: address_usps_bill.zip,
-      countryArea: address_usps_bill.state,
-      phone: addressB?.phone,
+      streetAddress1: confirmDialogCallbackState.address_usps_bill.street1,
+      streetAddress2: confirmDialogCallbackState.address_usps_bill.street2,
+      city: confirmDialogCallbackState.address_usps_bill.city,
+      postalCode: confirmDialogCallbackState.address_usps_bill.zip,
+      countryArea: confirmDialogCallbackState.address_usps_bill.state,
+      phone: confirmDialogCallbackState.addressB?.phone,
       country: {
-        code: addressB?.country?.code,
-        country: addressB?.country?.country,
+        code: confirmDialogCallbackState.addressB?.country?.code,
+        country: confirmDialogCallbackState.addressB?.country?.country,
       }
     }
     if(checkoutShippingAddress?.email) {
@@ -272,18 +269,12 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
               if(err){
                 alert("Billing address not valid, no address found");
               } else {
-                if(confirm("Confirm addresses")){
-
-
-                  confirmDialogCallback(
-                    address_usps_ship,
-                    address_usps_bill,
-                    addressB,
-                    userAddressId,
-                  );
-
-                 
-                }
+                  setConfirmDialogCallbackState({
+                    address_usps_ship: address_usps_ship,
+                    address_usps_bill: address_usps_bill,
+                    addressB: addressB,
+                    userAddressId: userAddressId,
+                  });
               }
             });
         }
@@ -293,7 +284,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     }
   };
 
-  
 
   const userAdresses = user?.addresses
     ?.filter(filterNotEmptyArrayItems)
