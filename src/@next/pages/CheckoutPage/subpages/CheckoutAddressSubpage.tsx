@@ -17,6 +17,8 @@ import { commonMessages } from "@temp/intl";
 import { IAddress, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 
+const USPS = require('usps-webtools');
+
 export interface ICheckoutAddressSubpageHandles {
   submitAddress: () => void;
 }
@@ -197,9 +199,87 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       setBillingErrors(errors);
     } else {
       setBillingErrors([]);
-      onSubmitSuccess();
+
+      const usps = new USPS({
+        server: 'https://production.shippingapis.com/ShippingAPI.dll',
+        userId: '624FROGF1057',
+        ttl: 10000 
+      });
+      
+      usps.verify({
+        street1: checkoutShippingAddress?.streetAddress1,
+        street2: checkoutShippingAddress?.streetAddress2,
+        city: checkoutShippingAddress?.city,
+        state: checkoutShippingAddress?.countryArea,
+        zip: checkoutShippingAddress?.postalCode
+      }, function(err_in: any, address_in: any) {
+        
+        if(err_in){
+          alert("Shipping address not valid");
+        } else {
+
+
+          if (!checkAddEqual(checkoutShippingAddress, address_in)){
+            if(confirm("Shipping address not valid did you mean\n"+address_in)){
+               alert('fill in shipping address');     
+            }
+          } else {
+
+
+            usps.verify({
+              street1: checkoutBillingAddress?.streetAddress1,
+              street2: checkoutBillingAddress?.streetAddress2,
+              city: checkoutBillingAddress?.city,
+              state: checkoutBillingAddress?.countryArea,
+              zip: checkoutBillingAddress?.postalCode
+            }, function(err: any, address: any) {
+              if(err){
+                alert("Billing address not valid");
+              } else {
+                if (!checkAddEqual(checkoutShippingAddress, address_in)){
+                  if(confirm("Billing address not valid did you mean\n"+address_in)){
+                    alert('fill in billing address');  
+                  }
+                } else {
+                  onSubmitSuccess();
+                }
+              }
+            });
+
+
+          }
+          
+        }
+
+      });
+
     }
   };
+
+  const checkAddEqual = (fAddress: any, upsAddress:any): boolean => {
+    console.log(fAddress.streetAddress1.toLowerCase());
+    console.log(upsAddress.street1.toLowerCase());
+    if(fAddress.streetAddress1.toLowerCase() === upsAddress.street1.toLowerCase()){
+      console.log('here1');
+      if(fAddress.streetAddress1.toLowerCase() === upsAddress.street2.toLowerCase()){
+        console.log('here2');
+        if(fAddress.city.toLowerCase() === upsAddress.city.toLowerCase()){
+          console.log('here3');
+          if(fAddress.countryArea.toLowerCase() === upsAddress.state.toLowerCase()){
+            console.log('here4');
+            if(fAddress.countryArea.toLowerCase() === upsAddress.state.toLowerCase()){
+              console.log('here5');
+              if((fAddress.postalCode.toLowerCase() === upsAddress.zip.toLowerCase()) || (fAddress.postalCode.toLowerCase() === (upsAddress.zip.toLowerCase() + "-" + upsAddress.zip4.toLowerCase()))){
+                console.log('here6');
+                return true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
 
   const userAdresses = user?.addresses
     ?.filter(filterNotEmptyArrayItems)
