@@ -20,11 +20,10 @@ export const Value = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: pointer;
 `;
 
-export const Indicator = styled.div<{ rotate: string }>`
+export const Indicator = styled.div`
   right: 1rem;
-  transition-duration: 0.3s;
-  transform: ${props =>
-    props.rotate === "true" ? "rotate(180deg)" : "rotate(0deg)"};
+  cursor: pointer;
 `;
