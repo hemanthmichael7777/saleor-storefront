@@ -11,6 +11,7 @@ import { useIntl } from "react-intl";
 import { RouteComponentProps } from "react-router";
 
 import { CheckoutAddress } from "@components/organisms";
+import { AddressConfirmModal } from "@components/organisms";
 import { useAuth, useCheckout, useCart } from "@saleor/sdk";
 import { ShopContext } from "@temp/components/ShopProvider/context";
 import { commonMessages } from "@temp/intl";
@@ -37,6 +38,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const checkoutBillingAddressFormId = "billing-address-form";
   const checkoutBillingAddressFormRef = useRef<HTMLFormElement>(null);
   const checkoutNewAddressFormId = "new-address-form";
+
+  const [displayConfirmModal, setDisplayConfirmModal] = useState(false);
 
   const { user } = useAuth();
   const {
@@ -223,13 +226,10 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
               state: checkoutBillingAddress?.countryArea,
               zip: checkoutBillingAddress?.postalCode
             }, function(err: any, address_usps_bill: any) {
-              if(err){
-                alert("Billing address not valid, no address found");
-              } else {
-                if(confirm("Confirm addresses")){
-                  onSubmitSuccess();
-                }
-              }
+
+              setDisplayConfirmModal(true)
+
+
             });
         }
 
@@ -237,8 +237,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
     }
   };
-
-  
 
   const userAdresses = user?.addresses
     ?.filter(filterNotEmptyArrayItems)
@@ -253,30 +251,46 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       onSelect: () => null,
     }));
 
+  const getConfirm = (value: boolean) => {
+    console.log(value)
+  }
+
   return (
-    <CheckoutAddress
-      {...props}
-      shippingErrors={shippingErrors}
-      billingErrors={billingErrors}
-      shippingFormId={checkoutShippingAddressFormId}
-      shippingFormRef={checkoutShippingAddressFormRef}
-      billingFormId={checkoutBillingAddressFormId}
-      billingFormRef={checkoutBillingAddressFormRef}
-      checkoutShippingAddress={checkoutShippingAddress}
-      checkoutBillingAddress={checkoutBillingAddress}
-      billingAsShippingAddress={billingAsShippingState}
-      email={checkout?.email}
-      userAddresses={userAdresses}
-      selectedUserShippingAddressId={selectedShippingAddressId}
-      selectedUserBillingAddressId={selectedBillingAddressId}
-      countries={countries}
-      userId={user?.id}
-      newAddressFormId={checkoutNewAddressFormId}
-      shippingAddressRequired={!!isShippingRequiredForProducts}
-      setShippingAddress={handleSetShippingAddress}
-      setBillingAddress={handleSetBillingAddress}
-      setBillingAsShippingAddress={setBillingAsShippingState}
-    />
+    <div>
+      { displayConfirmModal && (
+        <AddressConfirmModal
+        hideModal={() => {
+          setDisplayConfirmModal(false);
+        }}
+          submitBtnText="Confirm"
+          title="Address Confirmation"
+          
+        />
+      )}
+      <CheckoutAddress
+        {...props}
+        shippingErrors={shippingErrors}
+        billingErrors={billingErrors}
+        shippingFormId={checkoutShippingAddressFormId}
+        shippingFormRef={checkoutShippingAddressFormRef}
+        billingFormId={checkoutBillingAddressFormId}
+        billingFormRef={checkoutBillingAddressFormRef}
+        checkoutShippingAddress={checkoutShippingAddress}
+        checkoutBillingAddress={checkoutBillingAddress}
+        billingAsShippingAddress={billingAsShippingState}
+        email={checkout?.email}
+        userAddresses={userAdresses}
+        selectedUserShippingAddressId={selectedShippingAddressId}
+        selectedUserBillingAddressId={selectedBillingAddressId}
+        countries={countries}
+        userId={user?.id}
+        newAddressFormId={checkoutNewAddressFormId}
+        shippingAddressRequired={!!isShippingRequiredForProducts}
+        setShippingAddress={handleSetShippingAddress}
+        setBillingAddress={handleSetBillingAddress}
+        setBillingAsShippingAddress={setBillingAsShippingState}
+      />
+    </div>
   );
 };
 
