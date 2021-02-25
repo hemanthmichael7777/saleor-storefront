@@ -1,21 +1,10 @@
-import { IAddressWithEmail } from "@types";
-
 export interface IProps {
     hideModal: () => void;
     submitBtnText: string;
+    cancelBtnText: string;
     title: string;
-    address?: {
-      address: IAddressWithEmail;
-      id: string;
-    };
-    // sendConfirm: () => void | undefined;
-    // target?: HTMLElement | null;
-    // formId?: string;
-    // title: string;
-    // userId?: string;
-    // countriesOptions?: Array<{
-    //   code: string;
-    //   country: string;
-    // }>;
+    address_usps_ship: any;
+    address_usps_bill: any;
+    getConfirm: any;
   }
   

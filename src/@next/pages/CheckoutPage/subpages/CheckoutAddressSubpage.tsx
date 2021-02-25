@@ -57,6 +57,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const [shippingErrors, setShippingErrors] = useState<IFormError[]>([]);
   const [billingErrors, setBillingErrors] = useState<IFormError[]>([]);
 
+  const [confirmDialogCallbackState, setConfirmDialogCallbackState] = useState<any>();
+
   const intl = useIntl();
 
   const isShippingRequiredForProducts =
@@ -150,22 +152,17 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     }
   };
 
-  const confirmDialogCallback = async (
-    address_usps_ship: any,
-    address_usps_bill: any,
-    addressB: any,
-    userAddressId: any,
-  ) => {
+  const confirmDialogCallback = async () => {
     var aShip:IAddress = {
-      id: userAddressId,
+      id: confirmDialogCallbackState.userAddressId,
       firstName: checkoutShippingAddress?.firstName,
       lastName: checkoutShippingAddress?.lastName,
       companyName: checkoutShippingAddress?.companyName,
-      streetAddress1: address_usps_ship.street1,
-      streetAddress2: address_usps_ship.street2,
-      city: address_usps_ship.city,
-      postalCode: address_usps_ship.zip,
-      countryArea: address_usps_ship.state,
+      streetAddress1: confirmDialogCallbackState.address_usps_ship.street1,
+      streetAddress2: confirmDialogCallbackState.address_usps_ship.street2,
+      city: confirmDialogCallbackState.address_usps_ship.city,
+      postalCode: confirmDialogCallbackState.address_usps_ship.zip,
+      countryArea: confirmDialogCallbackState.address_usps_ship.state,
       phone: checkoutShippingAddress?.phone,
       country: {
         code: checkoutShippingAddress?.country?.code,
@@ -173,19 +170,19 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       }
     }
     var aBill:IAddress = {
-      id: userAddressId,
-      firstName: addressB?.firstName,
-      lastName: addressB?.lastName,
+      id: confirmDialogCallbackState.userAddressId,
+      firstName: confirmDialogCallbackState.addressB?.firstName,
+      lastName: confirmDialogCallbackState.addressB?.lastName,
       companyName: checkoutShippingAddress?.companyName,
-      streetAddress1: address_usps_bill.street1,
-      streetAddress2: address_usps_bill.street2,
-      city: address_usps_bill.city,
-      postalCode: address_usps_bill.zip,
-      countryArea: address_usps_bill.state,
-      phone: addressB?.phone,
+      streetAddress1: confirmDialogCallbackState.address_usps_bill.street1,
+      streetAddress2: confirmDialogCallbackState.address_usps_bill.street2,
+      city: confirmDialogCallbackState.address_usps_bill.city,
+      postalCode: confirmDialogCallbackState.address_usps_bill.zip,
+      countryArea: confirmDialogCallbackState.address_usps_bill.state,
+      phone: confirmDialogCallbackState.addressB?.phone,
       country: {
-        code: addressB?.country?.code,
-        country: addressB?.country?.country,
+        code: confirmDialogCallbackState.addressB?.country?.code,
+        country: confirmDialogCallbackState.addressB?.country?.country,
       }
     }
     if(checkoutShippingAddress?.email) {
@@ -275,18 +272,14 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
               if(err){
                 alert("Billing address not valid, no address found");
               } else {
-                if(confirm("Confirm addresses")){
+                  setConfirmDialogCallbackState({
+                    address_usps_ship: address_usps_ship,
+                    address_usps_bill: address_usps_bill,
+                    addressB: addressB,
+                    userAddressId: userAddressId,
+                  });
 
-                  setDisplayConfirmModal(true)
-
-                  confirmDialogCallback(
-                    address_usps_ship,
-                    address_usps_bill,
-                    addressB,
-                    userAddressId,
-                  );
-
-                }
+                  setDisplayConfirmModal(true);
               }
             });
         }
@@ -309,9 +302,11 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       onSelect: () => null,
     }));
 
-  const getConfirm = (value: boolean) => {
-    console.log(value)
-  }
+    const getConfirm = (value: boolean) => {
+      if(value) {
+        confirmDialogCallback();
+      }
+    }
 
   return (
     <div>
@@ -321,8 +316,11 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
           setDisplayConfirmModal(false);
         }}
           submitBtnText="Confirm"
-          title="Address Confirmation"
-          
+          cancelBtnText="Cancel"
+          title="Confirm your address"
+          getConfirm={getConfirm}
+          address_usps_ship={confirmDialogCallbackState.address_usps_ship}
+          address_usps_bill={confirmDialogCallbackState.address_usps_bill}
         />
       )}
       <CheckoutAddress
