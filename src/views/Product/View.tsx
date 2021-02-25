@@ -93,6 +93,8 @@ const PageWithQueryAttributes: React.FC<IProps> = props => {
       });
       setQueryAttributes(queryAttributes);
     }
+
+
   }, [product.variants.length]);
 
   useEffect(() => {
