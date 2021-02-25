@@ -21,10 +21,49 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
   testingContext,
   includeEmail = false,
 }) => {
+
+  const USPS = require('usps-webtools');
+  const usps = new USPS({
+    server: 'https://production.shippingapis.com/ShippingAPI.dll',
+    userId: '624FROGF1057',
+    ttl: 10000 //TTL in milliseconds for request
+  });
+  
   const basicInputProps = useCallback(
     () => ({ onBlur: handleBlur, onChange: handleChange }),
     [handleChange, handleBlur]
   );
+
+  // var cityAutoFill: any = '';
+  // var countryAreaAutoFill: any = '';
+
+  const handleChangeZip = (e: any) => {
+    if(handleChange) {
+      if((e.target.value.length == 5) || (e.target.value.length == 10) && values!.streetAddress1!.length > 0){
+        usps.verify({
+          street1: values!.streetAddress1,
+          street2: '',
+          city: '',
+          state: '',
+          zip: e.target.value
+        }, function(err: any, responseAddress: any) {
+          if(err == null){
+            // values!.city = responseAddress.city;
+            // values!.countryArea = responseAddress.state;
+            // cityAutoFill = responseAddress.city;
+            // countryAreaAutoFill = responseAddress.state;
+          }
+        });
+      }
+      handleChange(e)
+    }
+  }
+
+  const basicInputPropsZip = useCallback(
+    () => ({ onBlur: handleBlur, onChange: handleChangeZip }),
+    [handleChangeZip, handleBlur]
+  );
+
   const intl = useIntl();
   const fieldErrors: any = {};
 
@@ -117,7 +156,7 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
             value={values!.postalCode}
             autoComplete="postal-code"
             errors={fieldErrors!.postalCode}
-            {...basicInputProps()}
+            {...basicInputPropsZip()}
           />
         </S.RowWithTwoCells>
         <S.RowWithTwoCells>

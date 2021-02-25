@@ -107,8 +107,12 @@ export const View: React.FC<ViewProps> = ({ match }) => {
     //   value: null,
     // },
     {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsName),
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsUpdatedAt),
       value: null,
+    },
+    {
+      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsName),
+      value: "name",
     },
     {
       label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsNameDsc),
@@ -122,10 +126,11 @@ export const View: React.FC<ViewProps> = ({ match }) => {
       label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsPriceDsc),
       value: "-price",
     },
-    {
-      label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsUpdatedAt),
-      value: "updated_at",
-    },
+   
+    // {
+    //   label: intl.formatMessage(prodListHeaderCommonMsg.sortOptionsUpdatedAt),
+    //   value: "updated_at",
+    // },
   ];
 
   return (

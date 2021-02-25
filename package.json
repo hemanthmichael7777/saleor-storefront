@@ -44,6 +44,7 @@
     "isomorphic-fetch": "^2.2.1",
     "js-base64": "^2.4.8",
     "lodash": "^4.17.19",
+    "net": "^1.0.2",
     "nuka-carousel": "^4.6.0",
     "query-string": "^6.12.1",
     "react": "^16.9.9",
@@ -70,9 +71,11 @@
     "register-service-worker": "^1.6.2",
     "reset-css": "^4.0.1",
     "styled-components": "^4.3.0",
+    "tls": "0.0.1",
     "typeface-montserrat": "0.0.54",
     "url-join": "^4.0.0",
     "use-query-params": "^0.4.1",
+    "usps-webtools": "^1.0.5",
     "yup": "^0.28.0"
   },
   "devDependencies": {
