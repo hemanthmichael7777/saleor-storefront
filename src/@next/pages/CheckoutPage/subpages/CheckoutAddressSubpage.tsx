@@ -221,7 +221,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
           if (!checkAddEqual(checkoutShippingAddress, address_in)){
             if(confirm("Shipping address not valid did you mean\n"+address_in)){
-               alert('fill in shipping address');     
+               alert('fill in shipping address');
             }
           } else {
 

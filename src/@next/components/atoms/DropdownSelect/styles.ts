@@ -16,6 +16,13 @@ export const SortLine = styled.div`
   padding-bottom: 0.5rem;
 `;
 
+export const SortWrapper = styled.div`
+  display: flex;
+  cursor: pointer;
+  margin-bottom: -1px;
+  margin-left: 10px;
+`;
+
 export const Value = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
@@ -26,4 +33,5 @@ export const Value = styled.div`
 export const Indicator = styled.div`
   right: 1rem;
   cursor: pointer;
+  margin-left: 16px;
 `;

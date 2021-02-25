@@ -28,12 +28,12 @@ export const DropdownSelect: React.FC<IProps> = ({
         <Label>
           <FormattedMessage defaultMessage="Sort by:" />{" "}
         </Label>
-        <div>
+        <S.SortWrapper>
           <S.Value>{` ${value ? value.label : ""}`}</S.Value>
           <S.Indicator>
             <Icon name="select_arrow" size={10} color={"white"} />
           </S.Indicator>
-        </div>
+        </S.SortWrapper>
       </S.SortLine>
     ),
     IndicatorSeparator: () => null,
