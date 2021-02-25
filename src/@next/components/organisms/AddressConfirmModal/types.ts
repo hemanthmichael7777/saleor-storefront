@@ -8,7 +8,7 @@ export interface IProps {
       address: IAddressWithEmail;
       id: string;
     };
-    sendConfirm: () => void | undefined;
+    // sendConfirm: () => void | undefined;
     // target?: HTMLElement | null;
     // formId?: string;
     // title: string;

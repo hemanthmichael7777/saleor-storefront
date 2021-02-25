@@ -150,6 +150,51 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     }
   };
 
+  const confirmDialogCallback = async (
+    address_usps_ship: any,
+    address_usps_bill: any,
+    addressB: any,
+    userAddressId: any,
+  ) => {
+    var aShip:IAddress = {
+      id: userAddressId,
+      firstName: checkoutShippingAddress?.firstName,
+      lastName: checkoutShippingAddress?.lastName,
+      companyName: checkoutShippingAddress?.companyName,
+      streetAddress1: address_usps_ship.street1,
+      streetAddress2: address_usps_ship.street2,
+      city: address_usps_ship.city,
+      postalCode: address_usps_ship.zip,
+      countryArea: address_usps_ship.state,
+      phone: checkoutShippingAddress?.phone,
+      country: {
+        code: checkoutShippingAddress?.country?.code,
+        country: checkoutShippingAddress?.country?.country,
+      }
+    }
+    var aBill:IAddress = {
+      id: userAddressId,
+      firstName: addressB?.firstName,
+      lastName: addressB?.lastName,
+      companyName: checkoutShippingAddress?.companyName,
+      streetAddress1: address_usps_bill.street1,
+      streetAddress2: address_usps_bill.street2,
+      city: address_usps_bill.city,
+      postalCode: address_usps_bill.zip,
+      countryArea: address_usps_bill.state,
+      phone: addressB?.phone,
+      country: {
+        code: addressB?.country?.code,
+        country: addressB?.country?.country,
+      }
+    }
+    if(checkoutShippingAddress?.email) {
+      await setShippingAddress(aShip, checkoutShippingAddress?.email);
+      await setBillingAddress(aBill, checkoutShippingAddress?.email);
+      onSubmitSuccess();
+    }
+  }
+
   const handleSetBillingAddress = async (
     address?: IAddress,
     email?: string,
@@ -215,21 +260,34 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         city: checkoutShippingAddress?.city,
         state: checkoutShippingAddress?.countryArea,
         zip: checkoutShippingAddress?.postalCode
-      }, function(err_in: any, address_usps_ship: any) {
+      }, async function(err_in: any, address_usps_ship: any) {
         if(err_in){
           alert("Shipping address not valid, no address found");
         } else {
+            var addressB = address ? address : checkoutShippingAddress;
             usps.verify({
-              street1: checkoutBillingAddress?.streetAddress1,
-              street2: checkoutBillingAddress?.streetAddress2,
-              city: checkoutBillingAddress?.city,
-              state: checkoutBillingAddress?.countryArea,
-              zip: checkoutBillingAddress?.postalCode
-            }, function(err: any, address_usps_bill: any) {
+              street1: addressB?.streetAddress1,
+              street2: addressB?.streetAddress2,
+              city: addressB?.city,
+              state: addressB?.countryArea,
+              zip: addressB?.postalCode
+            }, async function(err: any, address_usps_bill: any) {
+              if(err){
+                alert("Billing address not valid, no address found");
+              } else {
+                if(confirm("Confirm addresses")){
 
-              setDisplayConfirmModal(true)
+                  setDisplayConfirmModal(true)
 
+                  confirmDialogCallback(
+                    address_usps_ship,
+                    address_usps_bill,
+                    addressB,
+                    userAddressId,
+                  );
 
+                }
+              }
             });
         }
 
