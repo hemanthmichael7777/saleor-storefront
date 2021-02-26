@@ -11,6 +11,7 @@ import { useIntl } from "react-intl";
 import { RouteComponentProps } from "react-router";
 
 import { CheckoutAddress } from "@components/organisms";
+import { AddressConfirmModal } from "@components/organisms";
 import { useAuth, useCheckout, useCart } from "@saleor/sdk";
 import { ShopContext } from "@temp/components/ShopProvider/context";
 import { commonMessages } from "@temp/intl";
@@ -37,6 +38,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const checkoutBillingAddressFormId = "billing-address-form";
   const checkoutBillingAddressFormRef = useRef<HTMLFormElement>(null);
   const checkoutNewAddressFormId = "new-address-form";
+
+  const [displayConfirmModal, setDisplayConfirmModal] = useState(false);
 
   const { user } = useAuth();
   const {
@@ -275,6 +278,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
                     addressB: addressB,
                     userAddressId: userAddressId,
                   });
+
+                  setDisplayConfirmModal(true);
               }
             });
         }
@@ -283,7 +288,6 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
 
     }
   };
-
 
   const userAdresses = user?.addresses
     ?.filter(filterNotEmptyArrayItems)
@@ -298,30 +302,51 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       onSelect: () => null,
     }));
 
+    const getConfirm = (value: boolean) => {
+      if(value) {
+        confirmDialogCallback();
+      }
+    }
+
   return (
-    <CheckoutAddress
-      {...props}
-      shippingErrors={shippingErrors}
-      billingErrors={billingErrors}
-      shippingFormId={checkoutShippingAddressFormId}
-      shippingFormRef={checkoutShippingAddressFormRef}
-      billingFormId={checkoutBillingAddressFormId}
-      billingFormRef={checkoutBillingAddressFormRef}
-      checkoutShippingAddress={checkoutShippingAddress}
-      checkoutBillingAddress={checkoutBillingAddress}
-      billingAsShippingAddress={billingAsShippingState}
-      email={checkout?.email}
-      userAddresses={userAdresses}
-      selectedUserShippingAddressId={selectedShippingAddressId}
-      selectedUserBillingAddressId={selectedBillingAddressId}
-      countries={countries}
-      userId={user?.id}
-      newAddressFormId={checkoutNewAddressFormId}
-      shippingAddressRequired={!!isShippingRequiredForProducts}
-      setShippingAddress={handleSetShippingAddress}
-      setBillingAddress={handleSetBillingAddress}
-      setBillingAsShippingAddress={setBillingAsShippingState}
-    />
+    <div>
+      { displayConfirmModal && (
+        <AddressConfirmModal
+        hideModal={() => {
+          setDisplayConfirmModal(false);
+        }}
+          submitBtnText="Confirm"
+          cancelBtnText="Cancel"
+          title="Confirm your address"
+          getConfirm={getConfirm}
+          address_usps_ship={confirmDialogCallbackState.address_usps_ship}
+          address_usps_bill={confirmDialogCallbackState.address_usps_bill}
+        />
+      )}
+      <CheckoutAddress
+        {...props}
+        shippingErrors={shippingErrors}
+        billingErrors={billingErrors}
+        shippingFormId={checkoutShippingAddressFormId}
+        shippingFormRef={checkoutShippingAddressFormRef}
+        billingFormId={checkoutBillingAddressFormId}
+        billingFormRef={checkoutBillingAddressFormRef}
+        checkoutShippingAddress={checkoutShippingAddress}
+        checkoutBillingAddress={checkoutBillingAddress}
+        billingAsShippingAddress={billingAsShippingState}
+        email={checkout?.email}
+        userAddresses={userAdresses}
+        selectedUserShippingAddressId={selectedShippingAddressId}
+        selectedUserBillingAddressId={selectedBillingAddressId}
+        countries={countries}
+        userId={user?.id}
+        newAddressFormId={checkoutNewAddressFormId}
+        shippingAddressRequired={!!isShippingRequiredForProducts}
+        setShippingAddress={handleSetShippingAddress}
+        setBillingAddress={handleSetBillingAddress}
+        setBillingAsShippingAddress={setBillingAsShippingState}
+      />
+    </div>
   );
 };
 
