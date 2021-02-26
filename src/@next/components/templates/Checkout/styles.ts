@@ -59,4 +59,11 @@ export const CartSummary = styled.div`
 export const Button = styled.div`
   grid-area: button;
   margin: 3rem 0 0 0;
+
+  ${media.smallScreen`
+    margin: 3rem 0 0 0;
+    display: flex;
+    flex-direciton: column;
+    justify-content: center;
+  `}
 `;

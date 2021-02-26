@@ -13,6 +13,7 @@ import { defaultCountryElement } from './config';
 export const AddressFormModal: React.FC<IProps> = ({
   hideModal,
   submitBtnText,
+  cancelBtnText,
   target,
   title,
   userId,
@@ -65,6 +66,7 @@ export const AddressFormModal: React.FC<IProps> = ({
       show={show}
       target={target}
       submitBtnText={submitBtnText}
+      cancelBtnText={cancelBtnText}
     >
       <AddressForm
         {...props}

@@ -1,4 +1,4 @@
-import { styled } from "@styles";
+import { media, styled } from "@styles";
 import { css, keyframes } from "styled-components";
 import { Position, TransitionState } from "./types";
 
@@ -57,6 +57,10 @@ export const Lightbox = styled.div<IStyleProps>`
     lightboxHeight(modal.modalWidth)[position]};
   min-height: ${props => props.theme.modal.modalMinHeight}px;
   height: ${({ position }) => lightboxWidth[position]};
+  ${media.smallScreen`
+    height: 100vh;
+    width: 100vw;
+  `}
   background-color: ${props => props.theme.colors.white};
   ${({ open, position }) => {
     if (position === "left" || position === "right") {
