@@ -79,6 +79,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       }
     : undefined;
 
+  var currentlyFilledShipping: any = null;
+
   useImperativeHandle(ref, () => ({
     submitAddress: () => {
       if (isShippingRequiredForProducts) {

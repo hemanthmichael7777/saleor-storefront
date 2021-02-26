@@ -43,7 +43,7 @@ function parseErrors(response) {
 
 function refinedData(data) {
     const authData = {
-        clientKey: '',
+        clientKey: '65MGbE3y8224kmrBvEMbT92C2eGh9rCjgt8Dxf59K7bhKVaY83LM5gbKerrnazjS',
         apiLoginID: '94Hkj6Be',
     };
 
