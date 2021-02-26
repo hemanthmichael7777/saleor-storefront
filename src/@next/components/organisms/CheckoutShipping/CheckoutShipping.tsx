@@ -25,6 +25,9 @@ const CheckoutShipping: React.FC<IProps> = ({
       <S.Title data-test="checkoutPageSubtitle">
         <FormattedMessage {...checkoutMessages.shippingMethod} />
       </S.Title>
+      <S.ShippingInfo>
+        <FormattedMessage {...checkoutMessages.shippingInfo} />
+      </S.ShippingInfo>
       <Formik
         initialValues={{
           shippingMethod: selectedShippingMethodId,

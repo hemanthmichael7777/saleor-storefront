@@ -178,6 +178,9 @@ export const checkoutMessages = defineMessages({
   continueShopping: {
     defaultMessage: "Continue Shopping",
   },
+  shippingInfo: {
+    defaultMessage: "Please note that all orders will be processed the following business day.",
+  },
 });
 
 export const prodListHeaderCommonMsg = defineMessages({
