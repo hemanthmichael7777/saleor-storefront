@@ -1,4 +1,4 @@
-import { styled } from "@styles";
+import { media, styled } from "@styles";
 
 export const Footer = styled.div<{ divider: boolean }>`
   position: relative;
@@ -7,9 +7,21 @@ export const Footer = styled.div<{ divider: boolean }>`
   ${({ divider, theme }) =>
     divider && `border-top: 1px solid ${theme.colors.light};`}
   button {
+    margin-top: 10px;
+    margin-bottom: 10px;
     &:last-child {
       margin-left: 2rem;
       margin-right: 0.7rem;
+      ${media.smallScreen`
+        margin-left: 0rem;
+        margin-right: 0rem;
+    `}
     }
   }
+  ${media.smallScreen`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    `}
 `;

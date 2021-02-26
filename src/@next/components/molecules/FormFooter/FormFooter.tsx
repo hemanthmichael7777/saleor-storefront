@@ -48,8 +48,8 @@ export const FormFooter: React.FC<IProps> = ({
 }: IProps) => {
   return (
     <S.Footer divider={divider}>
-      {renderCancelBtn(cancelBtn)}
       {renderSubmitBtn(submitBtn, disabled, formId)}
+      {renderCancelBtn(cancelBtn)}
     </S.Footer>
   );
 };

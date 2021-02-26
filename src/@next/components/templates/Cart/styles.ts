@@ -23,4 +23,7 @@ export const Cart = styled.div`
 export const ProceedButton = styled.div`
   text-align: right;
   margin-top: 40px;
+  ${media.smallScreen`
+    text-align: center;
+  `};
 `;

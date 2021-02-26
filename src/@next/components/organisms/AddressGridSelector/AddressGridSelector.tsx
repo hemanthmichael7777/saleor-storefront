@@ -101,6 +101,7 @@ const AddressGridSelector: React.FC<IProps> = ({
             setDisplayNewModal(false);
           }}
           submitBtnText="Add"
+          cancelBtnText="Cancel"
           title={intl.formatMessage(checkoutMessages.addNewAddress)}
           countriesOptions={countriesOptions}
           formId={newAddressFormId}
