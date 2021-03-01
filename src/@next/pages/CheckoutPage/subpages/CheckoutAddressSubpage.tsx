@@ -103,6 +103,19 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
     setBillingAsShippingState(billingAsShipping);
   }, [billingAsShipping]);
 
+  const userAdresses = user?.addresses
+    ?.filter(filterNotEmptyArrayItems)
+    .map(address => ({
+      address: {
+        ...address,
+        isDefaultBillingAddress: address.isDefaultBillingAddress || false,
+        isDefaultShippingAddress: address.isDefaultShippingAddress || false,
+        phone: address.phone || undefined,
+      },
+      id: address?.id || "",
+      onSelect: () => null,
+    }));
+
   const handleSetShippingAddress = async (
     address?: IAddress,
     email?: string,
@@ -145,37 +158,48 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       changeSubmitProgress(false);
     } else {
       setShippingErrors([]);
-      const usps = new USPS({
-        server: 'https://production.shippingapis.com/ShippingAPI.dll',
-        userId: '624FROGF1057',
-        ttl: 10000 
-      });
-      
-      usps.verify({
-        street1: address?.streetAddress1,
-        street2: address?.streetAddress2,
-        city: address?.city,
-        state: address?.countryArea,
-        zip: address?.postalCode
-      }, async function(err_in: any, address_usps_ship: any) {
-        if(err_in){
-          changeSubmitProgress(false);
-          alert("Shipping address not valid, no address found");
+      // don't need to re-verify logged in user addresses
+      if(userAdresses){
+        if (billingAsShippingState) {
+          handleSetBillingAddress();
         } else {
-          setConfirmDialogCallbackState({
-            address_usps_ship: address_usps_ship,
-            userAddressId: userAddressId,
-            addressS: address
-          });
-          if (billingAsShippingState) {
-            handleSetBillingAddress();
-          } else {
-            checkoutBillingAddressFormRef.current?.dispatchEvent(
-              new Event("submit", { cancelable: true })
-            );
-          }
+          checkoutBillingAddressFormRef.current?.dispatchEvent(
+            new Event("submit", { cancelable: true })
+          );
         }
-      });
+      } else {
+        const usps = new USPS({
+          server: 'https://production.shippingapis.com/ShippingAPI.dll',
+          userId: '624FROGF1057',
+          ttl: 10000 
+        });
+        
+        usps.verify({
+          street1: address?.streetAddress1,
+          street2: address?.streetAddress2,
+          city: address?.city,
+          state: address?.countryArea,
+          zip: address?.postalCode
+        }, async function(err_in: any, address_usps_ship: any) {
+          if(err_in){
+            changeSubmitProgress(false);
+            alert("Shipping address not valid, no address found");
+          } else {
+            setConfirmDialogCallbackState({
+              address_usps_ship: address_usps_ship,
+              userAddressId: userAddressId,
+              addressS: address
+            });
+            if (billingAsShippingState) {
+              handleSetBillingAddress();
+            } else {
+              checkoutBillingAddressFormRef.current?.dispatchEvent(
+                new Event("submit", { cancelable: true })
+              );
+            }
+          }
+        });
+      }
       
     }
   };
@@ -280,59 +304,50 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       setBillingErrors(errors);
     } else {
       setBillingErrors([]);
-
-      const usps = new USPS({
-        server: 'https://production.shippingapis.com/ShippingAPI.dll',
-        userId: '624FROGF1057',
-        ttl: 10000 
-      });
-      
-      if(billingAsShippingState){
-        setConfirmDialogCallbackStateB({
-          address_usps_bill: null,
-          userAddressId: userAddressId,
-          addressB: address
-        });
-        setDisplayConfirmModal(true);
+      // don't need to re-verify logged in user addresses
+      if(userAdresses){
+          onSubmitSuccess();
       } else {
-        usps.verify({
-          street1: address?.streetAddress1,
-          street2: address?.streetAddress2,
-          city: address?.city,
-          state: address?.countryArea,
-          zip: address?.postalCode
-        }, async function(err: any, address_usps_bill: any) {
-          if(err){
-            changeSubmitProgress(false);
-            alert("Billing address not valid, no address found");
-          } else {
-              setConfirmDialogCallbackStateB({
-                address_usps_bill: address_usps_bill,
-                userAddressId: userAddressId,
-                addressB: address
-              });
-              setDisplayConfirmModal(true);
-          }
+        const usps = new USPS({
+          server: 'https://production.shippingapis.com/ShippingAPI.dll',
+          userId: '624FROGF1057',
+          ttl: 10000 
         });
+        
+        if(billingAsShippingState){
+          setConfirmDialogCallbackStateB({
+            address_usps_bill: null,
+            userAddressId: userAddressId,
+            addressB: address
+          });
+          setDisplayConfirmModal(true);
+        } else {
+          usps.verify({
+            street1: address?.streetAddress1,
+            street2: address?.streetAddress2,
+            city: address?.city,
+            state: address?.countryArea,
+            zip: address?.postalCode
+          }, async function(err: any, address_usps_bill: any) {
+            if(err){
+              changeSubmitProgress(false);
+              alert("Billing address not valid, no address found");
+            } else {
+                setConfirmDialogCallbackStateB({
+                  address_usps_bill: address_usps_bill,
+                  userAddressId: userAddressId,
+                  addressB: address
+                });
+                setDisplayConfirmModal(true);
+            }
+          });
+        }
       }
             
         
 
     }
   };
-
-  const userAdresses = user?.addresses
-    ?.filter(filterNotEmptyArrayItems)
-    .map(address => ({
-      address: {
-        ...address,
-        isDefaultBillingAddress: address.isDefaultBillingAddress || false,
-        isDefaultShippingAddress: address.isDefaultShippingAddress || false,
-        phone: address.phone || undefined,
-      },
-      id: address?.id || "",
-      onSelect: () => null,
-    }));
 
     const getConfirm = (value: boolean) => {
       if(value) {

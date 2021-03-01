@@ -45,7 +45,12 @@ export const AddressConfirmModal: React.FC<IProps> = ({
             <S.Wrapper>
                 <S.AddressWrapper>
                     <S.TitleWrapper>
-                        <S.AddressTitle>Shipping Address</S.AddressTitle>
+                        { address_usps_bill &&
+                            <S.AddressTitle>Shipping Address</S.AddressTitle>
+                        }
+                        { !address_usps_bill &&
+                            <S.AddressTitle>Address</S.AddressTitle>
+                        }
                     </S.TitleWrapper>
                     <S.FieldWrapper>
                         <S.AddressField>{address_usps_ship.street1}</S.AddressField>
@@ -56,6 +61,7 @@ export const AddressConfirmModal: React.FC<IProps> = ({
 
                 </S.AddressWrapper>
 
+              { address_usps_bill &&
                 <S.AddressWrapper>
                     <S.TitleWrapper>
                         <S.AddressTitle>Billing Address</S.AddressTitle>
@@ -69,6 +75,10 @@ export const AddressConfirmModal: React.FC<IProps> = ({
                     </S.FieldWrapper>
 
                 </S.AddressWrapper>
+              }
+                
+
+
             </S.Wrapper>
 
         </Modal> 
