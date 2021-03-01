@@ -58,6 +58,7 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
   const [billingErrors, setBillingErrors] = useState<IFormError[]>([]);
 
   const [confirmDialogCallbackState, setConfirmDialogCallbackState] = useState<any>();
+  const [confirmDialogCallbackStateB, setConfirmDialogCallbackStateB] = useState<any>();
 
   const intl = useIntl();
 
@@ -144,52 +145,85 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
       changeSubmitProgress(false);
     } else {
       setShippingErrors([]);
-      if (billingAsShippingState) {
-        handleSetBillingAddress();
-      } else {
-        checkoutBillingAddressFormRef.current?.dispatchEvent(
-          new Event("submit", { cancelable: true })
-        );
-      }
+      const usps = new USPS({
+        server: 'https://production.shippingapis.com/ShippingAPI.dll',
+        userId: '624FROGF1057',
+        ttl: 10000 
+      });
+      
+      usps.verify({
+        street1: address?.streetAddress1,
+        street2: address?.streetAddress2,
+        city: address?.city,
+        state: address?.countryArea,
+        zip: address?.postalCode
+      }, async function(err_in: any, address_usps_ship: any) {
+        if(err_in){
+          changeSubmitProgress(false);
+          alert("Shipping address not valid, no address found");
+        } else {
+          setConfirmDialogCallbackState({
+            address_usps_ship: address_usps_ship,
+            userAddressId: userAddressId,
+            addressS: address
+          });
+          if (billingAsShippingState) {
+            handleSetBillingAddress();
+          } else {
+            checkoutBillingAddressFormRef.current?.dispatchEvent(
+              new Event("submit", { cancelable: true })
+            );
+          }
+        }
+      });
+      
     }
   };
 
   const confirmDialogCallback = async () => {
     var aShip:IAddress = {
       id: confirmDialogCallbackState.userAddressId,
-      firstName: checkoutShippingAddress?.firstName,
-      lastName: checkoutShippingAddress?.lastName,
-      companyName: checkoutShippingAddress?.companyName,
+      firstName: confirmDialogCallbackState.addressS?.firstName,
+      lastName: confirmDialogCallbackState.addressS?.lastName,
+      companyName: confirmDialogCallbackState.addressS?.companyName,
       streetAddress1: confirmDialogCallbackState.address_usps_ship.street1,
       streetAddress2: confirmDialogCallbackState.address_usps_ship.street2,
       city: confirmDialogCallbackState.address_usps_ship.city,
       postalCode: confirmDialogCallbackState.address_usps_ship.zip,
       countryArea: confirmDialogCallbackState.address_usps_ship.state,
-      phone: checkoutShippingAddress?.phone,
+      phone: confirmDialogCallbackState.addressS?.phone,
       country: {
-        code: checkoutShippingAddress?.country?.code,
-        country: checkoutShippingAddress?.country?.country,
+        code: confirmDialogCallbackState.addressS?.country?.code,
+        country: confirmDialogCallbackState.addressS?.country?.country,
       }
     }
-    var aBill:IAddress = {
-      id: confirmDialogCallbackState.userAddressId,
-      firstName: confirmDialogCallbackState.addressB?.firstName,
-      lastName: confirmDialogCallbackState.addressB?.lastName,
-      companyName: checkoutShippingAddress?.companyName,
-      streetAddress1: confirmDialogCallbackState.address_usps_bill.street1,
-      streetAddress2: confirmDialogCallbackState.address_usps_bill.street2,
-      city: confirmDialogCallbackState.address_usps_bill.city,
-      postalCode: confirmDialogCallbackState.address_usps_bill.zip,
-      countryArea: confirmDialogCallbackState.address_usps_bill.state,
-      phone: confirmDialogCallbackState.addressB?.phone,
-      country: {
-        code: confirmDialogCallbackState.addressB?.country?.code,
-        country: confirmDialogCallbackState.addressB?.country?.country,
+    var aBill:IAddress;
+    if(!billingAsShippingState){
+      aBill = {
+        id: confirmDialogCallbackStateB.userAddressId,
+        firstName: confirmDialogCallbackStateB.addressB?.firstName,
+        lastName: confirmDialogCallbackStateB.addressB?.lastName,
+        companyName: checkoutShippingAddress?.companyName,
+        streetAddress1: confirmDialogCallbackStateB.address_usps_bill.street1,
+        streetAddress2: confirmDialogCallbackStateB.address_usps_bill.street2,
+        city: confirmDialogCallbackStateB.address_usps_bill.city,
+        postalCode: confirmDialogCallbackStateB.address_usps_bill.zip,
+        countryArea: confirmDialogCallbackStateB.address_usps_bill.state,
+        phone: confirmDialogCallbackStateB.addressB?.phone,
+        country: {
+          code: confirmDialogCallbackStateB.addressB?.country?.code,
+          country: confirmDialogCallbackStateB.addressB?.country?.country,
+        }
       }
+    } else {
+      aBill = aShip;
     }
+    
     if(checkoutShippingAddress?.email) {
-      await setShippingAddress(aShip, checkoutShippingAddress?.email);
-      await setBillingAddress(aBill, checkoutShippingAddress?.email);
+      setShippingAddress(aShip, confirmDialogCallbackState.addressS?.email);
+      if(!billingAsShippingState){
+        setBillingAddress(aBill, confirmDialogCallbackState.addressS?.email);
+      }
       onSubmitSuccess();
     }
   }
@@ -253,40 +287,36 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         ttl: 10000 
       });
       
-      usps.verify({
-        street1: checkoutShippingAddress?.streetAddress1,
-        street2: checkoutShippingAddress?.streetAddress2,
-        city: checkoutShippingAddress?.city,
-        state: checkoutShippingAddress?.countryArea,
-        zip: checkoutShippingAddress?.postalCode
-      }, async function(err_in: any, address_usps_ship: any) {
-        if(err_in){
-          alert("Shipping address not valid, no address found");
-        } else {
-            var addressB = address ? address : checkoutShippingAddress;
-            usps.verify({
-              street1: addressB?.streetAddress1,
-              street2: addressB?.streetAddress2,
-              city: addressB?.city,
-              state: addressB?.countryArea,
-              zip: addressB?.postalCode
-            }, async function(err: any, address_usps_bill: any) {
-              if(err){
-                alert("Billing address not valid, no address found");
-              } else {
-                  setConfirmDialogCallbackState({
-                    address_usps_ship: address_usps_ship,
-                    address_usps_bill: address_usps_bill,
-                    addressB: addressB,
-                    userAddressId: userAddressId,
-                  });
-
-                  setDisplayConfirmModal(true);
-              }
-            });
-        }
-
-      });
+      if(billingAsShippingState){
+        setConfirmDialogCallbackStateB({
+          address_usps_bill: null,
+          userAddressId: userAddressId,
+          addressB: address
+        });
+        setDisplayConfirmModal(true);
+      } else {
+        usps.verify({
+          street1: address?.streetAddress1,
+          street2: address?.streetAddress2,
+          city: address?.city,
+          state: address?.countryArea,
+          zip: address?.postalCode
+        }, async function(err: any, address_usps_bill: any) {
+          if(err){
+            changeSubmitProgress(false);
+            alert("Billing address not valid, no address found");
+          } else {
+              setConfirmDialogCallbackStateB({
+                address_usps_bill: address_usps_bill,
+                userAddressId: userAddressId,
+                addressB: address
+              });
+              setDisplayConfirmModal(true);
+          }
+        });
+      }
+            
+        
 
     }
   };
@@ -322,7 +352,9 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
           title="Confirm your address"
           getConfirm={getConfirm}
           address_usps_ship={confirmDialogCallbackState.address_usps_ship}
-          address_usps_bill={confirmDialogCallbackState.address_usps_bill}
+          address_usps_bill={
+            billingAsShippingState ? confirmDialogCallbackState.address_usps_ship : confirmDialogCallbackStateB.address_usps_bill
+          }
         />
       )}
       <CheckoutAddress
