@@ -1,7 +1,10 @@
-import { styled } from "@styles";
+import { media, styled } from "@styles";
 
 export const Wrapper = styled.div`
   margin-bottom: 1.4rem;
+  ${media.smallScreen`
+    margin-top: 25rem;
+    `}
 `;
 
 export const Bar = styled.div`

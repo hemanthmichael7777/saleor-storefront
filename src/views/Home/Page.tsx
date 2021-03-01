@@ -103,21 +103,23 @@ const Page: React.FC<{
         <div className="home-page__collections">
           <div className="container">
             <div className="home-page__collections__list">
-              <div className="home-page__collections__list__image">
-                <div className="home-page__texttop">
-                  Match Your Mood
+              {/* <div className="height-container"> */}
+                <div className="home-page__collections__list__image">
+                  <div className="home-page__texttop">
+                    Match Your Mood
+                  </div>
+                  <div className="home-page__texttopbottom">
+                    True beauty comes from embracing your distinct personality and celebrating what makes you
+                    YOU — and we’re here to make sure you look fabulous while doing it. We love empowering you
+                    to find that just-right undergarment to match your every mood.
+                    <br></br><br></br>
+                    Whether you’re lounging at home, dressing for a special occasion, getting in a workout or
+                    looking for a sexy style - we’ve got you covered. Even better? We’ve organized our gorgeous
+                    pieces into five separate collections, so you can easily find the perfect bra, shapewear,
+                    activewear and lingerie—all based on how you’re feeling.
+                  </div>
                 </div>
-                <div className="home-page__texttopbottom">
-                  True beauty comes from embracing your distinct personality and celebrating what makes you
-                  YOU — and we’re here to make sure you look fabulous while doing it. We love empowering you
-                  to find that just-right undergarment to match your every mood.
-                  <br></br><br></br>
-                  Whether you’re lounging at home, dressing for a special occasion, getting in a workout or
-                  looking for a sexy style - we’ve got you covered. Even better? We’ve organized our gorgeous
-                  pieces into five separate collections, so you can easily find the perfect bra, shapewear,
-                  activewear and lingerie—all based on how you’re feeling.
-                </div>
-              </div>
+              {/* </div> */}
               {filteredCollections.map(({ node: collection }) => (
                 <div 
                   key={collection.id}

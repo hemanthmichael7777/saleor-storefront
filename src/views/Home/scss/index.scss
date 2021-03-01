@@ -1,7 +1,11 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 
-
+.height-container {
+  @media(max-width: $small-screen) {
+    min-height: 700px;
+  }
+}
 .home-page {
   background-image: url($mesh-background-image);
   background-repeat: repeat;
