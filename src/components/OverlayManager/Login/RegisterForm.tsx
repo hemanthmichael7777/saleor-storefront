@@ -18,7 +18,6 @@ const showSuccessNotification = (
   alert: AlertManager,
   intl: IntlShape
 ) => {
-  {console.log(data)}
   const successful = maybe(() => !data.accountRegister.errors.length);
 
   if (successful) {

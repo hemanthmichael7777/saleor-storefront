@@ -86,7 +86,6 @@ export function createPayment(data) {
         if (response.messages.resultCode === 'Error') {
             return { error: { _error: parseErrors(response) } }
         }
-        console.log(response);
         return response;
     });
 }

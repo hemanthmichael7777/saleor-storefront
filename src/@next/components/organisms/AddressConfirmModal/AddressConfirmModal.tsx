@@ -16,10 +16,6 @@ export const AddressConfirmModal: React.FC<IProps> = ({
     getConfirm
 }: IProps) => {
 
-    console.log(address_usps_ship);
-
-    console.log(address_usps_bill);
-
     const [show, setShow] = React.useState(true);
 
     const handleSubmit = () => {
