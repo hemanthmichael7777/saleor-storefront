@@ -16,7 +16,7 @@
     margin-top: $spacer;
     padding-bottom: $spacer * 5;
 
-    @media (max-width: $small-screen) {
+    @media (max-width: 768px) {
       display: block;
       margin-bottom: $spacer * 2;
     }
@@ -36,12 +36,16 @@
         width: 30%;
       }
 
-      @media (max-width: $small-screen) {
+      @media (max-width: 768px) {
         width: 100%;
       }
 
+      @media (min-width: 768px) and (max-width: 992px){
+        margin-top: 200px;
+      }
+
       > div {
-        @media (min-width: $small-screen) {
+        @media (min-width: 768px) {
           padding-right: 1rem;
         }
       }
