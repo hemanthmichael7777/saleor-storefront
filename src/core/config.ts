@@ -118,3 +118,9 @@ export const CHECKOUT_STEPS = [
     withoutOwnView: true,
   },
 ];
+
+export const ENABLE_ANALYTICS = true;
+export const AUTHORIZENET_LOGIN_ID = "94Hkj6Be";
+export const AUTHORIZENET_CLIENT_KEY = "65MGbE3y8224kmrBvEMbT92C2eGh9rCjgt8Dxf59K7bhKVaY83LM5gbKerrnazjS";
+export const USPS_WEBTOOLS_ID = "624FROGF1057";
+export const USPS_WEBTOOLS_ENV = "https://production.shippingapis.com/ShippingAPI.dll";

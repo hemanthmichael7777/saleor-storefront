@@ -7,6 +7,8 @@ import { commonMessages } from "@temp/intl";
 import * as S from "./styles";
 import { PropsWithFormik } from "./types";
 
+import { USPS_WEBTOOLS_ID, USPS_WEBTOOLS_ENV } from "../../../../core/config";
+
 export const AddressFormContent: React.FC<PropsWithFormik> = ({
   formRef,
   handleChange,
@@ -24,8 +26,8 @@ export const AddressFormContent: React.FC<PropsWithFormik> = ({
 
   const USPS = require('usps-webtools');
   const usps = new USPS({
-    server: 'https://production.shippingapis.com/ShippingAPI.dll',
-    userId: '624FROGF1057',
+    server: USPS_WEBTOOLS_ENV,
+    userId: USPS_WEBTOOLS_ID,
     ttl: 10000 //TTL in milliseconds for request
   });
   

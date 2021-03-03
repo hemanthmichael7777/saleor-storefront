@@ -16,6 +16,8 @@ import { ITaxedMoney } from "@types";
 
 import { IProps } from "./types";
 
+import { ENABLE_ANALYTICS } from "../../../core/config";
+
 const title = (
   <h1 data-test="cartPageTitle">
     <FormattedMessage defaultMessage="My Cart" />
@@ -34,7 +36,7 @@ const getShoppingButton = (history: History) => (
 const getCheckoutButton = (history: History, user?: UserDetails_me | null) => (
   <Button
     testingContext="proceedToCheckoutButton"
-    onClick={() => history.push(user ? `/checkout/` : `/login/`)}
+    onClick={() => {if (ENABLE_ANALYTICS) {fbq('track', 'InitiateCheckout')}; history.push(user ? `/checkout/` : `/login/`);}}
   >
     <FormattedMessage defaultMessage="Proceed to Checkout" />
   </Button>

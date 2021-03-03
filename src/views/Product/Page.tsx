@@ -21,6 +21,9 @@ import OtherProducts from "./Other";
 import { structuredData } from "../../core/SEO/Product/structuredData";
 import { IProps } from "./types";
 
+import { ENABLE_ANALYTICS } from "../../core/config";
+import { indexOf } from "lodash";
+
 const populateBreadcrumbs = product => [
   {
     link: generateCategoryUrl(product.category.id, product.category.name),
@@ -76,6 +79,9 @@ const Page: React.FC<
   const handleAddToCart = (variantId, quantity) => {
     add(variantId, quantity);
     overlayContext.show(OverlayType.cart, OverlayTheme.right);
+    if(ENABLE_ANALYTICS){
+      fbq('track', 'AddToCart');
+    }
   };
 
   var productVariantsMap = product.variants.reduce(function(map, obj) {

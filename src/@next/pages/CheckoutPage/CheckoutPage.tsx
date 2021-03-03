@@ -13,7 +13,7 @@ import {
 import { Checkout } from "@components/templates";
 import { useCart, useCheckout } from "@saleor/sdk";
 import { IItems } from "@saleor/sdk/lib/api/Cart/types";
-import { CHECKOUT_STEPS, CheckoutStep } from "@temp/core/config";
+import { CHECKOUT_STEPS, CheckoutStep, ENABLE_ANALYTICS } from "@temp/core/config";
 import { checkoutMessages } from "@temp/intl";
 import { ITaxedMoney, ICheckoutStep, ICardData, IFormError } from "@types";
 import { parseQueryString } from "@temp/core/utils";
@@ -198,12 +198,18 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
         break;
       case 2:
         if (checkoutPaymentSubpageRef.current?.submitPayment) {
+          if(ENABLE_ANALYTICS){
+            fbq('track', 'AddToCart');
+          }
           checkoutPaymentSubpageRef.current?.submitPayment();
         }
         break;
       case 3:
         if (checkoutReviewSubpageRef.current?.complete) {
-          checkoutReviewSubpageRef.current?.complete();
+          if(ENABLE_ANALYTICS){
+            fbq('track', 'Purchase', {value: payment?.total?.amount, currency: 'USD'});
+          }
+          //checkoutReviewSubpageRef.current?.complete();
         }
         break;
     }
