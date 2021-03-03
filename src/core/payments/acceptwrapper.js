@@ -5,6 +5,8 @@
  * Accept.js
  */
 
+import { AUTHORIZENET_LOGIN_ID, AUTHORIZENET_CLIENT_KEY} from '../config';
+
 function createPaymentAsync(data){
     return new Promise(resolve => {
         window.Accept.dispatchData(data, resolve);
@@ -43,8 +45,8 @@ function parseErrors(response) {
 
 function refinedData(data) {
     const authData = {
-        clientKey: '65MGbE3y8224kmrBvEMbT92C2eGh9rCjgt8Dxf59K7bhKVaY83LM5gbKerrnazjS',
-        apiLoginID: '94Hkj6Be',
+        clientKey: AUTHORIZENET_CLIENT_KEY,
+        apiLoginID: AUTHORIZENET_LOGIN_ID,
     };
 
     const newData = {};

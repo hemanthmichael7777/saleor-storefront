@@ -24,6 +24,7 @@ import ProductList from "./ProductList";
 
 import cartImg from "../../../images/cart.svg";
 import closeImg from "../../../images/x.svg";
+import { ENABLE_ANALYTICS } from "@temp/core/config";
 
 const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const { user } = useAuth();
@@ -153,7 +154,7 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                       </Link>
                     </div>
                     <div className="cart__footer__button">
-                      <Link to={user ? checkoutUrl : checkoutLoginUrl}>
+                      <Link to={user ? checkoutUrl : checkoutLoginUrl} onClick={() => {if (ENABLE_ANALYTICS) {fbq('track', 'InitiateCheckout')}; }}>
                         <Button testingContext="gotoCheckoutButton">
                           <FormattedMessage {...commonMessages.checkout} />
                         </Button>

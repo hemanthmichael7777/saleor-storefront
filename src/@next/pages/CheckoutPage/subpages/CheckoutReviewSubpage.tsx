@@ -10,6 +10,7 @@ import { CheckoutReview } from "@components/organisms";
 import { statuses as dummyStatuses } from "@components/organisms/DummyPaymentGateway";
 import { useCheckout } from "@saleor/sdk";
 import { IFormError } from "@types";
+import { ENABLE_ANALYTICS } from "@temp/core/config";
 
 export interface ISubmitCheckoutData {
   id: string;

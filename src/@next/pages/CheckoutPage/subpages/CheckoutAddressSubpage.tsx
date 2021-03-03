@@ -18,6 +18,8 @@ import { commonMessages } from "@temp/intl";
 import { IAddress, IFormError } from "@types";
 import { filterNotEmptyArrayItems } from "@utils/misc";
 
+import { USPS_WEBTOOLS_ID, USPS_WEBTOOLS_ENV } from "../../../../core/config";
+
 const USPS = require('usps-webtools');
 
 export interface ICheckoutAddressSubpageHandles {
@@ -169,8 +171,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
         }
       } else {
         const usps = new USPS({
-          server: 'https://production.shippingapis.com/ShippingAPI.dll',
-          userId: '624FROGF1057',
+          server: USPS_WEBTOOLS_ENV,
+          userId: USPS_WEBTOOLS_ID,
           ttl: 10000 
         });
         
@@ -309,8 +311,8 @@ const CheckoutAddressSubpageWithRef: RefForwardingComponent<
           onSubmitSuccess();
       } else {
         const usps = new USPS({
-          server: 'https://production.shippingapis.com/ShippingAPI.dll',
-          userId: '624FROGF1057',
+          server: USPS_WEBTOOLS_ENV,
+          userId: USPS_WEBTOOLS_ID,
           ttl: 10000 
         });
         
