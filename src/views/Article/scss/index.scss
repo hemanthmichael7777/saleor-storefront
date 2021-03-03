@@ -109,6 +109,10 @@
     @media (max-width: $small-screen) {
       width: 100%;
     }
+
+    a {
+      color: blue;
+    }
   }
 
   &__breadcrumbcontainer {
