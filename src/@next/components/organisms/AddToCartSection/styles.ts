@@ -1,8 +1,7 @@
 import { styled } from "@styles";
 
 export const AddToCartSelection = styled.div`
-  width: 96%;
-  margin-left: 20px;
+  width: 100%;
 `;
 
 export const ProductNameHeader = styled.h3`
