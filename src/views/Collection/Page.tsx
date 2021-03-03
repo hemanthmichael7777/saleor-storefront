@@ -93,7 +93,8 @@ const Page: React.FC<PageProps> = ({
       []
     );
   
-  const collectionName = collection.name;
+  const collectionTitle = collection.metadata[2].value ? collection.metadata[2].value : collection.name;
+  console.log(collectionTitle)
   const description = JSON.parse(collection.descriptionJson).blocks[0].text || null;
   return (
     <div className="collection">
@@ -116,7 +117,7 @@ const Page: React.FC<PageProps> = ({
 
               <div className="collection__name">
                 <h1>
-                  {collectionName}
+                  {collectionTitle}
                 </h1>
               </div>
 

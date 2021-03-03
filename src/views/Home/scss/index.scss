@@ -136,9 +136,11 @@
   }
   &__texttopbottom {
     font-size: 19px;
-    line-height: 29px;
+    line-height: 27px;
     @media (max-width: $small-screen) {
       text-align: center;
+      font-size: 16px;
+      line-height: 21px;
     }
   }
 
@@ -213,7 +215,7 @@
           }
           &__hidden{
             font-size: 19px;
-            padding: 10px;
+            padding: 25px;
           }
         }
 
@@ -234,7 +236,7 @@
            
           &__hidden{
             font-size: 19px;
-            padding: 10px;
+            padding: 25px;
           }
 
 

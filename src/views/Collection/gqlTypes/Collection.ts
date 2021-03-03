@@ -22,6 +22,7 @@ export interface Collection_collection {
   id: string;
   slug: string;
   name: string;
+  metadata: any;
   descriptionJson: string | null;
   seoDescription: string | null;
   seoTitle: string | null;

@@ -53,7 +53,7 @@ class Nav extends React.PureComponent {
                 <input
                   type="text" disabled
                   className="footer__inputform"
-                  placeholder="address@email.com"
+                  placeholder="info@dominiqueapparel.com"
                   value={this.state.value}
                   onChange={evt => this.setState({ value: evt.target.value })}
                 />

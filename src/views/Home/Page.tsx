@@ -109,14 +109,13 @@ const Page: React.FC<{
                     Match Your Mood
                   </div>
                   <div className="home-page__texttopbottom">
-                    True beauty comes from embracing your distinct personality and celebrating what makes you
-                    YOU — and we’re here to make sure you look fabulous while doing it. We love empowering you
-                    to find that just-right undergarment to match your every mood.
+                    True beauty comes from embracing your distinct personality and celebrating what makes you 
+                    . . . you, and Dominique is here to make sure you look fabulous while doing it.
                     <br></br><br></br>
-                    Whether you’re lounging at home, dressing for a special occasion, getting in a workout or
-                    looking for a sexy style - we’ve got you covered. Even better? We’ve organized our gorgeous
-                    pieces into five separate collections, so you can easily find the perfect bra, shapewear,
-                    activewear and lingerie—all based on how you’re feeling.
+                    Whether lounging at home, dressing for a special occasion, or getting in a workout, 
+                    we’ve got you covered. Even better, we’ve organized our signature intimate apparel 
+                    into five Mood Collections to easily find the perfect bra, shapewear, activewear, 
+                    and lingerie to fit the occasion and your mood.
                   </div>
                 </div>
               {/* </div> */}
@@ -153,8 +152,9 @@ const Page: React.FC<{
                         }
                       >
                         <h3>{collection.name}</h3>
+                        
                         <div className="home-page__collections__list__image__text__hidden">
-                          <RichTextContent descriptionJson={collection.descriptionJson} ></RichTextContent>
+                          <h4>{collection.metadata[3].value}</h4>
                         </div>
                       </div>
                     </div>

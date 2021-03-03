@@ -20,6 +20,10 @@ export const collectionProductsDataQuery = gql`
       descriptionJson
       seoDescription
       seoTitle
+      metadata {
+        key
+        value
+      }
       backgroundImage {
         url
       }
