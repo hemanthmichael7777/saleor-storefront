@@ -92,9 +92,12 @@ const Page: React.FC<PageProps> = ({
         ),
       []
     );
+
+  var valueA = collection.metadata.filter((q) => {
+    return q.key === "longCopyTitle";
+  });
   
-  const collectionTitle = collection.metadata[2].value ? collection.metadata[2].value : collection.name;
-  console.log(collectionTitle)
+  const collectionTitle = valueA.length > 0 ? valueA[0].value : collection.name;
   const description = JSON.parse(collection.descriptionJson).blocks[0].text || null;
   return (
     <div className="collection">
