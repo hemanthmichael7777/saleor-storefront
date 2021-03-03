@@ -209,7 +209,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
           if(ENABLE_ANALYTICS){
             fbq('track', 'Purchase', {value: payment?.total?.amount, currency: 'USD'});
           }
-          //checkoutReviewSubpageRef.current?.complete();
+          checkoutReviewSubpageRef.current?.complete();
         }
         break;
     }

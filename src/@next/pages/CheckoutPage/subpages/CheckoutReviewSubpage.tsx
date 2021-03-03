@@ -96,10 +96,6 @@ const CheckoutReviewSubpageWithRef: RefForwardingComponent<
           setErrors(errors);
         } else {
           setErrors([]);
-          if(ENABLE_ANALYTICS){
-            fbq('track', 'Purchase', {value: 0.00, currency: 'USD'});
-            alert("success");
-          }
           onSubmitSuccess({
             id: data?.order?.id,
             orderNumber: data?.order?.number,
