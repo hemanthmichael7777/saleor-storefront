@@ -82,4 +82,7 @@ export const Preview = styled.div`
     width: 100%;
     object-fit: contain;
   }
+  @media (min-width: 768px) and (max-width: 1092px){
+    margin-left: 10%;
+  }
 `;
