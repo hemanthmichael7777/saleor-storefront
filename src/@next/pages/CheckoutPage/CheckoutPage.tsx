@@ -199,7 +199,7 @@ const CheckoutPage: React.FC<IProps> = ({}: IProps) => {
       case 2:
         if (checkoutPaymentSubpageRef.current?.submitPayment) {
           if(ENABLE_ANALYTICS){
-            fbq('track', 'AddToCart');
+            fbq('track', 'AddPaymentInfo');
           }
           checkoutPaymentSubpageRef.current?.submitPayment();
         }
