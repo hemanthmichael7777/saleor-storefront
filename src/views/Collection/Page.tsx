@@ -104,32 +104,34 @@ const Page: React.FC<PageProps> = ({
       <div className="container">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
 
-        <div className="collection__headercontainer">
-          <div className="collection__flexcontainer">
+        <div className="collection__headerbackground">
+          <div className="collection__headercontainer">
+            <div className="collection__flexcontainer">
 
-            <div className="collection__imagecontainer" style={{
-                        backgroundImage: `url(${collection.backgroundImage
-                          ? collection.backgroundImage.url
-                          : noPhotoImg
-                          })`,
-                      }}>
+              <div className="collection__imagecontainer" style={{
+                          backgroundImage: `url(${collection.backgroundImage
+                            ? collection.backgroundImage.url
+                            : noPhotoImg
+                            })`,
+                        }}>
 
-            </div>
-
-            <div className="collection__descriptioncontainer">
-
-              <div className="collection__name">
-                <h1>
-                  {collectionTitle}
-                </h1>
               </div>
 
-              <div className="collection__descriptionbody">
-                <h2>
-                  {description}
-                </h2>
-              </div>
+              <div className="collection__descriptioncontainer">
 
+                <div className="collection__name">
+                  <h1>
+                    {collectionTitle}
+                  </h1>
+                </div>
+
+                <div className="collection__descriptionbody">
+                  <h2>
+                    {description}
+                  </h2>
+                </div>
+
+              </div>
             </div>
           </div>
         </div>

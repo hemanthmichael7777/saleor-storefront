@@ -36,12 +36,26 @@
 
   height: 100%;
 
+  &__headerbackground {
+    /* width: 1140px; */
+    width: 100vw;
+    /* margin: 0 auto; */
+    /* padding: 0 1rem; */
+    margin-left: calc(50% - 50vw);
+    background: url($mesh-background-image);
+  }
+
   &__headercontainer {
     height: 100%;
-    width: 100%;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+    width: 1105px;
+    margin-left: auto;
+    margin-right: auto;
+    //width: 100vw;
+    //margin-left: calc(50% - 50vw);
     //border: 1px solid black;
+    @media (max-width: 1092px) {
+      width: auto;
+    }
   }
 
   &__imagecontainer {
@@ -62,11 +76,12 @@
     background-repeat: repeat;
     background-position: left top;
     width: 100%;
-    padding-top: 5.5%;
-    padding-bottom: 10.5%;
+    margin-top: auto;
+    margin-bottom: auto;
 
     @media(max-width: $small-screen) {
-      min-height: 470px;
+      min-height: 400px;
+      max-height: 450px;
     }
 
 
@@ -86,22 +101,34 @@
     margin-left: 50px;
     @media(max-width: $small-screen) {
       margin-top: 45px;
+      display: flex;
+      justify-content: center;
+      margin-left: auto;
+      width: auto;
     }
 
     h1 {
       font-size: 36px;
       color: $purple;
       min-width: 400px;
+      @media(max-width: $small-screen) {
+        min-width: auto;
+      }
     }
   }
 
   &__descriptionbody {
     //border: 2px solid black;
-    max-width: 80%;
+    // max-width: 80%;
     margin-top: 5%;
     margin-left: 50px;
     font-size: 19px;
     line-height: 28px;
+    @media(max-width: $small-screen) {
+      margin-left: auto;
+      text-align: center;
+      padding: 20px;
+    }
   }
 
   &__flexcontainer {

@@ -119,6 +119,11 @@
     font-size: $base-font-size;
     margin-bottom: 15px;
   }
+  &__infoemail {
+    color: white;
+    font-weight: 600;
+    font-size: $small-font-size;
+  }
 
   &__inputform {
     width: 220px;

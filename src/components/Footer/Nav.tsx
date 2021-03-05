@@ -49,7 +49,10 @@ class Nav extends React.PureComponent {
               <div className="footer__secondaryheader">
                 Stay In Touch
               </div>
-              <form>
+              <div className="footer__infoemail">
+                info@dominiqueapparel.com
+              </div>
+              {/* <form>
                 <input
                   type="text" disabled
                   className="footer__inputform"
@@ -57,8 +60,8 @@ class Nav extends React.PureComponent {
                   value={this.state.value}
                   onChange={evt => this.setState({ value: evt.target.value })}
                 />
-                 {/* <input type="submit" value="Submit" /> */}
-              </form>
+                 <input type="submit" value="Submit" />
+              </form> */}
             </div>
 
             <div className="footer__paymentcontainer">

@@ -3,7 +3,7 @@ import { media, styled } from "@styles";
 export const Wrapper = styled.div`
   margin-bottom: 1.4rem;
   ${media.smallScreen`
-    margin-top: 25rem;
+    margin-top: 27.5rem;
     `}
 `;
 
