@@ -100,6 +100,7 @@ const AddressBook: React.FC<{
           userId={user.id}
           {...{ defaultValue: defaultCountry || {} }}
           submitBtnText={intl.formatMessage(commonMessages.add)}
+          cancelBtnText={"Cancel"}
           title={intl.formatMessage(checkoutMessages.addNewAddress)}
           {...{ countriesOptions: countries }}
           formId="address-form"
@@ -112,6 +113,7 @@ const AddressBook: React.FC<{
           }}
           address={addressData}
           submitBtnText={intl.formatMessage(commonMessages.save)}
+          cancelBtnText={"Cancel"}
           title={intl.formatMessage({ defaultMessage: "Edit address" })}
           {...{ countriesOptions: countries }}
           formId="address-form"

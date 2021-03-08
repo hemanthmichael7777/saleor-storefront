@@ -9,6 +9,7 @@ import amexImg from "../../images/american_express_logo.svg";
 import discoverImg from "../../images/discover_logo.svg";
 import mastercardImg from "../../images/mastercard_logo.svg";
 import visaImg from "../../images/visa_logo.svg";
+import applePayImg from "../../images/apple_pay_logo-01.svg";
 
 import "./scss/index.scss";
 
@@ -50,18 +51,8 @@ class Nav extends React.PureComponent {
                 Stay In Touch
               </div>
               <div className="footer__infoemail">
-                info@dominiqueapparel.com
+                <a href="mailto:info@dominiqueapparel.com?subject=Dominique%20Inquiry">info@dominiqueapparel.com</a>
               </div>
-              {/* <form>
-                <input
-                  type="text" disabled
-                  className="footer__inputform"
-                  placeholder="info@dominiqueapparel.com"
-                  value={this.state.value}
-                  onChange={evt => this.setState({ value: evt.target.value })}
-                />
-                 <input type="submit" value="Submit" />
-              </form> */}
             </div>
 
             <div className="footer__paymentcontainer">
@@ -70,6 +61,9 @@ class Nav extends React.PureComponent {
               </div>
 
               <div className="footer__paymentimgcontainer">
+                {/* <div className="footer__paymentimg">
+                  <ReactSVG path={applePayImg} />
+                </div> */}
                 <div className="footer__paymentimg">
                   <ReactSVG path={visaImg} />
                 </div>
@@ -82,9 +76,9 @@ class Nav extends React.PureComponent {
                 <div className="footer__paymentimg">
                   <ReactSVG path={mastercardImg} />
                 </div>
+                
               </div>
             </div>
-
           </div>
 
           <div className="footer__sectionsecondary">

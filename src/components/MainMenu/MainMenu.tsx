@@ -141,11 +141,21 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                   suffixClass="__rightdown"
                                   head={
                                     <li key="userKey" className="main-menu__icon main-menu__user--active" style={{ display: isMediumScreenExact }}>
-                                      <ReactSVG path={userImg} />
+                                      {/* <div className="user-signed-in"> */}
+                                        <ReactSVG path={userImg} />
+                                        {/* <h4>Signed in</h4>
+                                      </div> */}
                                     </li>
                                   }
+
                                   content={
+
                                     <ul className="main-menu__dropdown">
+                                      <li key="userEmailMediumScreen" data-test="userEmail">
+                                        <div className="user-email">
+                                          {user.email}
+                                        </div>
+                                      </li>
                                       <li key="mobileMenuMyAccountLink" data-test="mobileMenuMyAccountLink">
                                         <Link to={appPaths.accountUrl}>
                                           <FormattedMessage
@@ -180,20 +190,20 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                                   }
                                 />
                               ) : (
-                                  <li
-                                    key="mobileMenuLoginLink"
-                                    data-test="mobileMenuLoginLink"
-                                    className="main-menu__icon" style={{ display: isMediumScreenExact }}
-                                    onClick={() =>
-                                      overlayContext.show(
-                                        OverlayType.login,
-                                        OverlayTheme.left
-                                      )
-                                    }
-                                  >
-                                    <ReactSVG path={userImg} />
-                                  </li>
-                                )}
+                                <li
+                                  key="mobileMenuLoginLink"
+                                  data-test="mobileMenuLoginLink"
+                                  className="main-menu__icon" style={{ display: isMediumScreenExact }}
+                                  onClick={() =>
+                                    overlayContext.show(
+                                      OverlayType.login,
+                                      OverlayTheme.left
+                                    )
+                                  }
+                                >
+                                  <ReactSVG path={userImg} />
+                                </li>
+                              )}
                             </>
                           )}
                         />
@@ -256,11 +266,19 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                           <MenuDropdown
                             head={
                               <li key="userActiveKey" className="main-menu__icon main-menu__user--active">
-                                <ReactSVG path={userImg} />
+                                <div className="user-signed-in">
+                                  <ReactSVG path={userImg} />
+                                  <h4>Signed in</h4>
+                                </div>
                               </li>
                             }
                             content={
                               <ul className="main-menu__dropdown">
+                                <li key="userEmail" data-test="userEmail">
+                                  <div className="user-email">
+                                    {user.email}
+                                  </div>
+                                </li>
                                 <li key="desktopMenuMyAccountLink" data-test="desktopMenuMyAccountLink">
                                   <Link to={appPaths.accountUrl}>
                                     <FormattedMessage
@@ -293,20 +311,20 @@ const MainMenu: React.FC<MainMenuProps> = ({ demoMode }) => {
                             }
                           />
                         ) : (
-                            <li
-                              key="desktopMenuLoginOverlayLink"
-                              data-test="desktopMenuLoginOverlayLink"
-                              className="main-menu__icon"
-                              onClick={() =>
-                                overlayContext.show(
-                                  OverlayType.login,
-                                  OverlayTheme.right
-                                )
-                              }
-                            >
-                              <ReactSVG path={userImg} />
-                            </li>
-                          )}
+                          <li
+                            key="desktopMenuLoginOverlayLink"
+                            data-test="desktopMenuLoginOverlayLink"
+                            className="main-menu__icon"
+                            onClick={() =>
+                              overlayContext.show(
+                                OverlayType.login,
+                                OverlayTheme.right
+                              )
+                            }
+                          >
+                            <ReactSVG path={userImg} />
+                          </li>
+                        )}
                       </>
                     )}
                   />

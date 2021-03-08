@@ -1,6 +1,8 @@
 import "./scss/index.scss";
 
 import * as React from "react";
+import { History } from "history";
+import { BASE_URL } from "@temp/core/config";
 import { FormattedMessage } from "react-intl";
 import { generatePath, Link } from "react-router-dom";
 import ReactSVG from "react-svg";
@@ -17,7 +19,7 @@ import {
   Overlay,
   OverlayContextInterface,
 } from "../..";
-import { cartUrl, checkoutLoginUrl, checkoutUrl } from "../../../app/routes";
+import { baseUrl, cartUrl, checkoutLoginUrl, checkoutUrl } from "../../../app/routes";
 import DefaultLoader from "../../DefaultLoader";
 import Empty from "./Empty";
 import ProductList from "./ProductList";
@@ -41,9 +43,9 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
   const shippingTaxedPrice =
     checkout?.shippingMethod?.id && shippingPrice
       ? {
-          gross: shippingPrice,
-          net: shippingPrice,
-        }
+        gross: shippingPrice,
+        net: shippingPrice,
+      }
       : null;
   const promoTaxedPrice = discount && {
     gross: discount,
@@ -153,8 +155,21 @@ const Cart: React.FC<{ overlay: OverlayContextInterface }> = ({ overlay }) => {
                         </Button>
                       </Link>
                     </div>
+
                     <div className="cart__footer__button">
-                      <Link to={user ? checkoutUrl : checkoutLoginUrl} onClick={() => {if (ENABLE_ANALYTICS) {fbq('track', 'InitiateCheckout')}; }}>
+                      {/* <Link
+                        to={generatePath(baseUrl, {
+                          token: null,
+                        })}
+                      > */}
+                        <Button testingContext="cartPageContinueShoppingButton1"  onClick={overlay.hide} secondary>
+                          <FormattedMessage defaultMessage="Continue Shopping" />
+                        </Button>
+                      {/* </Link> */}
+                    </div>
+
+                    <div className="cart__footer__button">
+                      <Link to={user ? checkoutUrl : checkoutLoginUrl} onClick={() => { if (ENABLE_ANALYTICS) { fbq('track', 'InitiateCheckout') }; }}>
                         <Button testingContext="gotoCheckoutButton">
                           <FormattedMessage {...commonMessages.checkout} />
                         </Button>

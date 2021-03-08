@@ -5,6 +5,21 @@
   background-color: $purple;
 }
 
+.user-email {
+  cursor: default;
+  color: $gray-dark;
+}
+
+.user-signed-in {
+  display: flex;
+
+  h4{
+    margin-top: 2px;
+    margin-left: 11px;
+    font-size: $small-font-size;
+  }
+}
+
 .nav-flex {
   display: flex;
 }

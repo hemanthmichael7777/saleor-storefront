@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
 `;
 
 export const HeaderContent = styled.div`
-  color: ${props => props.theme.colors.lightFont};
+  color: ${props => props.theme.colors.dark};
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
@@ -22,9 +22,13 @@ export const FooterContent = styled.div`
 `;
 
 export const MenuItem = styled.div`
-  border-radius: 8px;
-  padding: 0.25rem;
+  border-radius: 6px;
+  padding-left: .75rem;
+  padding-right: .75rem;
+  padding-top: .21rem;
+  padding-bottom: .21rem;
   :hover {
     background-color: ${props => props.theme.colors.primaryLight};
+    color: ${props => props.theme.colors.lightFont};
   }
 `;
