@@ -12,6 +12,10 @@ const articleQuery = gql`
       seoTitle
       slug
       title
+      metadata {
+        key
+        value
+      }
     }
     shop {
       homepageCollection {

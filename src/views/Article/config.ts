@@ -1,1 +1,2 @@
 export const headerImg = `url(https://dayleenstore.s3.us-east-2.amazonaws.com/article-backgrounds/article-background1.png)`;
+export const returnFormPath = "https://dayleenstore.s3.us-east-2.amazonaws.com/returns/return-form.pdf";

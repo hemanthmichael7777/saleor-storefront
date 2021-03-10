@@ -1,5 +1,12 @@
  @import "../../../globalStyles/scss/variables.scss";
 
+
+ .return-form {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+ }
+
  .article-container {
   background-color: rgba(255, 255, 255, 0.5);
   position: absolute;
@@ -108,10 +115,6 @@
 
     @media (max-width: $small-screen) {
       width: 100%;
-    }
-
-    a {
-      color: blue;
     }
   }
 

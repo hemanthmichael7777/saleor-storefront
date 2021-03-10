@@ -12,6 +12,8 @@
 
 .user-signed-in {
   display: flex;
+  min-width: 100px;
+  justify-content: flex-end;
 
   h4{
     margin-top: 2px;

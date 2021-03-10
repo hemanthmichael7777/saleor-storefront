@@ -134,7 +134,7 @@
   &__flexcontainer {
     display: flex;
     flex-direction: row;
-    height: 57vh;
+    height: 65vh;
 
     @media (max-width: $small-screen) {
       flex-direction: column;

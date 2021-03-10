@@ -17,6 +17,7 @@ export interface Article_page {
   seoTitle: string | null;
   slug: string;
   title: string;
+  metadata: any;
 }
 
 export interface Article_shop_homepageCollection_backgroundImage {

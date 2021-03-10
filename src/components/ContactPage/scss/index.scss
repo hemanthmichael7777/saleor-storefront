@@ -1,0 +1,28 @@
+@import "../../../globalStyles/scss/variables.scss";
+
+.contact-page-info-container {
+    //border: 1px solid red;
+    margin-top: 10%;
+    padding: 10px;
+
+    a {
+        text-decoration: underline;
+
+        &:hover {
+            color: $gray-dark;
+        }
+    }
+}
+
+.contact-ind-container {
+    //border: 1px solid blue;
+    padding: 10px;
+    margin: 20px 0px 20px 0px;
+}
+
+.contact-title {
+    font-size: 1.25rem;
+    color: $purple;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
